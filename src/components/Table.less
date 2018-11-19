@@ -1,0 +1,28 @@
+@import '../theme/theme.less';
+@import '../theme/mixin.less';
+
+@prefixCls:basic-table-23;
+
+.@{prefixCls} {
+  margin-top: 5px;
+  padding: 0 10px;
+  width: 100%;
+  line-height: 2.2;
+  &-title{
+    display: flex;
+    justify-content: space-between;
+    >span {
+      display: inline-block;
+      text-align: center;
+    }
+  }
+  .table-item {
+    display: flex;
+    justify-content: space-between;
+    color: #99ccff
+  }
+  .even {
+    color: #ff9203;
+  }
+}
+

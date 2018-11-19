@@ -1,20 +1,78 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'antd-mobile'
+import { Map, Markers  } from 'react-amap';
 import {
   connect
 } from 'dva';
+import { testService } from '../services/example';
+import map_market from '../assets/image/map_market.svg';
 
-import styles from './page03.less';
+import  './page03.less';
 
 import Main from '../layouts/main.jsx';
 
-function Page03({
-  location
-}) {
+function Page03(props) {
+  const {location} =props;
+
+  function getData() {
+     testService().then(res=>{
+     })
+  }
+
+  // function clickHandle() {
+  //   dispatch({
+  //     type: 'example/query',
+  //     payload: {id: 22},
+  //   })
+  // }
+
+
+   let markers = [{  position: {
+     longitude: 120,
+     latitude: 30,
+   }},
+     {  position: {
+       longitude: 120.1,
+       latitude: 30.1,
+     }}]
+
+  const renderMarkerLayout = function () {
+    return (
+      <div className='market'>
+        <div className='marketdesc'>
+          <span>你妈妈的项目</span>
+          <div>
+            <span>100人</span>
+            <span>3</span>
+            <span>7</span>
+          </div>
+          <div className='market-bottom'>
+            <span>作业中</span>
+            <span>搭吊</span>
+            <span>报警</span>
+          </div>
+        </div>
+        <img src={map_market}/>
+      </div>
+
+      )
+  }
+
   return (
     <Main location={location}>
-      <div className={styles.normal}>
-        Route Component: Page03
+      <div className={'wer'}>
+        {/*<Button className={styles.btn} onClick={getData} size="small">点我</Button>*/}
+        {/*<Button className={styles.btn} onClick={clickHandle} size="small">哈哈</Button>*/}
+        {/*<Button className={styles.btn} onClick={props.go} size="small">click me</Button>*/}
+        <div  style = {{width:'100%',height:'100%'}}>
+          <Map center={{longitude: 120, latitude: 30}} zoom={10}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
+            <Markers
+              markers={markers}
+              render={renderMarkerLayout}
+            />
+          </Map>
+        </div>
       </div>
     </Main>
   );
@@ -28,4 +86,15 @@ function mapStateToProps() {
   return {};
 }
 
-export default connect(mapStateToProps)(Page03);
+function propsDispatchToMap(dispatch) {
+  return {
+    go(){
+      dispatch({
+        type: 'example/query',
+        payload: {id: 22},
+      })
+    }
+  };
+}
+
+export default connect(mapStateToProps ,propsDispatchToMap)(Page03);

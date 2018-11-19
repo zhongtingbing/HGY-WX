@@ -79,7 +79,6 @@ function checkCode(data) {
   if (data && (data.code !== 0)) {
     return throwSrvError(data);
   }
-
   return data;
 }
 
@@ -92,17 +91,22 @@ function handleReqError(err) {
 }
 
 function handleRequest(req) {
-  return {
-    ...req,
-    promise: req.promise
-      .then(checkStatus)
-      .then(resp => resp.data)
-      .then(checkCode)
-      .catch(handleReqError)
-  };
+  return req.promise
+    .then(checkStatus)
+    .then(resp => resp.data)
+    .then(checkCode)
+    .catch(handleReqError)
+  // return {
+  //   ...req,
+  //   promise: req.promise
+  //     .then(checkStatus)
+  //     .then(resp => resp.data)
+  //     .then(checkCode)
+  //     .catch(handleReqError)
+  // };
 }
 
-export function getJson(url, data) {
+export function   getJson(url, data) {
   const _data = data ? _.cloneDeep(data) : {};
   _data._t_ = _.now();
   return handleRequest(get(url, _data));

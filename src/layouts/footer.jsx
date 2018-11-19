@@ -10,13 +10,13 @@ import {
   routerRedux
 } from 'dva/router';
 
-import styles from './footer.less';
+import './footer.less'
 
 function Footer({
   dispatch, childrens, location
 }) {
   return (
-    <div className={styles.normal}>
+    <div className="foot-aa">
       <TabBar
         unselectedTintColor="#949494"
         tintColor="#33A3F4"
@@ -24,8 +24,8 @@ function Footer({
         hidden={false}
       >
         <TabBar.Item
-          title="生活"
-          key="生活"
+          title="执行力图"
+          key="执行力图"
           icon={
             <div style={{
               width: '22px',
@@ -48,8 +48,8 @@ function Footer({
           {childrens}
         </TabBar.Item>
         <TabBar.Item
-          title="口碑"
-          key="口碑"
+          title="智慧监管"
+          key="智慧监管"
           icon={
             <div style={{
               width: '22px',
@@ -71,7 +71,7 @@ function Footer({
           {childrens}
         </TabBar.Item>
         <TabBar.Item
-          title="朋友"
+          title="监控"
           key="朋友"
           icon={
             <div style={{

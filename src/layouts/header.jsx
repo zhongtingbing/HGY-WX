@@ -4,22 +4,22 @@ import {
   NavBar, Icon
 } from 'antd-mobile';
 
-import styles from './header.less';
+import './header.less';
 
 function Header({
-  location
+  location,
+  title
 }) {
   return (
-    <div className={styles.normal}>
-      <NavBar
-        mode="light"
-        icon={<Icon type="left" />}
-        onLeftClick={() => console.log('onLeftClick')}
-        rightContent={[
-          <Icon key="0" type="search" style={{marginRight: '16px'}} />,
-          <Icon key="1" type="ellipsis" />
-        ]}
-      >首页</NavBar>
+    <div className='header-aa'>
+      {/*<NavBar*/}
+        {/*className={'nav_bar'}*/}
+        {/*icon={<Icon size="lg" type="left" />}*/}
+        {/*onLeftClick={() => console.log('onLeftClick')}*/}
+        {/*rightContent={[*/}
+          {/*<Icon style = {{transform: 'rotate(90deg)'}} key="1" type="ellipsis" />*/}
+        {/*]}*/}
+      {/*>{title}</NavBar>*/}
     </div>
   );
 }

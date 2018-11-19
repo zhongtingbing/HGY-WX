@@ -1,0 +1,45 @@
+@import '../theme/theme.less';
+@import '../theme/mixin.less';
+
+@prefixCls: rail-123;
+
+.@{prefixCls} {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+   .left {
+     width: 50px;
+     padding-right: 2px;
+     display: flex;
+     justify-content: space-between;
+   }
+  .middle {
+    margin-left: 12px;
+    flex: 1;
+    display: flex;
+    >div {
+      height: 14px;
+      display: flex;
+      align-items: center;
+      font-size: 8px;
+      justify-content: center;
+      margin-right: 1%;
+    }
+    .one {
+      background-color: #1f7dd4;
+    }
+    .two {
+      background-color: #e75639;
+    }
+    .three {
+      background-color: #ddb53c;
+      color: #0c2756;
+    }
+  }
+  .right {
+    width: 45px;
+    text-align: center;
+  }
+}
+

@@ -1,3 +1,5 @@
+import { query } from '../services/example';
+
 
 export default {
 
@@ -11,9 +13,11 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({type: 'save'});
-    }
+    query({ payload }, { call, put }) {  // eslint-disable-line
+      query().then(res => {
+        console.log(res)
+      })
+    },
   },
 
   reducers: {

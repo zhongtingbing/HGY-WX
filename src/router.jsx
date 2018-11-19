@@ -8,16 +8,13 @@ import Dynamic from 'dva/dynamic';
 function RouterConfig({
   history, app
 }) {
-  const Index = Dynamic({
+  const executionPage = Dynamic({
     app,
-    // models: () => [
-    //   import('./models/index')
-    // ],
-    component: () => import('./routes/index')
+    component: () => import('./routes/execution/executionPage')
   });
   const Page01 = Dynamic({
     app,
-    component: () => import('./routes/page01')
+    component: () => import('./routes/supervision/supervisionPage')
   });
   const Page02 = Dynamic({
     app,
@@ -25,16 +22,35 @@ function RouterConfig({
   });
   const Page03 = Dynamic({
     app,
+    models: () => [
+      import('./models/example')
+    ],
     component: () => import('./routes/page03')
+  });
+  const ProjectOverview = Dynamic({
+    app,
+    // models: () => [
+    //   import('./models/example')
+    // ],
+    component: () => import('./routes/projectOverview/ProjectOverviewPage')
+  });
+  const WorkersCondition = Dynamic({
+    app,
+    // models: () => [
+    //   import('./models/example')
+    // ],
+    component: () => import('./routes/workersCondition/WorkersConditionPage')
   });
 
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={Index} />
+        <Route exact path="/" component={WorkersCondition} />
         <Route exact path="/page01" component={Page01} />
         <Route exact path="/page02" component={Page02} />
         <Route exact path="/page03" component={Page03} />
+        <Route exact path="/project-overview" component={ProjectOverview} />
+        <Route exact path="/workers-condition" component={WorkersCondition} />
       </Switch>
     </Router>
   );
