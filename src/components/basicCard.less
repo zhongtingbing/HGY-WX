@@ -16,9 +16,10 @@
   .head {
     display: flex;
     align-items: center;
+    position: relative;
     .left{
       width: 4px;
-      height: 16px;
+      height: 15px;
       border-radius: 4px;
       background-color: #ff9000;
     }
@@ -26,6 +27,19 @@
       margin-left: 10px;
       color: #48b6eb;
       font-size: 16px;
+    }
+  }
+  .more {
+    display: flex ;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50px;
+    color: #4ab4e8;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    >svg {
+      margin-left: -4px;
     }
   }
 }

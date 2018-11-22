@@ -5,5 +5,6 @@ module.exports = function(config, env) {
       common: ['react', 'react-dom']
     };
   }
+
   return config;
 };

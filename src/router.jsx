@@ -27,6 +27,13 @@ function RouterConfig({
     ],
     component: () => import('./routes/page03')
   });
+  const Supervision = Dynamic({
+    app,
+    // models: () => [
+    //   import('./models/example')
+    // ],
+    component: () => import('./routes/supervision/supervisionPage')
+  });
   const ProjectOverview = Dynamic({
     app,
     // models: () => [
@@ -42,15 +49,25 @@ function RouterConfig({
     component: () => import('./routes/workersCondition/WorkersConditionPage')
   });
 
+  const SafeInfo = Dynamic({
+    app,
+    // models: () => [
+    //   import('./models/example')
+    // ],
+    component: () => import('./routes/safeInfo/SafeInfoPage')
+  });
+
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={WorkersCondition} />
+        <Route exact path="/" component={SafeInfo} />
         <Route exact path="/page01" component={Page01} />
         <Route exact path="/page02" component={Page02} />
         <Route exact path="/page03" component={Page03} />
+        <Route exact path="/supervision" component={Supervision} />
         <Route exact path="/project-overview" component={ProjectOverview} />
-        <Route exact path="/workers-condition" component={WorkersCondition} />
+        <Route exact path="/workers-condition" component={WorkersCondition}/>
+        <Route exact path="/safe-info" component={SafeInfo}/>
       </Switch>
     </Router>
   );

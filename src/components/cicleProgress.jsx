@@ -28,9 +28,9 @@ export default class CicleProgress extends React.PureComponent{
       percent = value || 90, // 最终百分比
       circleX = canvas.width / 2, // 中心x坐标
       circleY = canvas.height / 2, // 中心y坐标
-      radius = 34, // 圆环半径
-      lineWidth = 7, // 圆形线条的宽度
-      fontSize = 16; // 字体大小
+      radius = 68, // 圆环半径
+      lineWidth = 14, // 圆形线条的宽度
+      fontSize = 32; // 字体大小
 
 // 画圆
     function circle(cx, cy, r) {
@@ -115,7 +115,7 @@ export default class CicleProgress extends React.PureComponent{
     const {_key, title} =this.props
     return (
       <div className="cicle-progress-wrap">
-        <canvas className={`cicle-progress${_key}`} width="80" height="80">
+        <canvas className={`cicle-progress${_key}`} width="160" height="160">
           <p>抱歉，您的浏览器不支持canvas</p>
         </canvas>
         <span className="title">{title}</span>

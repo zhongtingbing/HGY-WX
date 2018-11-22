@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import classNames from 'classnames';
+import {Icon} from 'antd-mobile';
 import './basicCard.less'
 
 const prefixCls = 'basic-card-123';
@@ -24,6 +25,7 @@ export default class BasicCard extends React.PureComponent{
       className,
       name,
       children,
+      more,
       other
     }=this.props
     const cls = classNames({
@@ -35,6 +37,7 @@ export default class BasicCard extends React.PureComponent{
         <div className="head">
           <div className="left"></div>
           <div className="right">{name}</div>
+          {more && <div onClick={() => {}} className="more">更多<Icon size="xs" color="#4ab4e8" type="right"/></div>}
         </div>
         {children}
       </div>

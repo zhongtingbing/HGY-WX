@@ -8,9 +8,7 @@ const prefixCls = 'supervision-view74aa1b'
 
 export default function SupervisionView(props) {
   const {
-    location,
-    title,
-    data
+
   } = props;
 
   const cls = classNames({
@@ -22,9 +20,11 @@ export default function SupervisionView(props) {
     latitude: 30,
   }},
     { position: {
-      longitude: 120.1,
-      latitude: 30.1,
+      longitude: 120.01,
+      latitude: 30.01,
     }}]
+
+  const Loading = <div style={{}}>Loading Map...</div>
 
   const renderMarkerLayout = function () {
     return (
@@ -52,16 +52,15 @@ export default function SupervisionView(props) {
     )
   }
   return (
-    <Main location={location} title={title}>
+    <Main>
       <div className={cls}>
-        <div style = {{width:'100%',height:'100%'}}>
-          <Map center={{longitude: 120, latitude: 30}} zoom={10}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
-            <Markers
-              markers={markers}
-              render={renderMarkerLayout}
-            />
-          </Map>
-        </div>
+        <Map center={{longitude: 120, latitude: 30}} zoom={13}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
+          <Markers
+            markers={markers}
+            render={renderMarkerLayout}
+            loading={Loading}
+          />
+        </Map>
       </div>
     </Main>
   );

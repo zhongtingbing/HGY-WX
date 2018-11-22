@@ -1,6 +1,6 @@
 // import Path from 'path';
 import PxToRem from 'postcss-pxtorem';
-
+const isDevelopment= process.env.NODE_ENV ==='development';
 export default {
   hash: true,
   entry: 'src/index.js',
@@ -25,6 +25,7 @@ export default {
   //     propWhiteList: [],
   //   }),
   // ],
+  "disableCSSModules": true,
   extraBabelPlugins: [
     'transform-runtime',
     ['import', {
@@ -32,6 +33,13 @@ export default {
       style: true
     }]
   ],
+  "proxy":isDevelopment? {
+    "/api": {
+      "target": "http://firefly.cmbc.com.cn/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
+  }:null,
   env: {
     production: {
       multipage: true,

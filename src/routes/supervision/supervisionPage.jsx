@@ -28,7 +28,6 @@ class SupervisionPage extends React.PureComponent{
       <SupervisionView
         {...this.state}
         {...this.props}
-        title="智慧监管"
       />
     )
   }
