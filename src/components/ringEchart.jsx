@@ -92,7 +92,8 @@ export default class RingEchart extends React.PureComponent{
       className,
       index,
       name,
-      other
+      desc,
+      other,
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
@@ -107,7 +108,7 @@ export default class RingEchart extends React.PureComponent{
             <span style={{fontSize:'10px'}}>人</span>
           </div>
           <div  style={{fontSize:'14px'}}>
-            特殊工种
+            {desc}
           </div>
         </div>
       </div>

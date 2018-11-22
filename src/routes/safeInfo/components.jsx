@@ -1,9 +1,13 @@
 import React from 'react';
+import PM_25_IMG from '../../assets/image/icon_pm2.5.png'
+import PM_10_IMG from '../../assets/image/icon_pm10.png'
+import TSP_IMG from '../../assets/image/icon_tsp.png'
+import NOISE_IMG from '../../assets/image/icon_noise.png'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
-// require('echarts/lib/component/legend');
+require('echarts/lib/component/legend');
 // require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
@@ -11,51 +15,129 @@ require('echarts/lib/chart/line');
 
 import './components.less'
 
-class WorkerChart4Year extends React.PureComponent {
-  constructor(props){
+
+function DeviceControl({data}) {
+  const statusMap = {
+    '0': '在线',
+    '1': '离线',
+    '2': '报警',
+  }
+  return (
+    <div className="device-control">
+      {
+        data.map((item, index) => {
+          return (
+            <div key={`device-control-${index}`}
+                 className={`status-${item.status}`}>{`${item.name}：${statusMap[item.status]}`}</div>
+          )
+        })
+      }
+    </div>
+  )
+}
+
+function EnvControl({data}) {
+  return (
+    <div className="env-control">
+      <div>
+        <img src={PM_25_IMG} alt=""/>
+        <span>{`${39}ug/m³`}</span>
+      </div>
+      <div>
+        <img src={PM_10_IMG} alt=""/>
+        <span>{`${39}ug/m³`}</span>
+      </div>
+      <div>
+        <img src={TSP_IMG} alt=""/>
+        <span>{`${39}ug/m³`}</span>
+      </div>
+      <div>
+        <img src={NOISE_IMG} alt=""/>
+        <span>{`${39}分贝`}</span>
+      </div>
+    </div>
+  )
+}
+
+
+class AlarmChart extends React.PureComponent {
+  constructor(props) {
     super(props)
   }
 
-  componentDidMount(){
-    setTimeout(()=>{
+  componentDidMount() {
+    setTimeout(() => {
       this.setEcharts()
-    },0)
+    }, 0)
   }
+
   setEcharts = () => {
-    const{
+    const {
       index,
+      YData,
     } = this.props
     const _dom = echarts.init(document.getElementById(`echart-${index}`));
-    // 绘制图表
-    _dom.setOption({
-      xAxis: {
-        type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',''],
-        boundaryGap: false,
-        axisLine:{                  //---坐标轴 轴线
-          show:true,                  //---是否显示
-          lineStyle:{
-            color:'#9fc3ff',
-            width:1,
-            type:'solid',
-            fontSize:8
+    const seriesList = YData.map((item, index) => {
+      return {
+        name: item.name,
+        data: item.data,
+        type: 'line',
+        showAllSymbol: true,
+        symbol: 'circle',
+        itemStyle: {
+          normal: {
+            color: item.color,
+            lineStyle: {
+              //color:'#3d87b8',
+              width: 1
+            },
           },
         },
-        splitLine:{                 //---grid 区域中的分隔线
-          show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
-          interval:0,
-          lineStyle:{
-            color:'#315378',
-            width:1,
-            type:'dashed',          //---类型
+      }
+    });
+    const legendData = YData.map(item => (item.name))
+    // 绘制图表
+    _dom.setOption({
+      legend: {
+        data: legendData.length === 1 ? [] : legendData,
+        icon: 'rect',
+        itemWidth: 8,
+        itemHeight: 8,
+        itemGap: 10,
+        // data:[  {name:'南宁-曼芭',icon:'rect'},
+        textStyle: {
+          fontSize: 9,
+          color: '#F1F1F3'
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        boundaryGap: false,
+        axisLine: {                  //---坐标轴 轴线
+          show: true,                  //---是否显示
+          lineStyle: {
+            color: '#9fc3ff',
+            width: 1,
+            type: 'solid',
+            fontSize: 10
+          },
+        },
+        splitLine: {                 //---grid 区域中的分隔线
+          show: true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
+          interval: 0,
+          lineStyle: {
+            color: '#315378',
+            width: 1,
+            type: 'dashed',          //---类型
           },
         },
         axisLabel: {
           show: true,
           margin: 3,
-          interval:0,
+          interval: 0,
           textStyle: {
-            fontSize:8
+            fontSize: 10
           }
         },
         axisTick: {                  //---坐标轴 刻度
@@ -64,20 +146,20 @@ class WorkerChart4Year extends React.PureComponent {
       },
       yAxis: {
         type: 'value',
-        splitLine:{                 //---grid 区域中的分隔线
-          show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
-          lineStyle:{
-            color:'#315378',
-            width:1,
-            type:'dashed',          //---类型
+        splitLine: {                 //---grid 区域中的分隔线
+          show: true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
+          lineStyle: {
+            color: '#315378',
+            width: 1,
+            type: 'dashed',          //---类型
           },
         },
-        axisLine:{                  //---坐标轴 轴线
-          show:true,                  //---是否显示
-          lineStyle:{
-            color:'#9fc3ff',
-            width:1,
-            type:'solid',
+        axisLine: {                  //---坐标轴 轴线
+          show: true,
+          lineStyle: {
+            color: '#9fc3ff',
+            width: 1,
+            type: 'solid',
           },
         },
         axisLabel: {
@@ -85,41 +167,68 @@ class WorkerChart4Year extends React.PureComponent {
           margin: 3,
           formatter: '{value}',
           textStyle: {
-            fontSize:8
+            fontSize: 8
           }
         },
         axisTick: {                  //---坐标轴 刻度
           show: false,                  //---是否显示
         },
       },
-      grid:{
-        top: 20,
-        bottom:20,
-        left: 22,
-        right:-16,
+      grid: {
+        top: 32,
+        bottom: 30,
+        left: 20,
+        right: 10,
       },
-      series: [{
-        data: [820, 932, 901, 934, 1000, 1330, 1320, 820, 932, 901, 934, 1290],
+      series: seriesList
+    })
+  }
+
+  render() {
+    const {index, title} = this.props
+    return (
+      <div className="aLarm-echart-wrap">
+        <span>{title}</span>
+        <div id={`echart-${index}`} className={`aLarm-echart`}/>
+      </div>
+    )
+  }
+}
+
+
+class IndexChart extends React.PureComponent {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setEcharts()
+    }, 0)
+  }
+
+  setEcharts = () => {
+    const {
+      index,
+      YData,
+      showArea,
+    } = this.props
+    const _dom = echarts.init(document.getElementById(`echart-${index}`));
+    const seriesList = YData.map((item, index) => {
+      return {
+        name: item.name,
+        data: item.data,
         type: 'line',
         showAllSymbol: true,
         symbol: 'circle',
-        label: {
+        itemStyle: {
           normal: {
-            show: true,
-            position: 'top',
-            fontSize:'8',
-            color:'#a0c2ff',
-            margin: 0,
-          }
-        },
-        itemStyle : {
-          normal : {
-            color: '#ffd926',
-            lineStyle:{
-              color:'#3d87b8',
-              width:1
+            color: item.color,
+            lineStyle: {
+              //color:'#3d87b8',
+              width: 1
             },
-            areaStyle:{
+            areaStyle: {
               color: {
                 type: 'linear',
                 x: 0,
@@ -127,74 +236,62 @@ class WorkerChart4Year extends React.PureComponent {
                 x2: 0,
                 y2: 1,
                 colorStops: [{
-                  offset: 0, color: '#2a73a0' // 0% 处的颜色
+                  offset: 0, color: item.color // 0% 处的颜色
                 }, {
                   offset: 1, color: '#0a2b54' // 100% 处的颜色
                 }],
                 globalCoord: false // 缺省为 false
-              }
+              },
             }
-          }
-        },
-
-      }]
-    })
-  }
-  render(){
-    const {index} = this.props
-    return (
-      <div id={`echart-${index}`} className={`MYZCRS-echart`} />
-    )
-  }
-}
-
-
-
-class WorkerChart4Month extends React.PureComponent {
-  constructor(props){
-    super(props)
-  }
-
-  componentDidMount(){
-    setTimeout(()=>{
-      this.setEcharts()
-    },0)
-  }
-  setEcharts = () => {
-    const{
-      index,
-    } = this.props
-    const _dom = echarts.init(document.getElementById(`echart-${index}`));
-    // 绘制图表
-    _dom.setOption({
-      xAxis: {
-        type: 'category',
-        data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','29','30','31'],
-        boundaryGap: false,
-        axisLine:{                  //---坐标轴 轴线
-          show:true,                  //---是否显示
-          lineStyle:{
-            color:'#9fc3ff',
-            width:1,
-            type:'solid',
-            fontSize:8
           },
         },
-        splitLine:{                 //---grid 区域中的分隔线
-          show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
-          interval:0,
-          lineStyle:{
-            color:'#315378',
-            width:1,
-            type:'dashed',          //---类型
+      }
+    });
+    const legendData = YData.map(item => (item.name))
+    // 绘制图表
+    _dom.setOption({
+      legend: {
+        data: legendData.length === 1 ? [] : legendData,
+        left:'20',
+        top:'-2',
+        icon: 'rect',
+        itemWidth: 8,
+        itemHeight: 8,
+        itemGap: 10,
+        // data:[  {name:'南宁-曼芭',icon:'rect'},
+        textStyle: {
+          fontSize: 9,
+          color: '#F1F1F3'
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        boundaryGap: false,
+        axisLine: {                  //---坐标轴 轴线
+          show: true,                  //---是否显示
+          lineStyle: {
+            color: '#9fc3ff',
+            width: 1,
+            type: 'solid',
+            fontSize: 10
+          },
+        },
+        splitLine: {                 //---grid 区域中的分隔线
+          show: true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
+          interval: 0,
+          lineStyle: {
+            color: '#315378',
+            width: 1,
+            type: 'dashed',          //---类型
           },
         },
         axisLabel: {
           show: true,
           margin: 3,
-          interval:1,
+          interval: 0,
           textStyle: {
-            fontSize:8
+            fontSize: 10
           }
         },
         axisTick: {                  //---坐标轴 刻度
@@ -203,20 +300,20 @@ class WorkerChart4Month extends React.PureComponent {
       },
       yAxis: {
         type: 'value',
-        splitLine:{                 //---grid 区域中的分隔线
-          show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
-          lineStyle:{
-            color:'#315378',
-            width:1,
-            type:'dashed',          //---类型
+        splitLine: {                 //---grid 区域中的分隔线
+          show: true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
+          lineStyle: {
+            color: '#315378',
+            width: 1,
+            type: 'dashed',          //---类型
           },
         },
-        axisLine:{                  //---坐标轴 轴线
-          show:true,
-          lineStyle:{
-            color:'#9fc3ff',
-            width:1,
-            type:'solid',
+        axisLine: {                  //---坐标轴 轴线
+          show: true,
+          lineStyle: {
+            color: '#9fc3ff',
+            width: 1,
+            type: 'solid',
           },
         },
         axisLabel: {
@@ -224,69 +321,32 @@ class WorkerChart4Month extends React.PureComponent {
           margin: 3,
           formatter: '{value}',
           textStyle: {
-            fontSize:8
+            fontSize: 8
           }
         },
         axisTick: {                  //---坐标轴 刻度
           show: false,                  //---是否显示
         },
       },
-      grid:{
+      grid: {
         top: 20,
-        bottom:20,
-        left: 22,
-        right:6,
+        bottom: 20,
+        left: 20,
+        right: 10,
       },
-      series: [{
-        data: [820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 120,820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 290,820, 932, 901, 934, 100, 133, 130],
-        type: 'line',
-        showAllSymbol: true,
-        symbol: 'circle',
-        label: {
-          normal: {
-            show: true,
-            position: 'top',
-            fontSize:'5',
-            color:'#a0c2ff',
-            margin: 0,
-          }
-        },
-        itemStyle : {
-          normal : {
-            color: '#d98e28',
-            lineStyle:{
-              color:'#3d87b8',
-              width:1
-            },
-            areaStyle:{
-              color: {
-                type: 'linear',
-                x: 0,
-                y: 0,
-                x2: 0,
-                y2: 1,
-                colorStops: [{
-                  offset: 0, color: '#2a73a0' // 0% 处的颜色
-                }, {
-                  offset: 1, color: '#0a2b54' // 100% 处的颜色
-                }],
-                globalCoord: false // 缺省为 false
-              }
-            }
-          }
-        },
-
-      }]
+      series: seriesList
     })
   }
 
-  render(){
-    const {index} = this.props
+  render() {
+    const {index, title} = this.props
     return (
-      <div id={`echart-${index}`} className={`MYZCRS-echart`} />
+      <div className="index-echart-wrap">
+        <span>{title}</span>
+        <div id={`echart-${index}`} className={`index-echart`}/>
+      </div>
     )
   }
 }
 
-
-export { WorkerChart4Year, WorkerChart4Month }
+export {DeviceControl, EnvControl, AlarmChart, IndexChart}

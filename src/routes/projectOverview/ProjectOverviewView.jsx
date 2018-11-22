@@ -281,7 +281,10 @@ export default function ProjectOverviewView(props) {
               <WorkContent title="入职满半年人数" num={30} unit="人"/>
               <WorkContent title="初级工人数量" num={17} unit="人"/>
             </div>
-            <RingEchart index="special-job"/>
+            <RingEchart
+              index="special-job"
+              desc="特殊工种"
+            />
             <div className="age-range">
               <span>年龄结构</span>
               <AgeTable/>
