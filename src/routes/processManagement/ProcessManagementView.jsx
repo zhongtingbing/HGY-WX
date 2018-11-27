@@ -3,8 +3,6 @@ import './ProcessManagementView.less';
 import Main from '../../layouts/main.jsx';
 import classNames from 'classnames';
 import BasicCard from 'components/basicCard'
-import {DeviceControl, EnvControl, AlarmChart, IndexChart} from './components'
-import Table from 'components/Table'
 import NormalEchart from 'components/normalEchart'
 import ComplexEchart from 'components/complexEchart'
 
