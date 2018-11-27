@@ -2,10 +2,10 @@ import React from 'react';
 import './SafeInfoView.less';
 import Main from '../../layouts/main.jsx';
 import classNames from 'classnames';
-import BasicCard from '../../components/basicCard'
+import BasicCard from 'components/basicCard'
 import {DeviceControl, EnvControl, AlarmChart, IndexChart} from './components'
-import Table from '../../components/Table'
-import RingEchart from '../../components/ringEchart'
+import Table from 'components/Table'
+import RingEchart from 'components/ringEchart'
 
 const prefixCls = 'safe-info-vieweasy'
 

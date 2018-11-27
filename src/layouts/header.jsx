@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  NavBar, Icon
-} from 'antd-mobile';
+// import {
+//   NavBar, Icon
+// } from 'antd-mobile';
 
 import './header.less';
 

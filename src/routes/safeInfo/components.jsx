@@ -103,7 +103,7 @@ class AlarmChart extends React.PureComponent {
         icon: 'rect',
         itemWidth: 8,
         itemHeight: 8,
-        itemGap: 10,
+        itemGap: 6,
         // data:[  {name:'南宁-曼芭',icon:'rect'},
         textStyle: {
           fontSize: 9,

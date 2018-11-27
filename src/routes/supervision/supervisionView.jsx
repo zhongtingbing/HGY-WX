@@ -52,16 +52,14 @@ export default function SupervisionView(props) {
     )
   }
   return (
-    <Main>
-      <div className={cls}>
-        <Map center={{longitude: 120, latitude: 30}} zoom={13}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
-          <Markers
-            markers={markers}
-            render={renderMarkerLayout}
-            loading={Loading}
-          />
-        </Map>
-      </div>
+    <Main className={cls}>
+      <Map center={{longitude: 120, latitude: 30}} zoom={13}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
+        <Markers
+          markers={markers}
+          render={renderMarkerLayout}
+          loading={Loading}
+        />
+      </Map>
     </Main>
   );
 

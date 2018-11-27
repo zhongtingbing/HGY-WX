@@ -32,6 +32,7 @@ export default class NormalEcharts extends React.PureComponent{
   setEcharts = ()=>{
     const{
       index,
+      color
     }=this.props
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
@@ -105,7 +106,7 @@ export default class NormalEcharts extends React.PureComponent{
         barCategoryGap:'40%',
         itemStyle:{
           normal: {
-            color:'#fe7c7c',
+            color:color ||　'#fe7c7c',
           }
         },
       }]
