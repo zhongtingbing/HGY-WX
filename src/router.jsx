@@ -63,11 +63,17 @@ function RouterConfig({
     // ],
     component: () => import('./routes/processManagement/ProcessManagementPage')
   });
-
+  const SupplyChainMa = Dynamic({
+    app,
+    // models: () => [
+    //   import('./models/example')
+    // ],
+    component: () => import('./routes/supplyChainMa/SupplyChainMaPage')
+  });
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={ProcessManagement}/>
+        <Route exact path="/" component={SupplyChainMa}/>
         <Route exact path="/page01" component={Page01}/>
         <Route exact path="/page02" component={Page02}/>
         <Route exact path="/page03" component={Page03}/>
@@ -76,6 +82,7 @@ function RouterConfig({
         <Route exact path="/workers-condition" component={WorkersCondition}/>
         <Route exact path="/safe-info" component={SafeInfo}/>
         <Route exact path="/process-management" component={ProcessManagement}/>
+        <Route exact path="/supply-chain" component={SupplyChainMa}/>
       </Switch>
     </Router>
   );
