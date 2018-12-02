@@ -22,14 +22,13 @@ export default class Table extends React.PureComponent{
       className,
       data,
       kVMap,
-      other
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
       [className]: className
     })
     return (
-      <div className={cls} {...other}>
+      <div className={cls}>
         <div className={`${cls}-title`}>
           {
             kVMap.map((o, index) =>{

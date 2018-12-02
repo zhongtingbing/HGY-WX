@@ -27,14 +27,14 @@ export default class Rail extends React.PureComponent{
       warning,
       offLine,
       total,
-      other
+      ...other
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
       [className]: className
     })
     return (
-      <div className={cls}  {...other}>
+      <div className={cls}>
         <span className="left">
           {
             Array.from(title).map((item ,index) =><span key={index}>{item}</span>)

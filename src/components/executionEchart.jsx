@@ -119,14 +119,14 @@ export default class ExecutionEchart extends React.PureComponent{
       className,
       index,
       name,
-      other
+      ...other
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
       [className]: className
     })
     return (
-      <div className={cls}  {...other}>
+      <div className={cls}>
         <div className="head">
           <div className="left"></div>
           <div className="right">{name}</div>

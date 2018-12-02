@@ -33,6 +33,8 @@ export default class RingEchart extends React.PureComponent{
   setEcharts = ()=>{
     const{
       index,
+      data,
+      num
     }=this.props
     const executionChart = echarts.init(document.getElementById(`ring-echart-${index}`));
     // 绘制图表
@@ -41,30 +43,15 @@ export default class RingEchart extends React.PureComponent{
         {
           name:'',
           type:'pie',
-          radius: ['0', '60%'],//设置大小
-          label: {
-            normal: {
-              show: false,
-            },
-          },
-          animation: false,
-          data:[
-            {value:30, name:''},
-          ],
-          color:['#08214a']
-        },
-        {
-          name:'',
-          type:'pie',
-          radius: ['60%', '70%'],//设置大小
+          radius: ['50%', '60%'],//设置大小
           label: {
             normal: {
               show: true,
-              formatter: '{b} {d}%',
+              formatter: '{b} {c}人',
               padding: [-20, -60 , 0, -60,],
               position: 'inter',
               textStyle: {
-                fontSize: '11',
+                fontSize: '10',
               }
             },
           },
@@ -75,13 +62,13 @@ export default class RingEchart extends React.PureComponent{
               length2: 60,
             },
           },
-          data:[
-            {value:30, name:'吊篮'},
-            {value:18, name:'大绳'},
-            {value:12, name:'塔吊师'},
-            {value:40, name:'电焊工'},
-          ],
-          color:['#f47270', '#1f7dd4','#f4c841','#2695a9']
+          data: data ||[
+              {value:30, name:'吊篮'},
+              {value:18, name:'大绳'},
+              {value:12, name:'塔吊师'},
+              {value:40, name:'电焊工'},
+            ],
+          color:['#f47270', '#1f7dd4','#f4c841','#2695a9', '#875dc1', '#1d7dd3']
         }
       ]
     })
@@ -92,6 +79,7 @@ export default class RingEchart extends React.PureComponent{
       className,
       index,
       name,
+      data,
       desc,
       other,
     }=this.props
@@ -99,12 +87,16 @@ export default class RingEchart extends React.PureComponent{
       [prefixCls]: true,
       [className]: className
     })
+    let num = data ?
+      data.reduce(function(prev, curr, idx, arr){
+        return prev + parseInt(curr.value);
+    },0):60
     return (
-      <div className={cls}  {...other}>
+      <div className={cls}>
         <div id={`ring-echart-${index}`} className={`${prefixCls}-echart`}/>
         <div className="desc">
           <div>
-            <span style={{fontSize:'20px'}}>{60}</span>
+            <span style={{fontSize:'20px'}}>{num}</span>
             <span style={{fontSize:'10px'}}>人</span>
           </div>
           <div  style={{fontSize:'14px'}}>

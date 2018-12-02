@@ -20,8 +20,6 @@ export default class NormalEcharts extends React.PureComponent{
     this.state = {
     }
   }
-
-
   componentDidMount(){
     setTimeout(()=>{
       this.setEcharts()
@@ -32,14 +30,18 @@ export default class NormalEcharts extends React.PureComponent{
   setEcharts = ()=>{
     const{
       index,
+      XData,
+      YData,
+      isYPercent,
       color
     }=this.props
+    console.log(color)
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     echart.setOption({
       xAxis: {
         type: 'category',
-        data: ['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#'],
+        data: XData || ['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#'],
         axisLine:{                  //---坐标轴 轴线
           show:true,                  //---是否显示
           lineStyle:{
@@ -51,9 +53,9 @@ export default class NormalEcharts extends React.PureComponent{
         },
         axisLabel: {
           show: true,
-          margin: 3,
+          margin: 6,
           textStyle: {
-            fontSize:10
+            fontSize:8
           }
         },
         axisTick: {                  //---坐标轴 刻度
@@ -62,8 +64,8 @@ export default class NormalEcharts extends React.PureComponent{
       },
       yAxis: {
         type: 'value',
-        min: 0,
-        max: 100,
+        min: isYPercent ? 0 : null,
+        max: isYPercent ? 100 : null,
         splitLine:{                 //---grid 区域中的分隔线
           show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
           lineStyle:{
@@ -84,7 +86,7 @@ export default class NormalEcharts extends React.PureComponent{
         axisLabel: {
           show: true,
           margin: 3,
-          formatter: '{value}%',
+          formatter: isYPercent ? '{value}%' : null,
           textStyle: {
             fontSize:8
           }
@@ -100,13 +102,13 @@ export default class NormalEcharts extends React.PureComponent{
         right:2
       },
       series: [{
-        data: [50, 30, 30, 30, 30, 30, 30, 30, 30],
+        data:YData || [50, 30, 30, 30, 30, 30, 30, 30, 30],
         type: 'bar',
         barWidth:'16',              //---柱形宽度
         barCategoryGap:'40%',
         itemStyle:{
           normal: {
-            color:color ||　'#fe7c7c',
+            color: color ||　'#fe7c7c',
           }
         },
       }]
@@ -117,14 +119,14 @@ export default class NormalEcharts extends React.PureComponent{
     const{
       className,
       index,
-      other
+      ...other
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
       [className]: className
     })
     return (
-      <div className={cls}  {...other}>
+      <div className={cls}>
         <div id={`echart-${index}`} className={`${prefixCls}-echart`} />
       </div>
     )

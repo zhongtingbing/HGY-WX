@@ -26,14 +26,14 @@ export default class BasicCard extends React.PureComponent{
       name,
       children,
       more,
-      other
+      ...other
     }=this.props
     const cls = classNames({
       [prefixCls]: true,
       [className]: className
     })
     return (
-      <div className={cls}  {...other}>
+      <div className={cls}>
         <div className="head">
           <div className="left"></div>
           <div className="right">{name}</div>

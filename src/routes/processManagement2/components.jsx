@@ -1,7 +1,7 @@
 import React from 'react';
 // 引入 ECharts 主模块
 import classNames from 'classnames';
-import  './complexEchart.less'
+import  './components.less'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
@@ -9,18 +9,11 @@ require('echarts/lib/component/legend');
 // require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
-require('echarts/lib/chart/line');
 
-const prefixCls = 'complex-echart-888';
-
-
-export default class ComplexEcharts extends React.PureComponent{
+class SGGXSCharts extends React.PureComponent{
   constructor(props) {
     super(props)
-    this.state = {
-    }
   }
-
 
   componentDidMount(){
     setTimeout(()=>{
@@ -28,17 +21,13 @@ export default class ComplexEcharts extends React.PureComponent{
     },100)
   }
 
-
   setEcharts = ()=>{
-    let {
+    const{
       index,
-      color,
       XData,
-      leftYData,
-      rightYData,
-      leftName,
-      rightName
-    } = this.props
+      SGGXData,
+      BHGXData
+    }=this.props
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     echart.setOption({
@@ -51,12 +40,12 @@ export default class ComplexEcharts extends React.PureComponent{
             color:'#9fc3ff',
             width:1,
             type:'solid',
-            fontSize:'px'
+            fontSize:1
           },
         },
         axisLabel: {
           show: true,
-          margin: 3,
+          margin: 6,
           textStyle: {
             fontSize:8
           }
@@ -67,14 +56,8 @@ export default class ComplexEcharts extends React.PureComponent{
       },
       yAxis: [
         {
-          name : leftName,
+          name:'',
           type: 'value',
-          min: 0,
-          max: 100,
-          nameTextStyle:{
-            fontSize:8,
-            padding:[-8, 0, -8, 10]
-          },
           splitLine:{                 //---grid 区域中的分隔线
             show:true,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
             lineStyle:{
@@ -95,86 +78,52 @@ export default class ComplexEcharts extends React.PureComponent{
           axisLabel: {
             show: true,
             margin: 3,
-            formatter: '{value}%',
             textStyle: {
-              fontSize:7
+              fontSize:8
             }
           },
           axisTick: {                  //---坐标轴 刻度
             show: false,                  //---是否显示
           },
         },
-        {
-          name : rightName,
-          type: 'value',
-          nameTextStyle:{
-            fontSize:8,
-            padding:[-8, 35, -8, 0]
-          },
-          splitLine:{                 //---grid 区域中的分隔线
-            show:false,                  //---是否显示，'category'类目轴不显示，此时我的y轴为类目轴，splitLine属性是有意义的
-          },
-
-          axisLine:{                  //---坐标轴 轴线
-            show:true,
-            lineStyle:{
-              color:'#9fc3ff',
-              width:1,
-              type:'solid',
-            },
-          },
-          axisLabel: {
-            show: true,
-            margin: 3,
-            textStyle: {
-              fontSize:6
-            }
-          },
-          axisTick: {                  //---坐标轴 刻度
-            show: false,                  //---是否显示
-          },
-        },
-
       ],
       grid:{
-        top: 35,
-        bottom:15,
-        left: 20,
-        right:15
+        top: 20,
+        bottom:20,
+        left: 18,
+        right:0
       },
-      series: [{
-        name: leftName,
-        data:leftYData || [50, 30, 30, 30, 30, 30, 30, 30, 30],
-        type: 'line',
-        showAllSymbol: true,
-        symbol: 'circle',
-        itemStyle:{
-          normal: {
-            color:　'#ff9a48',
-            lineStyle: {
-              width: 1
-            },
-          }
-        },
-      },
+      series: [
         {
-          name: rightName,
-          data:rightYData || [500, 300, 300, 300, 300, 300, 300, 300, 300] ,
-          type: 'bar',
-          barWidth:'16',              //---柱形宽度
-          barCategoryGap:'40%',
-          yAxisIndex:1,
+          name: '施工工序',
+          data: SGGXData,
+          type:'bar',
+          barWidth:'10',              //---柱形宽度
+          barCategoryGap: '40%',
           itemStyle: {
             normal: {
-              color: color ||'#fe7c7c',
-            },
+              color: '#00a0ea',
+            }
           },
-        }],
+        },
+        {
+          name: '闭合工序',
+          data:BHGXData,
+          type: 'bar',
+          barWidth:'10',
+          barCategoryGap:'40%',
+          itemStyle:{
+            normal: {
+              color:'#129ab4',
+            }
+          },
+        },
+      ],
       legend: {
-        itemWidth: 12,
+        itemWidth: 8,
         itemHeight: 8,
         itemGap: 6,
-        data:[{name:leftName, icon:''},{name:rightName,icon:'rect'}],
+        data:[{name:'施工工序', icon:'rect'},{name:'闭合工序',icon:'rect'}],
         textStyle: {
           fontSize: 9,
           color: '#F1F1F3'
@@ -182,7 +131,6 @@ export default class ComplexEcharts extends React.PureComponent{
       },
     })
   }
-
   render(){
     const{
       className,
@@ -190,15 +138,17 @@ export default class ComplexEcharts extends React.PureComponent{
       ...other
     }=this.props
     const cls = classNames({
-      [prefixCls]: true,
-      [className]: className
+      [className]: className,
+      'GRPJGZSC': true
     })
     return (
       <div className={cls}>
-        <div id={`echart-${index}`} className={`${prefixCls}-echart`} />
+        <div id={`echart-${index}`} className={`${cls}-echart`} />
       </div>
     )
   }
 }
 
 
+
+export default {SGGXSCharts}
