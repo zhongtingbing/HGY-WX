@@ -4,7 +4,7 @@ var echarts = require('echarts/lib/echarts');
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 // require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -24,13 +24,16 @@ class WorkerChart4Year extends React.PureComponent {
   setEcharts = () => {
     const{
       index,
+      XData,
+      YData
     } = this.props
     const _dom = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     _dom.setOption({
+      tooltip: {},
       xAxis: {
         type: 'category',
-        data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',''],
+        data: XData,
         boundaryGap: false,
         axisLine:{                  //---坐标轴 轴线
           show:true,                  //---是否显示
@@ -99,7 +102,7 @@ class WorkerChart4Year extends React.PureComponent {
         right:-16,
       },
       series: [{
-        data: [820, 932, 901, 934, 1000, 1330, 1320, 820, 932, 901, 934, 1290],
+        data: YData,
         type: 'line',
         showAllSymbol: true,
         symbol: 'circle',
@@ -163,13 +166,16 @@ class WorkerChart4Month extends React.PureComponent {
   setEcharts = () => {
     const{
       index,
+      XData,
+      YData
     } = this.props
     const _dom = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     _dom.setOption({
       xAxis: {
+        tooltip: {},
         type: 'category',
-        data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','29','30','31'],
+        data: XData,
         boundaryGap: false,
         axisLine:{                  //---坐标轴 轴线
           show:true,                  //---是否显示
@@ -238,7 +244,7 @@ class WorkerChart4Month extends React.PureComponent {
         right:6,
       },
       series: [{
-        data: [820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 120,820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 290,820, 932, 901, 934, 100, 133, 130],
+        data: YData,
         type: 'line',
         showAllSymbol: true,
         symbol: 'circle',

@@ -11,6 +11,7 @@ const prefixCls = 'workers-condition-viewhaolei'
 
 export default function WorkersConditionView(props) {
   const {
+    moreClick
   } = props;
 
   const cls = classNames({
@@ -20,12 +21,30 @@ export default function WorkersConditionView(props) {
     <Main>
       <div className={cls}>
         <BasicCard className={`${cls}-supply-chain`} name="2018年每月在场人数">
-          <WorkerChart4Year index="MYZCRS"/>
+          <WorkerChart4Year
+            index="MYZCRS"
+            XData={['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月','']}
+            YData={[820, 932, 901, 934, 1000, 1330, 1320, 820, 932, 901, 934, 1290]}
+
+          />
         </BasicCard>
         <BasicCard className={`${cls}-supply-chain`} name="10月每天在场人数">
-          <WorkerChart4Month index="MTZCRS"/>
+          <WorkerChart4Month
+            index="MTZCRS"
+            XData={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','29','30','31']}
+            YData={[820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 120,820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 290,820, 932, 901, 934, 100, 133, 130]}
+
+          />
         </BasicCard>
-        <BasicCard className={`${cls}-KQZYRS`} name={`跨区域作业人数：${55}人`} more={true}>
+        <BasicCard
+          className={`${cls}-KQZYRS`}
+          moreClick={()=>{moreClick([{_key:'name', desc:'姓名', width:40},{_key:'area1', desc:'应在区域', width:65},{_key:'area2', desc:'实在区域', width:65},{_key:'group', desc:'班组', width:40},{_key:'company', desc:'公司', width:90}],
+            [
+            {name: '张博管', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '名字很长很长很长很长建筑有限公司' },
+            {name: '学广昆', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' },
+          ])}}
+          name={`跨区域作业人数：${55}人`}
+          more={true}>
             <Table
               kVMap={[{_key:'name', desc:'姓名', width:40},{_key:'area1', desc:'应在区域', width:50},{_key:'area2', desc:'实在区域', width:50},{_key:'group', desc:'班组', width:40},{_key:'company', desc:'公司', width:120}]}
               data={[
@@ -37,28 +56,51 @@ export default function WorkersConditionView(props) {
               ]}
             />
         </BasicCard>
-        <BasicCard className={`${cls}-CJGSCQRS`} name='参建公司出勤人数' more={true}>
-            <Table
-              kVMap={[{_key:'name', desc:'参见公司名称', width:120},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount', desc:'违规人数'},{_key:'total', desc:'总人数', width:50},]}
-              data={[
-                {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-                {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-                {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-                {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-                {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              ]}
-            />
+        <BasicCard
+          className={`${cls}-CJGSCQRS`}
+          name='参建公司出勤人数'
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'name', desc:'参见公司名称', width:120},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount', desc:'违规人数'},{_key:'total', desc:'总人数', width:50},],
+            [
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+            ])}}
+        >
+          <Table
+            kVMap={[{_key:'name', desc:'参见公司名称', width:120},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount', desc:'违规人数'},{_key:'total', desc:'总人数', width:50},]}
+            data={[
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
+            ]}
+          />
         </BasicCard>
-        <BasicCard name='班组出勤人数' more={true}>
-            <Table
-              kVMap={[{_key:'group', desc:'班组',width:80},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount',desc:'总人数', width:50}]}
-              data={[
-                {group: '木工组',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-                {group: '电焊班',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-                {group: '安防班', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-                {group: '挖机组', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-              ]}
-            />
+        <BasicCard
+          name='班组出勤人数'
+          more={true}
+          kVMap={[{_key:'group', desc:'班组',width:80},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount',desc:'总人数', width:50}]}
+          data={[
+            {group: '木工组',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+            {group: '电焊班',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+            {group: '安防班', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+            {group: '挖机组', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+          ]}
+        >
+          <Table
+            kVMap={[{_key:'group', desc:'班组',width:80},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount',desc:'总人数', width:50}]}
+            data={[
+              {group: '木工组',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+              {group: '电焊班',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+              {group: '安防班', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+              {group: '挖机组', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
+            ]}
+          />
         </BasicCard>
         <BasicCard name='班组平均工作天数' more={true}>
             <Table

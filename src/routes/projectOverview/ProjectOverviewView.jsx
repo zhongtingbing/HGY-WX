@@ -2,12 +2,12 @@ import React from 'react';
 import './ProjectOverViewView.less';
 import Main from '../../layouts/main.jsx';
 import classNames from 'classnames';
-import BasicCard from '../../components/basicCard'
-import CicleProgress from '../../components/cicleProgress'
-import Rail from '../../components/rail'
-import RingEchart from '../../components/ringEchart'
+import BasicCard from 'components/basicCard'
+import CicleProgress from 'components/cicleProgress'
+import Rail from 'components/rail'
+import RingEchart from 'components/ringEchart'
 import {AgeTable, Progress, GXWTEchart, WorkerProblemsTable} from './components'
-import Table from '../../components/Table'
+import Table from 'components/Table'
 import {Icon } from 'antd-mobile'
 import NormalEchart from '../../components/normalEchart'
 import OLDER_MAN from '../../assets/image/icon01.png'
@@ -17,8 +17,49 @@ import FALSE_MAN from '../../assets/image/icon04.png'
 import ENV_BG1 from '../../assets/image/icon_bg01.png'
 import ENV_BG2 from '../../assets/image/icon_bg02.png'
 import ENV_BG3 from '../../assets/image/icon_bg03.png'
-
+import RING_01 from '../../assets/image/ring/ring01.png'
+import RING_02 from '../../assets/image/ring/ring02.png'
+import RING_03 from '../../assets/image/ring/ring03.png'
+import RING_04 from '../../assets/image/ring/ring04.png'
+import RING_05 from '../../assets/image/ring/ring05.png'
+import RING_06 from '../../assets/image/ring/ring06.png'
+import RING_07 from '../../assets/image/ring/ring07.png'
+import RING_08 from '../../assets/image/ring/ring08.png'
+import RING_09 from '../../assets/image/ring/ring09.png'
+import RING_10 from '../../assets/image/ring/ring10.png'
 const prefixCls = 'project-overview-view74aa1b'
+
+function ringImgRender (value) {
+  let val = parseInt(value)
+  if(val < 10) {
+    return RING_01
+  }
+  if(val < 20) {
+    return RING_02
+  }
+  if(val < 30) {
+    return RING_03
+  }
+  if(val < 40) {
+    return RING_04
+  }
+  if(val < 50) {
+    return RING_05
+  }
+  if(val < 60) {
+    return RING_06
+  }
+  if(val < 70) {
+    return RING_07
+  }
+  if(val < 80) {
+    return RING_08
+  }
+  if(val < 90) {
+    return RING_09
+  }
+  return RING_10
+};
 
 function WorkContent({title, num, unit}){
   return (
@@ -54,7 +95,8 @@ export default function ProjectOverviewView(props) {
   const {
     location,
     title,
-    data
+    data,
+    moreClick
   } = props;
 
   if (warnData.length > 4) {
@@ -70,52 +112,53 @@ export default function ProjectOverviewView(props) {
         <BasicCard className={`${cls}-card1`} name="项目概况">
           <div className="title">
             <span>项目名称：</span>
-            <span>理想之城项目</span>
+            <span>{'理想之城项目'}</span>
           </div>
           <div className="content">
             <div className="left">
               <div>
                 <span>建筑面积：</span>
-                <span>80000㎡</span>
+                <span>{80000}㎡</span>
               </div>
               <div>
                 <span>管理人员：</span>
-                <span>50人</span>
+                <span>{50}人</span>
               </div>
               <div>
                 <span>工人总数：</span>
-                <span>1000人</span>
+                <span>{1000}人</span>
               </div>
               <div>
                 <span>开工时间：</span>
-                <span>2018-03-11</span>
+                <span>{'2018-03-11'}</span>
               </div>
             </div>
             <div className="right">
               <div>
                 <span>土建总包：</span>
-                <span>建设公司</span>
+                <span>{'sfsdfsdfsdfdsfd建设公司'}</span>
               </div>
               <div>
                 <span>精装总包：</span>
-                <span>工程建设公司</span>
+                <span>{'工程建设公司'}</span>
               </div>
               <div>
                 <span>监理单位：</span>
-                <span>专业咨询公司</span>
+                <span>{'专业咨询公司'}</span>
               </div>
               <div>
                 <span>计划竣工：</span>
-                <span>2019-03-11</span>
+                <span>{'2019-03-11'}</span>
               </div>
             </div>
           </div>
         </BasicCard>
         <BasicCard className={`${cls}-warn-info`} name="实时报警信息">
           <div className="content">
-            <div className="left">
+            <div className="left-8887">
+              <img src={ringImgRender('20')}/>
               <div className="alert">
-                <span>50</span>
+                <span>{20}</span>
               </div>
               <div>本日报警次数</div>
             </div>
@@ -133,17 +176,17 @@ export default function ProjectOverviewView(props) {
             <div>
               <CicleProgress value={90} _key='SJJY' title="完成率" startColor="#16e6ea" endColor="#027fff"/>
               <div>三级教育</div>
-              <span>1233人</span>
+              <span>{1233}人</span>
             </div>
             <div>
               <CicleProgress value={40} _key='PX' title="完成率" startColor="#b850ff" endColor="#f34cfe"/>
               <div>培训</div>
-              <span>1233人</span>
+              <span>{1233}人</span>
             </div>
             <div>
               <CicleProgress value={80} _key='RJTJ' title="完成率" startColor="#ff8250" endColor="#febb4a"/>
               <div>入职体检</div>
-              <span>1233人</span>
+              <span>{1233}人</span>
             </div>
           </div>
           <div className="middle">
@@ -151,17 +194,17 @@ export default function ProjectOverviewView(props) {
               <img src={OLDER_MAN}/>
               <div style={{marginRight: '30px'}}>
                 <span>超龄人员：</span>
-                <span style={{color: '#48b3e9'}}>5</span>
+                <span style={{color: '#48b3e9'}}>{5}</span>
                 <span className="ren">人</span>
               </div>
               <div style={{marginRight: '20px'}}>
                 <span>男：</span>
-                <span style={{color: '#48b3e9'}}>5</span>
+                <span style={{color: '#48b3e9'}}>{5}</span>
                 <span className="ren">人</span>
               </div>
               <div>
                 <span>女：</span>
-                <span style={{color: '#48b3e9'}}>0</span>
+                <span style={{color: '#48b3e9'}}>{0}</span>
                 <span className="ren">人</span>
               </div>
             </div>
@@ -169,7 +212,7 @@ export default function ProjectOverviewView(props) {
               <img src={OLDER_MAN_50}/>
               <div>
                 <span>年龄50岁以上人数：</span>
-                <span style={{color: '#def87b'}}>10</span>
+                <span style={{color: '#def87b'}}>{10}</span>
                 <span className="ren">人</span>
               </div>
             </div>
@@ -177,7 +220,7 @@ export default function ProjectOverviewView(props) {
               <img src={NEW_MAN}/>
               <div>
                 <span>新进场人数：</span>
-                <span style={{color: '#29dfe2'}}>10</span>
+                <span style={{color: '#29dfe2'}}>{10}</span>
                 <span className="ren">人</span>
               </div>
             </div>
@@ -185,25 +228,25 @@ export default function ProjectOverviewView(props) {
               <img src={FALSE_MAN}/>
               <div>
                 <span>本日违章人数：</span>
-                <span style={{color: '#c06bfe'}}>30</span>
+                <span style={{color: '#c06bfe'}}>{30}</span>
                 <span className="ren">人</span>
               </div>
             </div>
             <div className="bottom">
               <div>
-                <span>4</span>
+                <span>{4}</span>
                 <span>监管违章拍照</span>
               </div>
               <div>
-                <span>9</span>
+                <span>{9}</span>
                 <span>人冒不一致</span>
               </div>
               <div>
-                <span>4</span>
+                <span>{4}</span>
                 <span>未戴安全冒</span>
               </div>
               <div>
-                <span>4</span>
+                <span>{4}</span>
                 <span>未打卡</span>
               </div>
             </div>
@@ -227,12 +270,12 @@ export default function ProjectOverviewView(props) {
             <div className="bottom">
               <div>
                 <span>特种车辆进场车：</span>
-                <span style={{color:'#ff9000'}}>500</span>
+                <span style={{color:'#ff9000'}}>{500}</span>
                 <span>次</span>
               </div>
               <div>
                 <span>验收：</span>
-                <span style={{color:'#ff9000'}}>500</span>
+                <span style={{color:'#ff9000'}}>{500}</span>
                 <span>次</span>
               </div>
             </div>
@@ -266,12 +309,12 @@ export default function ProjectOverviewView(props) {
               <div>
                 <CicleProgress value={94} _key='JRHGRS' title="合规率" startColor="#16e6ea" endColor="#027fff"/>
                 <div>今日合规人数</div>
-                <span>1233人</span>
+                <span>{1233}人</span>
               </div>
               <div>
                 <CicleProgress value={27} _key='JRWGRS' title="违规率" startColor="#ff8250" endColor="#febb4a"/>
                 <div>今日违规人数</div>
-                <span>1233人</span>
+                <span>{1233}人</span>
               </div>
             </div>
             <div className="content">
@@ -317,15 +360,46 @@ export default function ProjectOverviewView(props) {
             </div>
             <div className="SCSL">
               <div className="title">实测实量操作率</div>
-              <NormalEchart index={'SCSL'}/>
+              <NormalEchart
+                index={'SCSL'}
+                isYPercent={true}
+                XData={['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#', '10#', '12#', '13#', '14#', '15#', '16#', '17#', '18#', '19#']}
+                YData={[50, 30, 30, 30, 30, 30, 30, 30, 30, 50, 30, 30, 30, 30, 30, 30, 30, 30]}
+              />
             </div>
             <div className="GXWT">
               <div className="title">工序问题TOP10</div>
-              <GXWTEchart index={'GXWT'}/>
+              <GXWTEchart
+                index={'GXWT'}
+                data={
+                  [
+                    {value:3, name:'坪浇筑'},
+                    {value:2, name:'烟道'},
+                    {value:12, name:'工序'},
+                    {value:40, name:'电焊'},
+                    {value:40, name:'烟道1'},
+                    {value:40, name:'工序1'},
+                    {value:40, name:'烟道2'},
+                    {value:40, name:'电焊1'},
+                    {value:40, name:'工序'},
+                    {value:40, name:'地暖部管'},
+                  ]
+                }
+              />
             </div>
             <div className="worker-problems">
               <div className="title">工人出现问题数TOP20</div>
-              <div onClick={() => {}} className="more">更多<Icon size="xs" color="#4ab4e8" type="right"/></div>
+              <div
+                onClick={() => {moreClick([{_key:'name', desc:'姓名', width:40},{_key:'work', desc:'工序名', width:60},{_key:'count', desc:'数量', width:40},],
+                  [
+                    {name: '张博管', work: '地暖部管', count: '40'},
+                    {name: '王一件', work: '地平浇筑', count: '40'},
+                    {name: '李达人', work: '地暖部管', count: '40'},
+                    {name: '赵自强', work: '地平浇筑', count: '40'},
+                  ])}}
+                className="more">
+                更多<Icon size="xs" color="#4ab4e8" type="right"/>
+              </div>
               <Table
                 kVMap={[{_key:'name', desc:'姓名', width:40},{_key:'work', desc:'工序名', width:60},{_key:'count', desc:'数量', width:40},]}
                 data={[

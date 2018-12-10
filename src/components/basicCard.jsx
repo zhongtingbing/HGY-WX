@@ -26,6 +26,7 @@ export default class BasicCard extends React.PureComponent{
       name,
       children,
       more,
+      moreClick,
       ...other
     }=this.props
     const cls = classNames({
@@ -37,7 +38,7 @@ export default class BasicCard extends React.PureComponent{
         <div className="head">
           <div className="left"></div>
           <div className="right">{name}</div>
-          {more && <div onClick={() => {}} className="more">更多<Icon size="xs" color="#4ab4e8" type="right"/></div>}
+          {more && <div onClick={moreClick} className="more">更多<Icon size="xs" color="#4ab4e8" type="right"/></div>}
         </div>
         {children}
       </div>

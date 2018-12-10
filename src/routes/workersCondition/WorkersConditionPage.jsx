@@ -1,4 +1,5 @@
 import React from 'react';
+import { routerRedux } from 'dva/router'
 import {
   connect
 } from 'dva';
@@ -27,8 +28,23 @@ class WorkersConditionPage extends React.PureComponent{
     )
   }
 }
-function mapStateToProps() {
-  return {};
+function mapStateToProps(dispatch) {
+  return {
+  };
 }
 
-export default connect(mapStateToProps)(WorkersConditionPage);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    moreClick(kVMap, data){
+      dispatch(routerRedux.push({
+        pathname: '/more-data',
+        state: {
+          kVMap,
+          data
+        },
+      }))
+    }
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(WorkersConditionPage);

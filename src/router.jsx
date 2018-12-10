@@ -101,11 +101,19 @@ function RouterConfig({
     component: () => import('./routes/supplyChainMa2/SupplyChainMa2Page')
   });
 
+  const MoreData = Dynamic({
+    app,
+    component: () => import('./routes/moreData/MoreDataPage')
+  });
 
+  const DeviceMoreData = Dynamic({
+    app,
+    component: () => import('./routes/safeInfo/DeviceMoreDataPage')
+  });
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={SupplyChainMa2}/>
+        <Route exact path="/" component={WorkersCondition}/>
         <Route exact path="/page01" component={Page01}/>
         <Route exact path="/page02" component={Page02}/>
         <Route exact path="/page03" component={Page03}/>
@@ -119,6 +127,8 @@ function RouterConfig({
         <Route exact path="/safe-info2" component={SafeInfo2}/>
         <Route exact path="/process-management2" component={ProcessManagement2}/>
         <Route exact path="/supply-chain2" component={SupplyChainMa2}/>
+        <Route exact path="/more-data" component={MoreData}/>
+        <Route exact path="/device-more-data" component={DeviceMoreData}/>
       </Switch>
     </Router>
   );

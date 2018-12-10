@@ -23,7 +23,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <script src="//as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+  <!--<script src="//as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>-->
+  <%= process.env.NODE_ENV==='development'?'<script type="text/javascript" src="/fastclick.min.js"></script>':'<script type="text/javascript" src="fastclick.min.js"></script>' %>
   <script>
     if ('addEventListener' in document) {
       document.addEventListener('DOMContentLoaded', function() {
@@ -31,7 +32,7 @@
       }, false);
     }
     if(!window.Promise) {
-      document.writeln('<script src="//as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+      document.writeln('<script src="es6-promise.auto.min.js"/>')
     }
   </script>
 </head>

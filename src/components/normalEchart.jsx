@@ -6,7 +6,7 @@ var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
 // require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 // require('echarts/lib/chart/line');
@@ -35,10 +35,12 @@ export default class NormalEcharts extends React.PureComponent{
       isYPercent,
       color
     }=this.props
-    console.log(color)
+    const barWidth = XData.length > 12 ? '8' : '14'
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     echart.setOption({
+      tooltip: {
+      },
       xAxis: {
         type: 'category',
         data: XData || ['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#'],
@@ -104,7 +106,7 @@ export default class NormalEcharts extends React.PureComponent{
       series: [{
         data:YData || [50, 30, 30, 30, 30, 30, 30, 30, 30],
         type: 'bar',
-        barWidth:'16',              //---柱形宽度
+        barWidth: barWidth,              //---柱形宽度
         barCategoryGap:'40%',
         itemStyle:{
           normal: {

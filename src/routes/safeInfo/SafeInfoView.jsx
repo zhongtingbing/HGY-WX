@@ -12,6 +12,8 @@ const prefixCls = 'safe-info-vieweasy'
 
 export default function SaveInfoView(props) {
   const {
+    deviceMoreClick,
+    moreClick
   } = props;
 
   const cls = classNames({
@@ -31,7 +33,11 @@ export default function SaveInfoView(props) {
             ]}
           />
         </BasicCard>
-        <BasicCard name="设备实时监控" more={true}>
+        <BasicCard
+          name="设备实时监控"
+          more={true}
+          moreClick={deviceMoreClick}
+        >
           <DeviceControl
             data={[
               {name:'1号塔吊',status:'1'},

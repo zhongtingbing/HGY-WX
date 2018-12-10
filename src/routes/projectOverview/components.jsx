@@ -4,7 +4,7 @@ var echarts = require('echarts/lib/echarts');
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 // require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 require('echarts/lib/component/title');
 require('echarts/lib/chart/pie');
 // require('echarts/lib/chart/line');
@@ -99,7 +99,11 @@ class GXWTEchart extends React.PureComponent {
   setEcharts = () => {
     const{
       index,
-    } = this.props
+      data
+    } = this.props;
+    const innerData = data.map((item, index) => {
+      return {value: item.value, name: index}
+    })
     const _dom = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     _dom.setOption({
@@ -126,18 +130,7 @@ class GXWTEchart extends React.PureComponent {
               show: false,
             }
           },
-          data:[
-            {value:3, name:'1'},
-            {value:2, name:'2'},
-            {value:12, name:'3'},
-            {value:40, name:'4'},
-            {value:40, name:'5'},
-            {value:40, name:'6'},
-            {value:40, name:'7'},
-            {value:40, name:'8'},
-            {value:40, name:'9'},
-            {value:40, name:'10'},
-          ],
+          data: innerData,
           color:['#009966', '#339933','#99cc33','#cccc33','#cc9933','#cc6600','#993333','#330066','#003366','#333399']
         },
         {
@@ -164,18 +157,7 @@ class GXWTEchart extends React.PureComponent {
               }
             },
             },
-          data:[
-            {value:3, name:'坪浇筑'},
-            {value:2, name:'烟道'},
-            {value:12, name:'工序'},
-            {value:40, name:'电焊'},
-            {value:40, name:'烟道1'},
-            {value:40, name:'工序1'},
-            {value:40, name:'烟道2'},
-            {value:40, name:'电焊1'},
-            {value:40, name:'工序'},
-            {value:40, name:'地暖部管'},
-          ],
+          data:data,
           color:['#339999', '#669933','#99cc66','#ffff33','#cccc33','#cc6633','#cc6633','#663399','#333399','#3366cc']
         }
       ]

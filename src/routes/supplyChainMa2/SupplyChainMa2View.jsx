@@ -4,7 +4,7 @@ import Main from '../../layouts/main.jsx';
 import classNames from 'classnames';
 import NormalEchart from 'components/normalEchart'
 import BasicCard from 'components/basicCard'
-const prefixCls = 'supply-chain-ma-view'
+const prefixCls = 'supply-chain-ma2-view'
 
 
 export default function SupplyChainMaView(props) {
