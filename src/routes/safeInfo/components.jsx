@@ -8,7 +8,7 @@ var echarts = require('echarts/lib/echarts');
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -88,7 +88,6 @@ class AlarmChart extends React.PureComponent {
           normal: {
             color: item.color,
             lineStyle: {
-              //color:'#3d87b8',
               width: 1
             },
           },
@@ -98,6 +97,14 @@ class AlarmChart extends React.PureComponent {
     const legendData = YData.map(item => (item.name))
     // 绘制图表
     _dom.setOption({
+      tooltip: {
+        trigger: 'axis',
+        extraCssText:'width:90px !important;height:120px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+         textStyle: {
+          fontSize: 10,
+        }
+      },
       legend: {
         data: legendData.length === 1 ? [] : legendData,
         icon: 'rect',
@@ -249,6 +256,14 @@ class IndexChart extends React.PureComponent {
     const legendData = YData.map(item => (item.name))
     // 绘制图表
     _dom.setOption({
+      tooltip: {
+        trigger: 'axis',
+        extraCssText:'width:90px !important;height:120px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+        textStyle: {
+          fontSize: 10,
+        }
+      },
       legend: {
         data: legendData.length === 1 ? [] : legendData,
         left:'20',

@@ -27,7 +27,7 @@ export default function WorkersCondition2View(props) {
             rightName="出勤率"
             XData={['理想之城', '西江月', '西江月2#', '西江月#', '西江月5#', '西江',]}
             leftYData={{zcjrData:[23,33,22,44,55,66,] , wdaqmData:[12,3,4,5,6,3], wdkjrData: [4,5,6,2,4,5]}}
-            rightYData={[100,333,222,444,555,666,]}
+            rightYData={[23,44,33,55,22,11,]}
           />
         </BasicCard>
         <BasicCard name="跨作业人数">

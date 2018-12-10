@@ -5,7 +5,7 @@ var echarts = require('echarts/lib/echarts');
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -49,6 +49,17 @@ class DeviceCahrt extends React.PureComponent{
       )
     });
     echart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        extraCssText:'width:130px !important;height:100px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+        textStyle: {
+          fontSize: 10,
+        },
+        // formatter: function (params, ticket, callback) {
+        //   return `${params[0].axisValueLabel}<br>${params[0].marker} ${params[0].seriesName}:  ${params[0].value}%<br>${params[1].marker} ${params[1].seriesName}: ${params[1].value}`
+        // }
+      },
       xAxis: {
         type: 'category',
         data: XData,

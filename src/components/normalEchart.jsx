@@ -40,6 +40,12 @@ export default class NormalEcharts extends React.PureComponent{
     // 绘制图表
     echart.setOption({
       tooltip: {
+        formatter: isYPercent? '{b0}: {c0}%' : '{b0}: {c0}',
+        extraCssText:'width:100px !important;height:24px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+        textStyle: {
+          fontSize: 10,
+        },
       },
       xAxis: {
         type: 'category',

@@ -20,7 +20,14 @@ export default function ProcessManagementView(props) {
     <Main className={cls}>
       <div>
         <BasicCard name="工序时间比">
-          <NormalEchart isYPercent={true} index="GXSJB" color="#00a0ea"/>
+          <NormalEchart
+            isYPercent={true}
+            index="GXSJB"
+            color="#00a0ea"
+            XData={['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#']}
+            YData={[20,34,33,44,11,33,55,66,33]}
+
+          />
         </BasicCard>
         <BasicCard name={`工序未完成数 (楼栋#)`}>
           <ComplexEchart
@@ -34,7 +41,12 @@ export default function ProcessManagementView(props) {
           />
         </BasicCard>
         <BasicCard name="实测实量工序比">
-          <NormalEchart isYPercent={true} index="SCSLGXB" />
+          <NormalEchart
+            isYPercent={true}
+            index="SCSLGXB"
+            XData={['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#']}
+            YData={[20,34,33,44,11,33,55,66,33]}
+          />
         </BasicCard>
         <BasicCard name={`工序未闭合数 (楼栋#)`}>
           <ComplexEchart

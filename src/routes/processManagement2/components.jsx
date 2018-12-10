@@ -6,7 +6,7 @@ var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/legend');
-// require('echarts/lib/component/tooltip');
+require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 
@@ -31,6 +31,17 @@ class SGGXSCharts extends React.PureComponent{
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     echart.setOption({
+      tooltip: {
+        trigger: 'axis',
+        extraCssText:'width:100px !important;height:50px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+        textStyle: {
+          fontSize: 10,
+        },
+        // formatter: function (params, ticket, callback) {
+        //   return `${params[0].axisValueLabel}<br>${params[0].marker} ${params[0].seriesName}:  ${params[0].value}%<br>${params[1].marker} ${params[1].seriesName}: ${params[1].value}`
+        // }
+      },
       xAxis: {
         type: 'category',
         data: XData,
