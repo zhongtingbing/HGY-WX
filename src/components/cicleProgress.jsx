@@ -120,7 +120,6 @@ export default class CicleProgress extends React.PureComponent{
         </canvas>
         <span className="title">{title}</span>
       </div>
-
       )
   }
 }

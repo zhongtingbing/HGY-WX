@@ -5,18 +5,23 @@ import {
 } from 'dva';
 
 import WorkersConditionView from './WorkersConditionView';
-
+import { worksConditionService } from '../../services/query';
 class WorkersConditionPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[]
+      data:{},
+      loading: true
     }
   }
 
-
   componentDidMount(){
-
+    worksConditionService().then(res => {
+      this.setState({
+        data: res,
+        loading: false,
+      })
+    })
   }
 
   render(){

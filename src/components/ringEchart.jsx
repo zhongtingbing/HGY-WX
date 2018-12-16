@@ -43,7 +43,7 @@ export default class RingEchart extends React.PureComponent{
         {
           name:'',
           type:'pie',
-          radius: ['50%', '60%'],//设置大小
+          radius: ['45%', '55%'],//设置大小
           label: {
             normal: {
               show: true,
@@ -58,7 +58,7 @@ export default class RingEchart extends React.PureComponent{
           labelLine: {
             normal:{
               show: true,
-              length:24,
+              length:12,
               length2: 60,
             },
           },

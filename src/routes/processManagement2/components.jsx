@@ -30,6 +30,7 @@ class SGGXSCharts extends React.PureComponent{
     }=this.props
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
+    const barWidth = XData.length > 12 ? '6' : '10'
     echart.setOption({
       tooltip: {
         trigger: 'axis',
@@ -121,7 +122,7 @@ class SGGXSCharts extends React.PureComponent{
           name: '闭合工序',
           data:BHGXData,
           type: 'bar',
-          barWidth:'10',
+          barWidth:barWidth,
           barCategoryGap:'40%',
           itemStyle:{
             normal: {

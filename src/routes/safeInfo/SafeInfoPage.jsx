@@ -3,19 +3,25 @@ import { routerRedux } from 'dva/router'
 import {
   connect
 } from 'dva';
-
+import {safeInfoService} from '../../services/query'
 import SaveInfoView from './SafeInfoView';
 
 class SaveInfoPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[]
+      loading: true
     }
   }
 
 
   componentDidMount(){
+    safeInfoService().then(res => {
+      this.setState({
+        loading: false,
+        ...res
+      })
+    })
 
   }
 

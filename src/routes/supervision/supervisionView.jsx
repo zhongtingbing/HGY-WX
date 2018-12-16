@@ -8,40 +8,47 @@ const prefixCls = 'supervision-view74aa1b'
 
 export default function SupervisionView(props) {
   const {
-
+    data,
+    loading,
+    onClick
   } = props;
 
   const cls = classNames({
     [prefixCls]: true,
   });
 
-  let markers = [{  position: {
-    longitude: 120,
-    latitude: 30,
-  }},
-    { position: {
-      longitude: 120.01,
-      latitude: 30.01,
-    }}]
+  let markers = () => {
+    return data.filter(opt => opt.latitudeAndLongitude).map((item ,index) => (
+      {
+        position: {
+            longitude: parseFloat(item.latitudeAndLongitude.split(',')[0]),
+            latitude: parseFloat(item.latitudeAndLongitude.split(',')[1]),
+          },
+        myLabel: item,
+        myIndex: index + 1,
+      }
+    ))
+  }
 
   const Loading = <div style={{}}>Loading Map...</div>
 
-  const renderMarkerLayout = function () {
+  const renderMarkerLayout = function (extData) {
+    const obj = extData.myLabel
     return (
-      <div className='market'>
+      <div onClick={() => {onClick(obj)}} className='market'>
         <div className='marketdesc'>
-          <span>西江月项目</span>
+          <span>{obj.name}</span>
           <div className='marketdesc-bottom'>
             <div>
-              <span>123人</span>
+              <span>{obj.nowUserCount}人</span>
               <span>作业中</span>
             </div>
             <div>
-              <span>6</span>
+              <span>{obj.towerCount}</span>
               <span>塔吊</span>
             </div>
             <div>
-              <span>5</span>
+              <span>{obj.warning}</span>
               <span>报警</span>
             </div>
           </div>
@@ -51,13 +58,18 @@ export default function SupervisionView(props) {
       </div>
     )
   }
+
+  const first = data[0].latitudeAndLongitude.split(',')
   return (
-    <Main className={cls}>
-      <Map center={{longitude: 120, latitude: 30}} zoom={13}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
+    <Main loading={loading} className={cls}>
+      <Map
+        center={{longitude: parseFloat(first[0]), latitude: parseFloat(first[1])}}
+        zoom={12}
+        amapkey='4284186c53b0630c180c254459e6b908'
+      >
         <Markers
-          markers={markers}
+          markers={markers()}
           render={renderMarkerLayout}
-          loading={Loading}
         />
       </Map>
     </Main>

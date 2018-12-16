@@ -2,6 +2,7 @@ import React from 'react';
 import {
   connect
 } from 'dva';
+import {ProcessManagementService} from '../../services/query'
 
 import ProcessManagementView from './ProcessManagementView';
 
@@ -9,13 +10,20 @@ class ProcessManagementPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[]
+      data:[],
+      loading: true
     }
   }
 
 
   componentDidMount(){
-
+    ProcessManagementService().then(res => {
+      console.log(res)
+      this.setState({
+        ...res,
+        loading: false
+      })
+    })
   }
 
   render(){

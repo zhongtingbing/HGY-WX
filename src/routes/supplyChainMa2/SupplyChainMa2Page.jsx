@@ -4,19 +4,23 @@ import {
 } from 'dva';
 
 import SupplyChainMa2View from './SupplyChainMa2View';
-
+import {supplyChain2Service} from '../../services/query'
 class SupplyChainMa2Page extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[],
-      tab:0
+      loading: true,
     }
   }
 
 
   componentDidMount(){
-
+    supplyChain2Service().then(res => {
+      this.setState({
+        ...res,
+        loading: false
+      })
+    })
   }
 
   tabChange = (tab) =>{

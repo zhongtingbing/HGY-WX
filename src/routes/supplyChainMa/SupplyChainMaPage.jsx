@@ -2,21 +2,28 @@ import React from 'react';
 import {
   connect
 } from 'dva';
-
+import {supplyChainService} from '../../services/query'
 import SupplyChainMaView from './SupplyChainMaView';
 
 class SupplyChainMaPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[],
-      tab:0
+      WYS: [],
+      YSWTG: [],
+      tab:0,
+      loading: true,
     }
   }
 
 
   componentDidMount(){
-
+    supplyChainService().then(res => {
+      this.setState({
+        ...res,
+        loading: false
+      })
+    })
   }
 
   tabChange = (tab) =>{

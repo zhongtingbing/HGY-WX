@@ -13,49 +13,6 @@ require('echarts/lib/chart/pie');
 import './components.less'
 
 function AgeTable({data}) {
-  data = [
-    {
-      key: '0-18',
-      value: '0'
-    },
-    {
-      key: '19-25',
-      value: '0'
-    },
-    {
-      key: '26-30',
-      value: '10'
-    },
-    {
-      key: '31-35',
-      value: '10'
-    },
-    {
-      key: '36-40',
-      value: '10'
-    },
-    {
-      key: '41-45',
-      value: '10'
-    },
-    {
-      key: '46-50',
-      value: '10'
-    },
-    {
-      key: '51-55',
-      value: '10'
-    },
-    {
-      key: '56-60',
-      value: '10'
-    },
-    {
-      key: '60+',
-      value: '0'
-    }
-
-  ]
   return (
     <div className="age-table">
       <div className="title">
@@ -65,8 +22,8 @@ function AgeTable({data}) {
       {
         data.map((item, index) => (
           <div key={index} className={`${index % 2 === 1 ? ' even' : ''} table-item`}>
-            <span>{item.key}</span>
-            <span>{item.value}</span>
+            <span>{item.age}</span>
+            <span>{item.count}</span>
           </div>
         ))
       }

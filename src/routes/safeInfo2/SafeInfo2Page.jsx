@@ -2,20 +2,25 @@ import React from 'react';
 import {
   connect
 } from 'dva';
-
+import {safeInfo2Service} from '../../services/query'
 import SaveInfo2View from './SafeInfo2View';
 
 class SaveInfo2Page extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[]
+      loading: true
     }
   }
 
-
   componentDidMount(){
-
+    safeInfo2Service().then(res=>{
+      console.log(res)
+      this.setState({
+        loading: false,
+        ...res
+      })
+    })
   }
 
   render(){

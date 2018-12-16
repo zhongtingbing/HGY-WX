@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd-mobile'
-import { Map, Markers  } from 'react-amap';
 import {
   connect
 } from 'dva';
-import { testService } from '../services/example';
+import { testService } from '../services/query';
 import map_market from '../assets/image/map_market.svg';
 
 import  './page03.less';
@@ -20,12 +19,12 @@ function Page03(props) {
      })
   }
 
-  // function clickHandle() {
-  //   dispatch({
-  //     type: 'example/query',
-  //     payload: {id: 22},
-  //   })
-  // }
+  function clickHandle() {
+    dispatch({
+      type: 'main/query',
+      payload: {id: 22},
+    })
+  }
 
 
    let markers = [{  position: {
@@ -62,17 +61,17 @@ function Page03(props) {
   return (
     <Main location={location}>
       <div className={'wer'}>
-        {/*<Button className={styles.btn} onClick={getData} size="small">点我</Button>*/}
-        {/*<Button className={styles.btn} onClick={clickHandle} size="small">哈哈</Button>*/}
-        {/*<Button className={styles.btn} onClick={props.go} size="small">click me</Button>*/}
-        <div  style = {{width:'100%',height:'100%'}}>
-          <Map center={{longitude: 120, latitude: 30}} zoom={10}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>
-            <Markers
-              markers={markers}
-              render={renderMarkerLayout}
-            />
-          </Map>
-        </div>
+        <Button className='btn' onClick={getData} size="small">点我</Button>
+        <Button className='btn' onClick={clickHandle} size="small">哈哈</Button>
+        <Button className='btn' onClick={props.go} size="small">click me</Button>
+        {/*<div  style = {{width:'100%',height:'100%'}}>*/}
+          {/*<Map center={{longitude: 120, latitude: 30}} zoom={10}  amapkey='6ad24c49136bc9bfc9fc5341895fcf59'>*/}
+            {/*<Markers*/}
+              {/*markers={markers}*/}
+              {/*render={renderMarkerLayout}*/}
+            {/*/>*/}
+          {/*</Map>*/}
+        {/*</div>*/}
       </div>
     </Main>
   );
@@ -90,7 +89,7 @@ function propsDispatchToMap(dispatch) {
   return {
     go(){
       dispatch({
-        type: 'example/query',
+        type: 'main/query',
         payload: {id: 22},
       })
     }

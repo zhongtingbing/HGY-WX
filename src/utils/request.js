@@ -1,6 +1,7 @@
 import qs from 'qs';
 import _ from 'lodash';
 import Axios from 'axios';
+import {Toast} from 'antd-mobile'
 
 const reqConfig = {
   withCredentials: true
@@ -60,12 +61,7 @@ function checkStatus(resp) {
   if ((resp.status >= 200) && (resp.status < 300)) {
     return resp;
   }
-
-  // notification.error({
-  //   message: `请求错误 ${resp.status}: ${resp.url}`,
-  //   description: resp.statusText
-  // });
-
+  Toast.info('网络异常，请重试')
   return throwReqError(resp);
 }
 
@@ -77,9 +73,9 @@ function throwSrvError(data) {
 
 function checkCode(data) {
   if (data && (data.code !== 0)) {
-    return throwSrvError(data);
+    Toast.info('系统异常，请重试')
   }
-  return data;
+  return data.data;
 }
 
 function handleReqError(err) {

@@ -17,18 +17,13 @@ import './components.less'
 
 
 function DeviceControl({data}) {
-  const statusMap = {
-    '0': '在线',
-    '1': '离线',
-    '2': '报警',
-  }
   return (
     <div className="device-control">
       {
         data.map((item, index) => {
           return (
             <div key={`device-control-${index}`}
-                 className={`status-${item.status}`}>{`${item.name}：${statusMap[item.status]}`}</div>
+                 className={`status-${item.value}`}>{`${item.name}：${item.value}`}</div>
           )
         })
       }
@@ -37,23 +32,27 @@ function DeviceControl({data}) {
 }
 
 function EnvControl({data}) {
+  console.log(data)
+  const getValue = (name) => {
+    return data.find(item => item.name === name).value
+  }
   return (
     <div className="env-control">
       <div>
         <img src={PM_25_IMG} alt=""/>
-        <span>{`${39}ug/m³`}</span>
+        <span>{getValue('PM2.5')}</span>
       </div>
       <div>
         <img src={PM_10_IMG} alt=""/>
-        <span>{`${39}ug/m³`}</span>
+        <span>{getValue('PM10')}</span>
       </div>
       <div>
         <img src={TSP_IMG} alt=""/>
-        <span>{`${39}ug/m³`}</span>
+        <span>{getValue('TSP')}</span>
       </div>
       <div>
         <img src={NOISE_IMG} alt=""/>
-        <span>{`${39}分贝`}</span>
+        <span>{getValue('噪音')}</span>
       </div>
     </div>
   )

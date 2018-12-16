@@ -1,9 +1,9 @@
-import { query } from '../services/example';
+import { query } from '../services/query';
 
 
 export default {
 
-  namespace: 'example',
+  namespace: 'main',
 
   state: {},
 

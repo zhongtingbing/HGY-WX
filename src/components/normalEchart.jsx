@@ -40,6 +40,7 @@ export default class NormalEcharts extends React.PureComponent{
     // 绘制图表
     echart.setOption({
       tooltip: {
+        trigger: 'axis',
         formatter: isYPercent? '{b0}: {c0}%' : '{b0}: {c0}',
         extraCssText:'width:100px !important;height:24px !important;',
         backgroundColor: 'rgba(225, 221, 220,0.2)',
@@ -49,7 +50,7 @@ export default class NormalEcharts extends React.PureComponent{
       },
       xAxis: {
         type: 'category',
-        data: XData || ['1#', '2#', '3#', '4#', '5#', '6#', '7#', '8#', '9#'],
+        data: XData,
         axisLine:{                  //---坐标轴 轴线
           show:true,                  //---是否显示
           lineStyle:{

@@ -30,7 +30,14 @@ class WorkerChart4Year extends React.PureComponent {
     const _dom = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
     _dom.setOption({
-      tooltip: {},
+      tooltip: {
+        trigger: 'axis',
+        extraCssText:'width:30px !important;height:20px !important;',
+        backgroundColor: 'rgba(225, 221, 220,0.2)',
+        textStyle: {
+          fontSize: 10,
+        },
+      },
       xAxis: {
         type: 'category',
         data: XData,
@@ -173,7 +180,14 @@ class WorkerChart4Month extends React.PureComponent {
     // 绘制图表
     _dom.setOption({
       xAxis: {
-        tooltip: {},
+        tooltip: {
+          trigger: 'axis',
+          extraCssText:'width:30px !important;height:20px !important;',
+          backgroundColor: 'rgba(225, 221, 220,0.2)',
+          textStyle: {
+            fontSize: 10,
+          },
+        },
         type: 'category',
         data: XData,
         boundaryGap: false,

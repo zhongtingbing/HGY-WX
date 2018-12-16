@@ -1,5 +1,6 @@
 import React from 'react';
 import { routerRedux } from 'dva/router'
+import {projectOverviewService} from '../../services/query'
 import {
   connect
 } from 'dva';
@@ -10,13 +11,18 @@ class ProjectOverviewPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      data:[]
+      loading: true,
     }
   }
 
 
   componentDidMount(){
-
+    projectOverviewService().then(res => {
+      this.setState({
+        loading: false,
+        ...res
+      })
+    })
   }
 
   render(){

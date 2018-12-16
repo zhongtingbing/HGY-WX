@@ -35,7 +35,7 @@ export default {
   ],
   "proxy":isDevelopment? {
     "/api": {
-      "target": "http://firefly.cmbc.com.cn/",
+      "target": "http://3s.dkys.org:27640/",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     }

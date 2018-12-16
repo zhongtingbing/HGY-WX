@@ -41,6 +41,7 @@ export default class ComplexEcharts extends React.PureComponent{
     } = this.props
     const echart = echarts.init(document.getElementById(`echart-${index}`));
     // 绘制图表
+    const barWidth = XData.length > 12 ? '8' : '14'
     echart.setOption({
       tooltip: {
         trigger: 'axis',
@@ -155,7 +156,7 @@ export default class ComplexEcharts extends React.PureComponent{
       },
       series: [{
         name: leftName,
-        data:leftYData || [50, 30, 30, 30, 30, 30, 30, 30, 30],
+        data:leftYData ,
         type: 'line',
         showAllSymbol: true,
         symbol: 'circle',
@@ -170,9 +171,9 @@ export default class ComplexEcharts extends React.PureComponent{
       },
         {
           name: rightName,
-          data:rightYData || [500, 300, 300, 300, 300, 300, 300, 300, 300] ,
+          data:rightYData ,
           type: 'bar',
-          barWidth:'16',              //---柱形宽度
+          barWidth:barWidth,              //---柱形宽度
           barCategoryGap:'40%',
           yAxisIndex:1,
           itemStyle: {

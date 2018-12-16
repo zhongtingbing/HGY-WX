@@ -180,7 +180,7 @@ class ZCRSCharts extends React.PureComponent{
         },
         {
           name: '未打卡进入',
-          data:leftYData.wdaqmData,
+          data:leftYData.wdkjrData,
           type: 'bar',
           barWidth:'16',              //---柱形宽度
           barCategoryGap:'40%',
@@ -194,7 +194,7 @@ class ZCRSCharts extends React.PureComponent{
         },
         {
           name: '未带安全帽进入',
-          data:leftYData.wdkjrData,
+          data:leftYData.wdaqmData,
           type: 'bar',
           barWidth:'16',              //---柱形宽度
           barCategoryGap:'40%',

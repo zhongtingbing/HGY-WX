@@ -10,7 +10,6 @@ export default function MoreDataView(props) {
     data,
     kVMap
   } = props;
-  console.log(props)
   const cls = classNames({
     [prefixCls]: true,
   });

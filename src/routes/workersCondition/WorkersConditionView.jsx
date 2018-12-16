@@ -11,49 +11,57 @@ const prefixCls = 'workers-condition-viewhaolei'
 
 export default function WorkersConditionView(props) {
   const {
-    moreClick
+    data,
+    moreClick,
+    loading
   } = props;
+
+  const {
+    BZCQRS,
+    BZPJGZTS,
+    CJGR,
+    CJGSCQRS,
+    CJGSPJCQL,
+    DYFB,
+    GZCQRS,
+    KQYZY,
+    MTZCRS,
+    MYZCRS,
+    NLJG,
+    ZGSC
+  } =data;
 
   const cls = classNames({
     [prefixCls]: true,
   });
   return (
-    <Main>
+    <Main loading={loading}>
+      {
+       loading ? <div></div> :
       <div className={cls}>
         <BasicCard className={`${cls}-supply-chain`} name="2018年每月在场人数">
           <WorkerChart4Year
             index="MYZCRS"
-            XData={['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月','']}
-            YData={[820, 932, 901, 934, 1000, 1330, 1320, 820, 932, 901, 934, 1290]}
-
+            XData={MYZCRS.XData}
+            YData={MYZCRS.YData}
           />
         </BasicCard>
         <BasicCard className={`${cls}-supply-chain`} name="10月每天在场人数">
           <WorkerChart4Month
             index="MTZCRS"
-            XData={['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','29','30','31']}
-            YData={[820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 120,820, 932, 901, 934, 100, 330, 320, 820, 932, 901, 934, 290,820, 932, 901, 934, 100, 133, 130]}
-
+            {...MTZCRS}
           />
         </BasicCard>
         <BasicCard
           className={`${cls}-KQZYRS`}
-          moreClick={()=>{moreClick([{_key:'name', desc:'姓名', width:40},{_key:'area1', desc:'应在区域', width:65},{_key:'area2', desc:'实在区域', width:65},{_key:'group', desc:'班组', width:40},{_key:'company', desc:'公司', width:90}],
-            [
-            {name: '张博管', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '名字很长很长很长很长建筑有限公司' },
-            {name: '学广昆', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' },
-          ])}}
-          name={`跨区域作业人数：${55}人`}
+          moreClick={()=>{moreClick([{_key:'name', desc:'姓名', width:40},{_key:'shouldIn', desc:'应在区域', width:50},{_key:'nowIn', desc:'实在区域', width:50},{_key:'team', desc:'班组', width:40},{_key:'company', desc:'公司', width:120}],
+            KQYZY,
+            )}}
+          name={`跨区域作业人数：${KQYZY.length}人`}
           more={true}>
             <Table
-              kVMap={[{_key:'name', desc:'姓名', width:40},{_key:'area1', desc:'应在区域', width:50},{_key:'area2', desc:'实在区域', width:50},{_key:'group', desc:'班组', width:40},{_key:'company', desc:'公司', width:120}]}
-              data={[
-                {name: '张博管', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '名字很长很长很长很长建筑有限公司' },
-                {name: '学广昆', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' },
-                {name: '刘能', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' },
-                {name: '李晓', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' },
-                {name: '张大力', area1: '1#10F', area2: '2#2F', group: '泥工班', company: '建筑有限公司' }
-              ]}
+              kVMap={[{_key:'name', desc:'姓名', width:40},{_key:'shouldIn', desc:'应在区域', width:50},{_key:'nowIn', desc:'实在区域', width:50},{_key:'team', desc:'班组', width:40},{_key:'company', desc:'公司', width:120}]}
+              data={KQYZY.slice(0,4)}
             />
         </BasicCard>
         <BasicCard
@@ -61,127 +69,94 @@ export default function WorkersConditionView(props) {
           name='参建公司出勤人数'
           more={true}
           moreClick={()=>{moreClick(
-            [{_key:'name', desc:'参见公司名称', width:120},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount', desc:'违规人数'},{_key:'total', desc:'总人数', width:50},],
-            [
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-            ])}}
+            [{_key:'companyName', desc:'参建公司名称', width:120},{_key:'norCount', desc:'合规人数'},{_key:'violationCount', desc:'违规人数'},{_key:'workerCount', desc:'总人数', width:50},],
+            CJGSCQRS)}}
         >
           <Table
-            kVMap={[{_key:'name', desc:'参见公司名称', width:120},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount', desc:'违规人数'},{_key:'total', desc:'总人数', width:50},]}
-            data={[
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-              {name: '四川中恒建设有限公司', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112' },
-            ]}
+            kVMap={[{_key:'companyName', desc:'参建公司名称', width:120},{_key:'norCount', desc:'合规人数'},{_key:'violationCount', desc:'违规人数'},{_key:'workerCount', desc:'总人数', width:50},]}
+            data={CJGSCQRS.slice(0,4)}
           />
         </BasicCard>
         <BasicCard
           name='班组出勤人数'
           more={true}
-          kVMap={[{_key:'group', desc:'班组',width:80},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount',desc:'总人数', width:50}]}
-          data={[
-            {group: '木工组',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-            {group: '电焊班',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-            {group: '安防班', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-            {group: '挖机组', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-          ]}
+          moreClick={()=>{moreClick(
+            [{_key:'teamName', desc:'班组',width:80},{_key:'norCount', desc:'合规人数'},{_key:'workerCount',desc:'总人数', width:50}],
+            BZCQRS)}}
         >
           <Table
-            kVMap={[{_key:'group', desc:'班组',width:80},{_key:'rightCount', desc:'合规人数'},{_key:'falseCount',desc:'总人数', width:50}]}
-            data={[
-              {group: '木工组',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-              {group: '电焊班',  rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-              {group: '安防班', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-              {group: '挖机组', rightCount: '100', area2: '2#2F', falseCount: '12', total: '112'},
-            ]}
+            kVMap={[{_key:'teamName', desc:'班组',width:80},{_key:'norCount', desc:'合规人数'},{_key:'workerCount',desc:'总人数', width:50}]}
+            data={BZCQRS.slice(0,4)}
           />
         </BasicCard>
-        <BasicCard name='班组平均工作天数' more={true}>
-            <Table
-              kVMap={[{_key:'groupName', desc:'班组', width:140},{_key:'averageDay', desc:'合规人数',width:140}]}
-              data={[
-                {groupName: '张三木工组', averageDay: '100天'},
-                {groupName: '张三木工组', averageDay: '100天'},
-                {groupName: '张三木工组', averageDay: '100天'},
-                {groupName: '张三木工组', averageDay: '100天'},
-              ]}
-            />
-        </BasicCard>
-        <BasicCard name='工种出勤人数' more={true}>
+        <BasicCard
+          name='班组平均工作天数'
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'teamName', desc:'班组', width:140},{_key:'workerCount', desc:'平均工作天数',width:140}],
+            BZPJGZTS)}}
+        >
           <Table
-            kVMap={[{_key:'jobType', desc:'工种'},{_key:'workCount', desc:'出勤人数'},{_key:'total', desc:'总人数'}]}
-            data={[
-              {jobType: '塔吊师', workCount: '12', total: '12'},
-              {jobType: '电焊工', workCount: '12', total: '12'},
-              {jobType: '大蛇', workCount: '12', total: '12'},
-              {jobType: '防水工', workCount: '12', total: '12'},
-            ]}
+            kVMap={[{_key:'teamName', desc:'班组', width:140},{_key:'workerCount', desc:'平均工作天数',width:140}]}
+            data={BZPJGZTS.slice(0,4)}
           />
         </BasicCard>
-        <BasicCard name={`${10}月参建公司平均出勤率`} more={true}>
+        <BasicCard
+          name='工种出勤人数'
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'typeName', desc:'工种'},{_key:'workCount', desc:'出勤人数'},{_key:'allWorkCount', desc:'总人数'}],
+            GZCQRS)}}
+        >
           <Table
-            kVMap={[{_key:'companyName', desc:'公司名称', width: 130},{_key:'workCount', desc:'出勤人数'},{_key:'workRate', desc:'出勤率'}]}
-            data={[
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-              {companyName: '中国建筑劳务有限公司', workCount: '200', workRate: '98%'},
-            ]}
+            kVMap={[{_key:'typeName', desc:'工种'},{_key:'workCount', desc:'出勤人数'},{_key:'allWorkCount', desc:'总人数'}]}
+            data={GZCQRS.slice(0,4)}
           />
         </BasicCard>
-        <BasicCard name='初级工人' more={true}>
+        <BasicCard
+          name={`${CJGSPJCQL[0] ? CJGSPJCQL[0].month : ''}月参建公司平均出勤率`}
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'companyName', desc:'公司名称', width: 130},{_key:'attendanceCount', desc:'出勤人数'},{_key:'attendanceRate', desc:'出勤率'}],
+            CJGSPJCQL)}}
+        >
           <Table
-            kVMap={[{_key:'name', desc:'姓名'},{_key:'group', desc:'班租'},{_key:'problemCount', desc:'问题数量'}]}
-            data={[
-              {name: '张学友', group: '唱歌组', problemCount: '89%'},
-              {name: '张学友', group: '唱歌组', problemCount: '89%'},
-              {name: '张学友', group: '唱歌组', problemCount: '89%'},
-              {name: '张学友', group: '唱歌组', problemCount: '89%'},
-              {name: '张学友', group: '唱歌组', problemCount: '89%'},
-            ]}
+            kVMap={[{_key:'companyName', desc:'公司名称', width: 130},{_key:'attendanceCount', desc:'出勤人数'},{_key:'attendanceRate', desc:'出勤率'}]}
+            data={CJGSPJCQL.splice(0,5)}
           />
         </BasicCard>
-        <BasicCard name='在岗时长' more={true}>
+        <BasicCard
+          name='初级工人'
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'name', desc:'姓名'},{_key:'team', desc:'班组'},{_key:'count', desc:'问题数量'}],
+            CJGR)}}
+        >
           <Table
-            kVMap={[{_key:'name', desc:'楼栋'},{_key:'averageTime', desc:'人均日工作小时', width: 110 }]}
-            data={[
-              {name: '1栋', averageTime: '10小时'},
-              {name: '2栋', averageTime: '10小时'},
-              {name: '3栋', averageTime: '10小时49分'},
-              {name: '4栋', averageTime: '10小时'},
-              {name: '5栋', averageTime: '10小时'},
-            ]}
+            kVMap={[{_key:'name', desc:'姓名'},{_key:'team', desc:'班组'},{_key:'count', desc:'问题数量'}]}
+            data={CJGR.slice(0,5)}
           />
         </BasicCard>
-        <BasicCard name='年龄结构' more={true}>
+        <BasicCard
+          name='在岗时长'
+          more={true}
+          moreClick={()=>{moreClick(
+            [{_key:'buildName', desc:'楼栋'},{_key:'avgHours', desc:'人均日工作小时', width: 110 }],
+            ZGSC)}}
+        >
           <Table
-            kVMap={[{_key:'age', desc:'年龄'},{_key:'count', desc:'人数' }]}
-            data={[
-              {age: '0-18',  count: '0'},
-              {age: '19-25', count: '11'},
-              {age: '26-30', count: '11'},
-              {age: '31-35', count: '11'},
-              {age: '36-40', count: '11'},
-              {age: '41-45', count: '11'},
-              {age: '46-50', count: '11'},
-              {age: '51-55', count: '11'},
-              {age: '56-60', count: '11'},
-              {age: '60+', count: '11'},
-            ]}
+            kVMap={[{_key:'buildName', desc:'楼栋'},{_key:'avgHours', desc:'人均日工作小时', width: 110 }]}
+            data={ZGSC.slice(0,4)}
+          />
+        </BasicCard>
+        <BasicCard name='年龄结构'>
+          <Table
+            kVMap={[{_key:'name', desc:'年龄'},{_key:'value', desc:'人数' }]}
+            data={NLJG}
           />
         </BasicCard>
       </div>
+      }
     </Main>
   );
 }

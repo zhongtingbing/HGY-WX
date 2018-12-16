@@ -22,8 +22,11 @@
     "qs": "^6.5.1",
     "query-string": "^5.1.0",
     "react": "^16.2.0",
+    "bowser": "^1.7.3",
     "react-amap": "^1.2.7",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "store2": "^2.5.4",
+    "react-loading": "^2.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

@@ -35,7 +35,7 @@ class DeviceCahrt extends React.PureComponent{
       return (
         {
           name: item.name,
-          data:item.values,
+          data:item.value,
           type: 'bar',
           barWidth:'16',              //---柱形宽度
           barCategoryGap:'40%',
