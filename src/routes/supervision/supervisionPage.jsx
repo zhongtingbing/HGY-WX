@@ -10,8 +10,8 @@ class SupervisionPage extends React.PureComponent{
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
-      data:[{latitudeAndLongitude: '120,32'}]
+      loading: false,
+      data:[{latitudeAndLongitude: '120.01,32'}]
     }
   }
   componentDidMount(){
@@ -23,9 +23,12 @@ class SupervisionPage extends React.PureComponent{
     })
   }
 
-  onClick=(item)=>{
-    session.set(`$$project_id`, item.id)
-    bowser.android ? window.mobile.click({data: JSON.stringify(item)}) : ''
+  onClick = (item)=>{
+    if(item && item.id){
+      bowser.android ? window.mobile.click(item.id) : ''
+      return
+    }
+    bowser.android ? window.mobile.click('1234') : ''
   }
 
   render(){

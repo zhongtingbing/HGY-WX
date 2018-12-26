@@ -72,8 +72,9 @@ function throwSrvError(data) {
 }
 
 function checkCode(data) {
-  if (data && (data.code !== 0)) {
-    Toast.info('系统异常，请重试')
+  if (data.code !== 0) {
+    Toast.info(data.msg, 3);
+    return;
   }
   return data.data;
 }

@@ -25,7 +25,7 @@ export default class CicleProgress extends React.PureComponent{
     endColor = endColor || 'red';
     var canvas = document.querySelector(`.cicle-progress${_key}`),
       ctx = canvas.getContext("2d"),
-      percent = value || 90, // 最终百分比
+      percent = value || 0, // 最终百分比
       circleX = canvas.width / 2, // 中心x坐标
       circleY = canvas.height / 2, // 中心y坐标
       radius = 68, // 圆环半径

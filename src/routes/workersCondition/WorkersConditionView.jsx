@@ -39,14 +39,14 @@ export default function WorkersConditionView(props) {
       {
        loading ? <div></div> :
       <div className={cls}>
-        <BasicCard className={`${cls}-supply-chain`} name="2018年每月在场人数">
+        <BasicCard className={`${cls}-supply-chain`} name={`${MYZCRS.year}年每月在场人数`}>
           <WorkerChart4Year
             index="MYZCRS"
             XData={MYZCRS.XData}
             YData={MYZCRS.YData}
           />
         </BasicCard>
-        <BasicCard className={`${cls}-supply-chain`} name="10月每天在场人数">
+        <BasicCard className={`${cls}-supply-chain`} name={`${MTZCRS.month}月每天在场人数`}>
           <WorkerChart4Month
             index="MTZCRS"
             {...MTZCRS}
@@ -122,7 +122,7 @@ export default function WorkersConditionView(props) {
         >
           <Table
             kVMap={[{_key:'companyName', desc:'公司名称', width: 130},{_key:'attendanceCount', desc:'出勤人数'},{_key:'attendanceRate', desc:'出勤率'}]}
-            data={CJGSPJCQL.splice(0,5)}
+            data={CJGSPJCQL.splice(0,4)}
           />
         </BasicCard>
         <BasicCard

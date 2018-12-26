@@ -37,7 +37,7 @@ export default function ProcessManagementView(props) {
               YData={GXSJB.YData}
             />
           </BasicCard>
-          <BasicCard name={`工序未完成数 (楼栋#)`}>
+          <BasicCard name={`工序未完成数 (楼栋)`}>
             <ComplexEchart
               index="GXWWCS"
               color="#1490ac"
@@ -56,7 +56,7 @@ export default function ProcessManagementView(props) {
               YData={SCSLGXB.YData}
             />
           </BasicCard>
-          <BasicCard name={`工序未闭合数 (楼栋#)`}>
+          <BasicCard name={`工序未闭合数 (楼栋)`}>
             <ComplexEchart
               index="GXWBHS"
               color="#00a0ea"

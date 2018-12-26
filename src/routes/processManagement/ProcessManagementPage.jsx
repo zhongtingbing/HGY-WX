@@ -18,7 +18,6 @@ class ProcessManagementPage extends React.PureComponent{
 
   componentDidMount(){
     ProcessManagementService().then(res => {
-      console.log(res)
       this.setState({
         ...res,
         loading: false

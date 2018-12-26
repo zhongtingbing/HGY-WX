@@ -35,7 +35,8 @@ export default {
   ],
   "proxy":isDevelopment? {
     "/api": {
-      "target": "http://3s.dkys.org:27640/",
+       "target": "http://api.znhl360.com:63721/",
+     // "target": "http://localhost:8080/",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     }

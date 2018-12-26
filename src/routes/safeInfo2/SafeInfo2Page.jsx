@@ -15,7 +15,6 @@ class SaveInfo2Page extends React.PureComponent{
 
   componentDidMount(){
     safeInfo2Service().then(res=>{
-      console.log(res)
       this.setState({
         loading: false,
         ...res

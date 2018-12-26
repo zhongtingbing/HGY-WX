@@ -18,7 +18,7 @@ export default function SupervisionView(props) {
   });
 
   let markers = () => {
-    return data.filter(opt => opt.latitudeAndLongitude).map((item ,index) => (
+    return data.filter(opt => !!opt.latitudeAndLongitude).map((item ,index) => (
       {
         position: {
             longitude: parseFloat(item.latitudeAndLongitude.split(',')[0]),
@@ -30,12 +30,10 @@ export default function SupervisionView(props) {
     ))
   }
 
-  const Loading = <div style={{}}>Loading Map...</div>
-
   const renderMarkerLayout = function (extData) {
     const obj = extData.myLabel
     return (
-      <div onClick={() => {onClick(obj)}} className='market'>
+      <div className='market'>
         <div className='marketdesc'>
           <span>{obj.name}</span>
           <div className='marketdesc-bottom'>
@@ -60,16 +58,39 @@ export default function SupervisionView(props) {
   }
 
   const first = data[0].latitudeAndLongitude.split(',')
+
+  // const markersEvents = {
+  //   click: (MapsOption, marker) => {
+  //     onClick(MapsOption.target.F.extData.myLabel)
+  //   },
+  //   mouseover:(e, marker) => {
+  //     marker.render(renderMarkerLayout);
+  //   },
+  //   mouseout: (e, marker) => {
+  //     marker.render(renderMarkerLayout);
+  //   }
+  // }
+
+ const markersEvents = {
+    click(e, marker){
+      // 通过高德原生提供的 getExtData 方法获取原始数据
+      const extData = marker.getExtData();
+      onClick(extData.myLabel)
+    }
+  }
+
   return (
     <Main loading={loading} className={cls}>
       <Map
         center={{longitude: parseFloat(first[0]), latitude: parseFloat(first[1])}}
-        zoom={12}
+        zoom={13}
         amapkey='4284186c53b0630c180c254459e6b908'
       >
         <Markers
           markers={markers()}
           render={renderMarkerLayout}
+          events={markersEvents}
+          useCluster={true}
         />
       </Map>
     </Main>

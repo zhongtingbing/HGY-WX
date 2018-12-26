@@ -100,7 +100,7 @@ export default function SaveInfoView(props) {
           >
             <Table
               kVMap={[{_key:'name', desc:'姓名'},{_key:'team', desc:'班组'},{_key:'company', desc:'公司',width:120}]}
-              data={WCJSJJY}
+              data={WCJSJJY.slice(0,4)}
             />
           </BasicCard>
           <BasicCard
@@ -115,7 +115,7 @@ export default function SaveInfoView(props) {
           >
             <Table
               kVMap={[{_key:'name', desc:'姓名'},{_key:'team', desc:'班组'},{_key:'company', desc:'公司',width:120}]}
-              data={WZRZTJ}
+              data={WZRZTJ.slice(0,4)}
             />
           </BasicCard>
           <BasicCard
@@ -130,7 +130,7 @@ export default function SaveInfoView(props) {
           >
             <Table
               kVMap={[{_key:'name', desc:'姓名'},{_key:'time', desc:'入职时间',width:80},{_key:'count', desc:'培训次数',width:80}]}
-              data={XJCRY}
+              data={XJCRY.slice(0,4)}
             />
           </BasicCard>
           <BasicCard
@@ -145,7 +145,7 @@ export default function SaveInfoView(props) {
           >
             <Table
               kVMap={[{_key:'name', desc:'姓名'},{_key:'age', desc:'年龄'},{_key:'team', desc:'班组'},{_key:'company', desc:'公司',width:120}]}
-              data={AGE50}
+              data={AGE50.slice(0,4)}
             />
           </BasicCard>
           <BasicCard name={`本周设备报警次数`}>
@@ -184,7 +184,7 @@ export default function SaveInfoView(props) {
           >
             <Table
               kVMap={[{_key:'carNO', desc:'车牌号',width:70},{_key:'carType', desc:'车辆类型',width:70},{_key:'driver', desc:'司机',width:50},{_key:'driverPhone', desc:'司机电话',width:90},{_key:'supervision', desc:'监理',width:50}]}
-              data={TZCLWYS}
+              data={TZCLWYS.slice(0,4)}
             />
           </BasicCard>
           <BasicCard
@@ -198,7 +198,7 @@ export default function SaveInfoView(props) {
             more={true}>
             <Table
               kVMap={[{_key:'carNO', desc:'车牌号',width:70},{_key:'carType', desc:'车辆类型',width:70},{_key:'driver', desc:'司机',width:50},{_key:'driverPhone', desc:'司机电话',width:90},{_key:'supervision', desc:'监理',width:50}]}
-              data={TZCLYSWTG}
+              data={TZCLYSWTG.slice(0,4)}
             />
           </BasicCard>
           <BasicCard name={`特种车辆未验收分类`}>

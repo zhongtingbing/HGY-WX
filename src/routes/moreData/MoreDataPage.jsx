@@ -1,4 +1,5 @@
 import React from 'react';
+import { routerRedux } from 'dva/router'
 import {
   connect
 } from 'dva';
@@ -12,6 +13,10 @@ class MoreDataPage extends React.PureComponent{
     }
   }
 
+  goBack = () => {
+    this.props.goBack()
+  }
+
 
   componentDidMount(){
   }
@@ -22,6 +27,7 @@ class MoreDataPage extends React.PureComponent{
         {...this.state}
         {...this.props}
         {...this.props.location.state}
+        goBack = {this.goBack}
       />
     )
   }
@@ -30,4 +36,12 @@ function mapStateToProps() {
   return {};
 }
 
-export default connect(mapStateToProps)(MoreDataPage);
+function mapDispatchToProps(dispatch) {
+  return {
+    goBack(){
+      dispatch(routerRedux.goBack())
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoreDataPage);

@@ -113,21 +113,21 @@ export default function SaveInfo2View(props) {
               />
             </BasicCard>
             <BasicCard name="环境检测管理">
-              <div clsssName="title">扬尘指数超标次数</div>
+              <div className="title">扬尘指数超标次数</div>
               <NormalEchart
                 index="YCZSCBCS"
                 XData={YCZSCBCS.XData}
                 YData={YCZSCBCS.YData}
                 color="#00a0ea"
               />
-              <div clsssName="title">噪声指数超标次数</div>
+              <div className="title">噪声指数超标次数</div>
               <NormalEchart
                 index="ZSZSCBCS"
                 XData={ZSZSCBCS.XData}
                 YData={ZSZSCBCS.YData}
                 color="#2695a9"
               />
-              <div clsssName="title">当月日平均报警次数</div>
+              <div className="title">当月日平均报警次数</div>
               <NormalEchart
                 index="DYRPJBJCS"
                 XData={DYRPJBJCS.XData}

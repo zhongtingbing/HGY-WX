@@ -21,8 +21,8 @@ export default function SupplyChainMaView(props) {
   });
 
   const tabs = [
-    { title: `材料未验收情况 (${WYS.length})` },
-    { title:  `材料验收未通过情况 (${YSWTG.length})` },
+    { title: `材料未验收情况 (${WYS.count})` },
+    { title:  `材料验收未通过情况 (${YSWTG.count})` },
   ];
   return (
     <Main loading={loading} className={cls}>
@@ -33,11 +33,11 @@ export default function SupplyChainMaView(props) {
       >
         <Table
           kVMap={[{_key:'carNO', desc:'车牌号', width:80},{_key:'driver', desc:'司机'},{_key:'driverPhone', desc:'司机电话', width:110},{_key:'Supervisor', desc:'监理'}]}
-          data={WYS}
+          data={WYS.list}
         />
         <Table
           kVMap={[{_key:'carNO', desc:'车牌号', width:80},{_key:'driver', desc:'司机'},{_key:'driverPhone', desc:'司机电话', width:110},{_key:'Supervisor', desc:'监理'}]}
-          data={YSWTG}
+          data={YSWTG.list}
         />
       </Tabs>
     </Main>

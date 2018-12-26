@@ -78,15 +78,17 @@ export default function ProjectOverviewView(props) {
     SSBJ,
     SJJY,
     AGE50,
+    KQYZYRS,
     CJGR,
     CLRY,
     GRPJGZSC,
     GRPJGZTS,
-    GXZT,
+    BHGX,
+    GXSJB,
     GYL,
     HGRS,
     HJYS,
-    HJYSGL,
+    GXWTS,
     NLJG,
     PX,
     RZMBN,
@@ -270,12 +272,12 @@ export default function ProjectOverviewView(props) {
                 <div className="bottom">
                   <div>
                     <span>特种车辆进场车：</span>
-                    <span style={{color:'#ff9000'}}>{500}</span>
+                    <span style={{color:'#ff9000'}}>{TZCL.jc}</span>
                     <span>次</span>
                   </div>
                   <div>
                     <span>验收：</span>
-                    <span style={{color:'#ff9000'}}>{500}</span>
+                    <span style={{color:'#ff9000'}}>{TZCL.ys}</span>
                     <span>次</span>
                   </div>
                 </div>
@@ -318,7 +320,7 @@ export default function ProjectOverviewView(props) {
                   </div>
                 </div>
                 <div className="content">
-                  <WorkContent title="跨区域作业人数" num={55} unit="人"/>
+                  <WorkContent title="跨区域作业人数" num={KQYZYRS.count} unit="人"/>
                   <WorkContent title="工人平均工作天数" num={GRPJGZTS.count} unit="天"/>
                   <WorkContent title="工人平均平均工作时长" num={GRPJGZSC.count} unit="小时"/>
                   <WorkContent title="入职满半年人数" num={RZMBN.count} unit="人"/>
@@ -351,15 +353,17 @@ export default function ProjectOverviewView(props) {
                     </div>
                   </div>
                   {
-                    GXZT.map((item,index) => {
-                      return (
-                        <div key={index} className="progress-item">
-                          <span className="left">{item.name}</span>
-                          <Progress value={item.count} percent={parseFloat(item.rate)}/>
-                          <span className="right">{item.rate+'%'}</span>
-                        </div>
-                      )
-                    })
+                    <div className="progress-item">
+                      <span className="left">{BHGX.name}</span>
+                      <Progress value={BHGX.count} percent={parseFloat(BHGX.rate)}/>
+                      <span className="right">{BHGX.rate}</span>
+                    </div>
+                  }
+                  {
+                    <div className="progress-item">
+                      <span className="left">{GXSJB.name}</span>
+                      <span className="right">{GXSJB.rate}</span>
+                    </div>
                   }
                 </div>
                 <div className="SCSL">
@@ -375,7 +379,7 @@ export default function ProjectOverviewView(props) {
                   <div className="title">工序问题TOP10</div>
                   <GXWTEchart
                     index={'GXWT'}
-                    data={HJYSGL}
+                    data={GXWTS}
                   />
                 </div>
                 <div className="worker-problems">
@@ -388,7 +392,7 @@ export default function ProjectOverviewView(props) {
                   </div>
                   <Table
                     kVMap={[{_key:'name', desc:'姓名', width:40},{_key:'workstage', desc:'工序名', width:60},{_key:'count', desc:'数量', width:40},]}
-                    data={GRWTS}
+                    data={GRWTS.slice(0,4)}
                   />
                 </div>
               </div>
@@ -414,7 +418,7 @@ export default function ProjectOverviewView(props) {
               <div className="progress-item">
                 <span className="left">验收次数</span>
                 <Progress value={GYL.yscc} percent={GYL.rate}/>
-                <span className="right">{GYL.rate}%</span>
+                <span className="right">{GYL.rate}</span>
               </div>
             </BasicCard>
           </div>

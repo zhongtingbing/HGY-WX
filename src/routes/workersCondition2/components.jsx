@@ -38,7 +38,7 @@ class ZCRSCharts extends React.PureComponent{
     echart.setOption({
       tooltip: {
         trigger: 'axis',
-        extraCssText:'width:130px !important;height:60px !important;',
+        extraCssText:'width:130px !important;height:80px !important;',
         backgroundColor: 'rgba(225, 221, 220,0.2)',
         textStyle: {
           fontSize: 10,

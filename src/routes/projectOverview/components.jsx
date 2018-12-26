@@ -22,8 +22,8 @@ function AgeTable({data}) {
       {
         data.map((item, index) => (
           <div key={index} className={`${index % 2 === 1 ? ' even' : ''} table-item`}>
-            <span>{item.age}</span>
-            <span>{item.count}</span>
+            <span>{item.name}</span>
+            <span>{item.value}</span>
           </div>
         ))
       }

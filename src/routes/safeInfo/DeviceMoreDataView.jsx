@@ -9,7 +9,6 @@ export default function DeviceMoreDataView(props) {
   const {
     data,
   } = props;
-  console.log(props)
   const cls = classNames({
     [prefixCls]: true,
   });

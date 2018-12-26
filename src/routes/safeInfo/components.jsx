@@ -32,7 +32,6 @@ function DeviceControl({data}) {
 }
 
 function EnvControl({data}) {
-  console.log(data)
   const getValue = (name) => {
     return data.find(item => item.name === name).value
   }
