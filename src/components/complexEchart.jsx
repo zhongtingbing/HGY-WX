@@ -2,11 +2,13 @@ import React from 'react';
 // 引入 ECharts 主模块
 import classNames from 'classnames';
 import  './complexEchart.less'
+import {XLabelFormatter} from '../utils/help'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -69,6 +71,9 @@ export default class ComplexEcharts extends React.PureComponent{
         axisLabel: {
           show: true,
           margin: 3,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           textStyle: {
             fontSize:8
           }
@@ -77,6 +82,13 @@ export default class ComplexEcharts extends React.PureComponent{
           show: false,                  //---是否显示
         },
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       yAxis: [
         {
           name : leftName,
@@ -150,7 +162,7 @@ export default class ComplexEcharts extends React.PureComponent{
       ],
       grid:{
         top: 35,
-        bottom:15,
+        bottom:35,
         left: 20,
         right:15
       },

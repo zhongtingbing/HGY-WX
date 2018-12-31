@@ -122,7 +122,7 @@ export default function WorkersConditionView(props) {
         >
           <Table
             kVMap={[{_key:'companyName', desc:'公司名称', width: 130},{_key:'attendanceCount', desc:'出勤人数'},{_key:'attendanceRate', desc:'出勤率'}]}
-            data={CJGSPJCQL.splice(0,4)}
+            data={CJGSPJCQL.slice(0,4)}
           />
         </BasicCard>
         <BasicCard

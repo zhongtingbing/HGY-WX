@@ -8,6 +8,7 @@ const prefixCls = 'device-more-data-view12-5'
 export default function DeviceMoreDataView(props) {
   const {
     data,
+    goBack
   } = props;
   const cls = classNames({
     [prefixCls]: true,
@@ -16,16 +17,16 @@ export default function DeviceMoreDataView(props) {
     <Main className={prefixCls}>
       <div>
         <DeviceControl
-          data={[
-            {name:'1号塔吊',status:'1'},
-            {name:'2号塔吊',status:'0'},
-            {name:'3号塔吊',status:'0'},
-            {name:'4号塔吊',status:'2'},
-            {name:'5号塔吊',status:'0'},
-            {name:'6号塔吊',status:'1'},
-          ]}
+          data={data}
         />
+        <div onClick={goBack} className={`${prefixCls}-pop`}>
+          返回
+        </div>
       </div>
     </Main>
   );
+}
+
+DeviceMoreDataView.defaultProps={
+  data: []
 }

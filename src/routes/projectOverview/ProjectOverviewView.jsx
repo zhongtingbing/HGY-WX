@@ -146,10 +146,10 @@ export default function ProjectOverviewView(props) {
                     <span>土建总包：</span>
                     <span>{XMGK.civil}</span>
                   </div>
-                  <div>
-                    <span>精装总包：</span>
-                    <span>{XMGK.hardcover}</span>
-                  </div>
+                  {/*<div>*/}
+                    {/*<span>精装总包：</span>*/}
+                    {/*<span>{XMGK.hardcover}</span>*/}
+                  {/*</div>*/}
                   <div>
                     <span>监理单位：</span>
                     <span>{XMGK.supervisor}</span>

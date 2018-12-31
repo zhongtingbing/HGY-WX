@@ -49,7 +49,7 @@ function mapDispatchToProps(dispatch) {
         },
       }))
     },
-    deviceMoreClick(kVMap, data){
+    deviceMoreClick(data){
       dispatch(routerRedux.push({
         pathname: '/device-more-data',
         state: {

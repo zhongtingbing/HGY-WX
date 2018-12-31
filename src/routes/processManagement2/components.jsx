@@ -1,4 +1,5 @@
 import React from 'react';
+import {XLabelFormatter} from '../../utils/help'
 // 引入 ECharts 主模块
 import classNames from 'classnames';
 import  './components.less'
@@ -7,6 +8,7 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 
@@ -58,6 +60,9 @@ class SGGXSCharts extends React.PureComponent{
         axisLabel: {
           show: true,
           margin: 6,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           textStyle: {
             fontSize:8
           }
@@ -101,10 +106,17 @@ class SGGXSCharts extends React.PureComponent{
       ],
       grid:{
         top: 20,
-        bottom:20,
+        bottom:40,
         left: 18,
         right:0
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [
         {
           name: '施工工序',

@@ -1,10 +1,12 @@
 import React from 'react';
 var echarts = require('echarts/lib/echarts');
+import {XLabelFormatter} from '../../utils/help'
 //引入柱状图
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 // require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -63,6 +65,9 @@ class WorkerChart4Year extends React.PureComponent {
         axisLabel: {
           show: true,
           margin: 3,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           interval:0,
           textStyle: {
             fontSize:8
@@ -104,10 +109,17 @@ class WorkerChart4Year extends React.PureComponent {
       },
       grid:{
         top: 20,
-        bottom:20,
+        bottom:40,
         left: 22,
         right:-16,
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [{
         data: YData,
         type: 'line',
@@ -213,6 +225,9 @@ class WorkerChart4Month extends React.PureComponent {
           show: true,
           margin: 3,
           interval:1,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           textStyle: {
             fontSize:8
           }
@@ -253,10 +268,17 @@ class WorkerChart4Month extends React.PureComponent {
       },
       grid:{
         top: 20,
-        bottom:22,
+        bottom:42,
         left: 22,
         right:6,
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [{
         data: YData,
         type: 'line',

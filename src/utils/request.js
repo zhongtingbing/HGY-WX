@@ -72,6 +72,10 @@ function throwSrvError(data) {
 }
 
 function checkCode(data) {
+  if ( data.code === -1 ) {
+    window.mobile.tokenTiemOut()
+    return
+  }
   if (data.code !== 0) {
     Toast.info(data.msg, 3);
     return;
@@ -93,14 +97,6 @@ function handleRequest(req) {
     .then(resp => resp.data)
     .then(checkCode)
     .catch(handleReqError)
-  // return {
-  //   ...req,
-  //   promise: req.promise
-  //     .then(checkStatus)
-  //     .then(resp => resp.data)
-  //     .then(checkCode)
-  //     .catch(handleReqError)
-  // };
 }
 
 export function   getJson(url, data) {
@@ -110,6 +106,7 @@ export function   getJson(url, data) {
 }
 
 export function postJson(url, data) {
+  console.log(url)
   return handleRequest(post(url, data));
 }
 

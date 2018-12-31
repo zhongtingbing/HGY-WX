@@ -35,12 +35,12 @@ export default {
   ],
   "proxy":isDevelopment? {
     "/api": {
-       "target": "http://api.znhl360.com:63721/",
-     // "target": "http://localhost:8080/",
+      "target": "http://api.znhl360.com:63721/",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     }
   }:null,
+
   env: {
     production: {
       multipage: true,

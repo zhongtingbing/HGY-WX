@@ -1,12 +1,7 @@
 
 import  { getJson } from '../utils/request';
-import session from '../utils/store'
-import querystring from 'query-string'
 const isDevelopment= process.env.NODE_ENV ==='development';
 const GLOBAL_GET_URL = isDevelopment?'api/emp/app':`/emp/app`
-
-const project_id = session.get(`$$project_id`);
-const token = session.get('$$token');
 const _href = window.location.href;
 const queryStr = _href.split('?')[1];
 export function worksConditionService() {

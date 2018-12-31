@@ -2,11 +2,13 @@ import React from 'react';
 // 引入 ECharts 主模块
 import classNames from 'classnames';
 import  './components.less'
+import {XLabelFormatter} from '../../utils/help'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
 require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -63,9 +65,11 @@ class ZCRSCharts extends React.PureComponent{
           show: true,
           margin: 6,
           interval: 0,
-        //  rotate: -30,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           textStyle: {
-            fontSize:8
+            fontSize:7,
           }
         },
         axisTick: {                  //---坐标轴 刻度
@@ -88,7 +92,6 @@ class ZCRSCharts extends React.PureComponent{
               type:'dashed',          //---类型
             },
           },
-
           axisLine:{                  //---坐标轴 轴线
             show:true,                  //---是否显示
             lineStyle:{
@@ -149,12 +152,20 @@ class ZCRSCharts extends React.PureComponent{
         left: 20,
         right:20
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [{
         name: rightName,
         data:rightYData,
         type: 'line',
         showAllSymbol: true,
         symbol: 'circle',
+        yAxisIndex:1,
         itemStyle:{
           normal: {
             color:　'#ff9a48',
@@ -168,10 +179,9 @@ class ZCRSCharts extends React.PureComponent{
           name: '正常进入',
           data:leftYData.zcjrData,
           type: 'bar',
-          barWidth:'16',              //---柱形宽度
+          barWidth:'12',              //---柱形宽度
           barCategoryGap:'40%',
-          stack: 'left',
-          yAxisIndex:1,
+          stack: 'zcrs',
           itemStyle: {
             normal: {
               color: '#00a0ea',
@@ -182,10 +192,9 @@ class ZCRSCharts extends React.PureComponent{
           name: '未打卡进入',
           data:leftYData.wdkjrData,
           type: 'bar',
-          barWidth:'16',              //---柱形宽度
+          barWidth:'12',              //---柱形宽度
           barCategoryGap:'40%',
-          stack: 'left',
-          yAxisIndex:1,
+          stack: 'zcrs',
           itemStyle: {
             normal: {
               color: '#f4736e',
@@ -196,10 +205,9 @@ class ZCRSCharts extends React.PureComponent{
           name: '未带安全帽进入',
           data:leftYData.wdaqmData,
           type: 'bar',
-          barWidth:'16',              //---柱形宽度
+          barWidth:'12',              //---柱形宽度
           barCategoryGap:'40%',
-          stack: 'left',
-          yAxisIndex:1,
+          stack: 'zcrs',
           itemStyle: {
             normal: {
               color: '#f4c841',
@@ -296,12 +304,22 @@ class KZYRSCharts extends React.PureComponent {
           interval:0,
           textStyle: {
             fontSize:8
-          }
+          },
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
         },
         axisTick: {                  //---坐标轴 刻度
           show: false,                  //---是否显示
         },
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       yAxis: {
         type: 'value',
         splitLine:{                 //---grid 区域中的分隔线
@@ -334,7 +352,7 @@ class KZYRSCharts extends React.PureComponent {
       },
       grid:{
         top: 10,
-        bottom:20,
+        bottom:40,
         left: 22,
         right:12,
       },
@@ -425,6 +443,16 @@ class GRPJGZSCharts extends React.PureComponent{
         //   return `${params[0].axisValueLabel}<br>${params[0].marker} ${params[0].seriesName}:  ${params[0].value}%<br>${params[1].marker} ${params[1].seriesName}: ${params[1].value}`
         // }
       },
+      legend: {
+        itemWidth: 8,
+        itemHeight: 8,
+        itemGap: 6,
+        data:[{name:'平均工作天数', icon:'rect'},{name:'平均工作时长',icon:'rect'}],
+        textStyle: {
+          fontSize: 9,
+          color: '#F1F1F3'
+        }
+      },
       xAxis: {
         type: 'category',
         data: XData,
@@ -439,6 +467,9 @@ class GRPJGZSCharts extends React.PureComponent{
         },
         axisLabel: {
           show: true,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           margin: 6,
           textStyle: {
             fontSize:8
@@ -523,13 +554,21 @@ class GRPJGZSCharts extends React.PureComponent{
       ],
       grid:{
         top: 20,
-        bottom:20,
+        bottom:40,
         left: 18,
         right:14
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [
           {
             data:YData.days,
+            name: '平均工作天数',
             type: 'bar',
             barWidth:'12',              //---柱形宽度
             barCategoryGap:'40%',
@@ -543,6 +582,7 @@ class GRPJGZSCharts extends React.PureComponent{
           data:YData.hours,
           type: 'bar',
           barWidth:'12',
+          name: '平均工作时长',
           yAxisIndex:1,
           barCategoryGap:'40%',
           itemStyle:{

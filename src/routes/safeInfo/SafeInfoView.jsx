@@ -61,8 +61,8 @@ export default function SaveInfoView(props) {
           </BasicCard>
           <BasicCard
             name="设备实时监控"
-            // more={true}
-            // moreClick={deviceMoreClick}
+            more={true}
+            moreClick={() => deviceMoreClick(SBSSJC)}
           >
             <DeviceControl
               data={SBSSJC}

@@ -1,6 +1,4 @@
-/**
- * Created by jdf-zhongtingbing on 2017/6/6.
- */
+
 import React from 'react';
 import classNames from 'classnames';
 import './rail.less'
@@ -42,15 +40,21 @@ export default class Rail extends React.PureComponent{
         </span>
         <span>:</span>
         <div className="middle">
-          <div style={{width:`${parseInt(onLine)/parseInt(total)*100-1}%`}} className="one">
-            {onLine}
-          </div>
-          <div style={{width:`${parseInt(warning)/parseInt(total)*100-1}%`}} className="two">
-            {warning}
-          </div>
-          <div style={{width:`${parseInt(offLine)/parseInt(total)*100-1}%`}} className="three">
-            {offLine}
-          </div>
+          {
+            parseInt(onLine) > 0 && <div style={{width:`${parseInt(onLine)/parseInt(total)*100-1}%`}} className="one">
+              {onLine}
+            </div>
+          }
+          {
+            parseInt(warning) > 0 && <div style={{width:`${parseInt(warning)/parseInt(total)*100-1}%`}} className="two">
+              {warning}
+            </div>
+          }
+          {
+            parseInt(offLine) && <div style={{width:`${parseInt(offLine)/parseInt(total)*100-1}%`}} className="three">
+              {offLine}
+            </div>
+          }
         </div>
         <span className="right">{`${total}个`}</span>
       </div>

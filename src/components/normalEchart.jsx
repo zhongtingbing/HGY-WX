@@ -7,6 +7,7 @@ var echarts = require('echarts/lib/echarts');
 require('echarts/lib/chart/bar');
 // require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 // require('echarts/lib/chart/line');
@@ -62,7 +63,17 @@ export default class NormalEcharts extends React.PureComponent{
         },
         axisLabel: {
           show: true,
-          margin: 6,
+          margin: 8,
+          dataZoom: [
+            {
+              type: 'inside',
+              start: 0,
+              end: 100
+            },
+          ],
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           textStyle: {
             fontSize:8
           }

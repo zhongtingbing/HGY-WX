@@ -1,10 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
+import {XLabelFormatter} from '../../utils/help'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 // require('echarts/lib/chart/bar');
 // 引入提示框和标题组件
 require('echarts/lib/component/legend');
+require('echarts/lib/component/dataZoom');
 require('echarts/lib/component/tooltip');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
@@ -74,6 +76,9 @@ class DeviceCahrt extends React.PureComponent{
         },
         axisLabel: {
           show: true,
+          formatter: function (params) {
+            return XLabelFormatter(params)
+          },
           margin: 6,
           interval: 0,
           textStyle: {
@@ -121,11 +126,18 @@ class DeviceCahrt extends React.PureComponent{
         },
       grid:{
         top: 36,
-        bottom:20,
+        bottom:40,
         left: 15,
         right:0
       },
       series: series,
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       legend: {
         itemWidth: 8,
         itemHeight: 8,

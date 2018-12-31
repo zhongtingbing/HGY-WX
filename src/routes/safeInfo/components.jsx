@@ -9,6 +9,7 @@ var echarts = require('echarts/lib/echarts');
 // 引入提示框和标题组件
 require('echarts/lib/component/legend');
 require('echarts/lib/component/tooltip');
+require('echarts/lib/component/dataZoom');
 // require('echarts/lib/component/title');
 // require('echarts/lib/chart/pie');
 require('echarts/lib/chart/line');
@@ -184,6 +185,13 @@ class AlarmChart extends React.PureComponent {
         left: 20,
         right: 10,
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: seriesList
     })
   }
@@ -346,6 +354,13 @@ class IndexChart extends React.PureComponent {
         left: 20,
         right: 10,
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: seriesList
     })
   }

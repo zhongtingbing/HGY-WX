@@ -17,7 +17,8 @@ class MoreDataPage extends React.PureComponent{
     this.props.goBack()
   }
 
-
+componentWillMount(){
+}
   componentDidMount(){
   }
 

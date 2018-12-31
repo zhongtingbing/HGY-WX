@@ -11,7 +11,7 @@ class SupervisionPage extends React.PureComponent{
     super(props)
     this.state = {
       loading: false,
-      data:[{latitudeAndLongitude: '120.01,32'}]
+      data:[{latitudeAndLongitude: '120.702935,27.981268'}]
     }
   }
   componentDidMount(){

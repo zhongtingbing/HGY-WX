@@ -43,15 +43,15 @@ export default class RingEchart extends React.PureComponent{
         {
           name:'',
           type:'pie',
-          radius: ['45%', '55%'],//设置大小
+          radius: ['38%', '47%'],//设置大小
           label: {
             normal: {
               show: true,
               formatter: '{b} {c}人',
-              padding: [-20, -60 , 0, -60,],
+              padding: [-6, -60 , 0, -60,],
               position: 'inter',
               textStyle: {
-                fontSize: '10',
+                fontSize: '8',
               }
             },
           },
