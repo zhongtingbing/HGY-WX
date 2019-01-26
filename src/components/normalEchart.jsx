@@ -2,6 +2,7 @@ import React from 'react';
 // 引入 ECharts 主模块
 import classNames from 'classnames';
 import  './normalEchart.less'
+import {XLabelFormatter} from '../utils/help'
 var echarts = require('echarts/lib/echarts');
 //引入柱状图
 require('echarts/lib/chart/bar');
@@ -64,13 +65,6 @@ export default class NormalEcharts extends React.PureComponent{
         axisLabel: {
           show: true,
           margin: 8,
-          dataZoom: [
-            {
-              type: 'inside',
-              start: 0,
-              end: 100
-            },
-          ],
           formatter: function (params) {
             return XLabelFormatter(params)
           },
@@ -117,10 +111,17 @@ export default class NormalEcharts extends React.PureComponent{
       },
       grid:{
         top: 20,
-        bottom:20,
-        left: 22,
+        bottom:40,
+        left: 28,
         right:2
       },
+      dataZoom: [
+        {
+          type: 'inside',
+          start: 0,
+          end: 100
+        },
+      ],
       series: [{
         data:YData || [50, 30, 30, 30, 30, 30, 30, 30, 30],
         type: 'bar',

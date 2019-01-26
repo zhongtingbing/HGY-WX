@@ -35,7 +35,11 @@ export default class RingEchart extends React.PureComponent{
       index,
       data,
       num
-    }=this.props
+    }=this.props;
+    let data1 = data.filter(item => (item.value !== '0' && item.value !== 0))
+    if(data1.length === 0){
+      data1 = [{name: '', value: '0'}]
+    }
     const executionChart = echarts.init(document.getElementById(`ring-echart-${index}`));
     // 绘制图表
     executionChart.setOption({
@@ -62,7 +66,7 @@ export default class RingEchart extends React.PureComponent{
               length2: 60,
             },
           },
-          data: data ||[
+          data: data1 ||[
               {value:30, name:'吊篮'},
               {value:18, name:'大绳'},
               {value:12, name:'塔吊师'},

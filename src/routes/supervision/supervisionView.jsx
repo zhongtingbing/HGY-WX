@@ -33,7 +33,7 @@ export default function SupervisionView(props) {
   const renderMarkerLayout = function (extData) {
     const obj = extData.myLabel
     return (
-      <div className='market'>
+      <div  className='market'>
         <div className='marketdesc'>
           <span>{obj.name}</span>
           <div className='marketdesc-bottom'>
@@ -59,24 +59,11 @@ export default function SupervisionView(props) {
 
   const first = data[0].latitudeAndLongitude.split(',')
 
-  // const markersEvents = {
-  //   click: (MapsOption, marker) => {
-  //     onClick(MapsOption.target.F.extData.myLabel)
-  //   },
-  //   mouseover:(e, marker) => {
-  //     marker.render(renderMarkerLayout);
-  //   },
-  //   mouseout: (e, marker) => {
-  //     marker.render(renderMarkerLayout);
-  //   }
-  // }
-
  const markersEvents = {
     click(e, marker){
-      // 通过高德原生提供的 getExtData 方法获取原始数据
       const extData = marker.getExtData();
       onClick(extData.myLabel)
-    }
+    },
   }
 
   return (

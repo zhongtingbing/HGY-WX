@@ -109,7 +109,7 @@ class WorkerChart4Year extends React.PureComponent {
       },
       grid:{
         top: 20,
-        bottom:40,
+        bottom:22,
         left: 22,
         right:-16,
       },
@@ -268,7 +268,7 @@ class WorkerChart4Month extends React.PureComponent {
       },
       grid:{
         top: 20,
-        bottom:42,
+        bottom:22,
         left: 22,
         right:6,
       },

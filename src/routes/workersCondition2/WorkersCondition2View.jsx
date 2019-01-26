@@ -65,7 +65,7 @@ export default function WorkersCondition2View(props) {
               data={CJGRRS}
             />
           </BasicCard>
-          <BasicCard name="工人平均工作时长">
+          <BasicCard name="工人平均工作时间">
             <GRPJGZSCharts
               index="GRPJGZSC"
               XData={GRPJGZSJ.XData}

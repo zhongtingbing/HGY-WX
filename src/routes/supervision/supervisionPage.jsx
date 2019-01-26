@@ -1,6 +1,6 @@
 import React from 'react';
 import bowser from 'bowser'
-import session from '../../utils/store'
+import {Toast} from 'antd-mobile'
 import {
   connect
 } from 'dva';
@@ -25,10 +25,10 @@ class SupervisionPage extends React.PureComponent{
 
   onClick = (item)=>{
     if(item && item.id){
-      bowser.android ? window.mobile.click(item.id) : ''
-      return
+      bowser.android ? window.mobile.click(item.id) :window.webkit.messageHandlers.click.postMessage({body: item.id});
+    }else {
+      Toast.info('服务器繁忙，请稍后再试')
     }
-    bowser.android ? window.mobile.click('1234') : ''
   }
 
   render(){

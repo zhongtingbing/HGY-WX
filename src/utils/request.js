@@ -2,6 +2,7 @@ import qs from 'qs';
 import _ from 'lodash';
 import Axios from 'axios';
 import {Toast} from 'antd-mobile'
+import bowser from 'bowser'
 
 const reqConfig = {
   withCredentials: true
@@ -73,7 +74,7 @@ function throwSrvError(data) {
 
 function checkCode(data) {
   if ( data.code === -1 ) {
-    window.mobile.tokenTiemOut()
+    bowser.android ? window.mobile.tokenTiemOut() : window.webkit.messageHandlers.tokenTimeOut.postMessage({body: 'token 过期'});
     return
   }
   if (data.code !== 0) {

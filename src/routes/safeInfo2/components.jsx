@@ -127,7 +127,7 @@ class DeviceCahrt extends React.PureComponent{
       grid:{
         top: 36,
         bottom:40,
-        left: 15,
+        left: 22,
         right:0
       },
       series: series,

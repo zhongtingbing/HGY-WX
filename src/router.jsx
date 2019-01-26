@@ -113,7 +113,7 @@ function RouterConfig({
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={SafeInfo}/>
+        <Route exact path="/" component={ProcessManagement2}/>
         {/*<Route exact path="/page01" component={Page01}/>*/}
         {/*<Route exact path="/page02" component={Page02}/>*/}
         {/*<Route exact path="/page03" component={Page03}/>*/}

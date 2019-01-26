@@ -51,7 +51,7 @@ export default class Rail extends React.PureComponent{
             </div>
           }
           {
-            parseInt(offLine) && <div style={{width:`${parseInt(offLine)/parseInt(total)*100-1}%`}} className="three">
+            parseInt(offLine) > 0 && <div style={{width:`${parseInt(offLine)/parseInt(total)*100-1}%`}} className="three">
               {offLine}
             </div>
           }

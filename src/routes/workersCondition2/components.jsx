@@ -447,7 +447,7 @@ class GRPJGZSCharts extends React.PureComponent{
         itemWidth: 8,
         itemHeight: 8,
         itemGap: 6,
-        data:[{name:'平均工作天数', icon:'rect'},{name:'平均工作时长',icon:'rect'}],
+        data:[{name:'平均工作天数（7天）', icon:'rect'},{name:'平均工作时长（7天）',icon:'rect'}],
         textStyle: {
           fontSize: 9,
           color: '#F1F1F3'
@@ -568,7 +568,7 @@ class GRPJGZSCharts extends React.PureComponent{
       series: [
           {
             data:YData.days,
-            name: '平均工作天数',
+            name: '平均工作天数（7天）',
             type: 'bar',
             barWidth:'12',              //---柱形宽度
             barCategoryGap:'40%',
@@ -582,7 +582,7 @@ class GRPJGZSCharts extends React.PureComponent{
           data:YData.hours,
           type: 'bar',
           barWidth:'12',
-          name: '平均工作时长',
+          name: '平均工作时长（7天）',
           yAxisIndex:1,
           barCategoryGap:'40%',
           itemStyle:{

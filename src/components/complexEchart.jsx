@@ -163,8 +163,8 @@ export default class ComplexEcharts extends React.PureComponent{
       grid:{
         top: 35,
         bottom:35,
-        left: 20,
-        right:15
+        left: 26,
+        right:26
       },
       series: [{
         name: leftName,
