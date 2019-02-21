@@ -8,13 +8,9 @@ import Dynamic from 'dva/dynamic';
 function RouterConfig({
   history, app
 }) {
-  const executionPage = Dynamic({
-    app,
-    component: () => import('./routes/execution/executionPage')
-  });
   const Page01 = Dynamic({
     app,
-    component: () => import('./routes/supervision/supervisionPage')
+    component: () => import('./routes/page01')
   });
   const Page02 = Dynamic({
     app,
@@ -27,108 +23,38 @@ function RouterConfig({
     ],
     component: () => import('./routes/page03')
   });
-  const Supervision = Dynamic({
+
+  const Home = Dynamic({
     app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/supervision/supervisionPage')
+    component: () => import('./routes/Home/Home')
   });
-  const ProjectOverview = Dynamic({
+  const SaleChance = Dynamic({
     app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/projectOverview/ProjectOverviewPage')
-  });
-  const WorkersCondition = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/workersCondition/WorkersConditionPage')
+    component: () => import('./routes/SaleChance/SaleChance')
   });
 
-  const SafeInfo = Dynamic({
+  const SaleChanceEdit = Dynamic({
     app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/safeInfo/SafeInfoPage')
-  });
-  const ProcessManagement = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/processManagement/ProcessManagementPage')
-  });
-  const SupplyChainMa = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/supplyChainMa/SupplyChainMaPage')
-  });
-  const WorkersCondition2 = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/workersCondition2/WorkersCondition2Page')
-  });
-  const SafeInfo2 = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/safeInfo2/SafeInfo2Page')
+    component: () => import('./routes/SaleChance/SaleChanceEdit')
   });
 
-  const ProcessManagement2 = Dynamic({
+  const SaleChanceCustomer = Dynamic({
     app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/processManagement2/ProcessManagement2Page')
+    component: () => import('./routes/SaleChance/Customer')
   });
 
-  const SupplyChainMa2 = Dynamic({
-    app,
-    // models: () => [
-    //   import('./models/example')
-    // ],
-    component: () => import('./routes/supplyChainMa2/SupplyChainMa2Page')
-  });
 
-  const MoreData = Dynamic({
-    app,
-    component: () => import('./routes/moreData/MoreDataPage')
-  });
-
-  const DeviceMoreData = Dynamic({
-    app,
-    component: () => import('./routes/safeInfo/DeviceMoreDataPage')
-  });
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={ProcessManagement2}/>
-        {/*<Route exact path="/page01" component={Page01}/>*/}
-        {/*<Route exact path="/page02" component={Page02}/>*/}
-        {/*<Route exact path="/page03" component={Page03}/>*/}
-        <Route exact path="/supervision" component={Supervision} />
-        <Route exact path="/project-overview" component={ProjectOverview}/>
-        <Route exact path="/workers-condition" component={WorkersCondition}/>
-        <Route exact path="/safe-info" component={SafeInfo}/>
-        <Route exact path="/process-management" component={ProcessManagement}/>
-        <Route exact path="/supply-chain" component={SupplyChainMa}/>
-        <Route exact path="/workers-condition2" component={WorkersCondition2}/>
-        <Route exact path="/safe-info2" component={SafeInfo2}/>
-        <Route exact path="/process-management2" component={ProcessManagement2}/>
-        <Route exact path="/supply-chain2" component={SupplyChainMa2}/>
-        <Route exact path="/more-data" component={MoreData}/>
-        <Route exact path="/device-more-data" component={DeviceMoreData}/>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/page01" component={Page01}/>
+        <Route exact path="/page02" component={Page02}/>
+        <Route exact path="/page03" component={Page03}/>
+        <Route exact path="/home" component={Home}/>
+        <Route exact path="/sale-chance" component={SaleChance}/>
+        <Route exact path="/sale-chance-edit" component={SaleChanceEdit}/>
+        <Route exact path="/sale-chance-customer" component={SaleChanceCustomer}/>
       </Switch>
     </Router>
   );

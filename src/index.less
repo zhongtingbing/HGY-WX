@@ -20,7 +20,7 @@ div {
 body {
   font-size: @font-size-14!important;
   color: @font-color;
-  background-color: @background-color;
+  //background-color: @background-color;
   line-height: 1.6;
   font-family: -apple-system, "SF UI Text", Roboto, Noto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
   width: 100%;
@@ -114,4 +114,20 @@ body {
     padding: 0;
     -webkit-text-size-adjust: none;
   }
+}
+
+.paging-list-view {
+  overflow: inherit !important;
+}
+.am-input-label {
+  font-size: 14px !important;
+  width: 90px !important;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 12px;
+}
+.am-list-item .am-input-control input {
+  font-size: 14px !important;
+  color: @primary-color !important;
 }

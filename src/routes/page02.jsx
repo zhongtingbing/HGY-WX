@@ -9,7 +9,7 @@ import styles from './page02.less';
 
 import Main from '../layouts/main.jsx';
 
-var a =option = {
+var option = {
   legend: {
     orient: 'vertical',
     x: 'left',

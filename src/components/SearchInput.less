@@ -1,0 +1,21 @@
+@import '../theme/theme.less';
+@import '../theme/mixin.less';
+
+@prefixCls:search-input-123;
+
+.@{prefixCls} {
+  padding:0 10px;
+  height: 35px;
+  position: relative;
+  &-input {
+    width: 100%;
+    border: 1px solid #ddd;
+    height: 35px;
+  }
+  &-img {
+    position: absolute;
+    right: 26px;
+    top: 11px
+  }
+}
+

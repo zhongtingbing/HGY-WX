@@ -1,0 +1,56 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: sale-chance-view;
+
+.@{prefixCls} {
+  padding-top:10px;
+  .pick-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #fff;
+    &-item {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      color: @primary-color;
+    }
+  }
+  .sale-card {
+    margin-bottom: 5px;
+    .sale-card-body {
+      position: relative;
+      padding: 12px;
+      &-edit {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+        color: @primary-color ;
+      }
+      >div {
+        height: 20px;
+        line-height: 20px;
+      }
+      span {
+        max-width: 200px;
+        .ellipsis();
+        display: inline-block;
+      }
+    }
+    .btns {
+      display: flex;
+      background-color: #f5f5f9;
+      >div {
+        flex: 1;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        .setOnePxAll();
+        .setTapActive();
+      }
+    }
+  }
+}

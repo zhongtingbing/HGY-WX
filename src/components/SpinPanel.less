@@ -1,0 +1,12 @@
+@import './../theme/mixin.less';
+
+@prefixCls: mb-spin-panel;
+
+
+.@{prefixCls} {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //必须加上， 我也不知道为嘛，反正不加在IOS上就出不来
+  position: relative;
+}

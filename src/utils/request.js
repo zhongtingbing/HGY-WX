@@ -73,15 +73,12 @@ function throwSrvError(data) {
 }
 
 function checkCode(data) {
-  if ( data.code === -1 ) {
-    bowser.android ? window.mobile.tokenTiemOut() : window.webkit.messageHandlers.tokenTimeOut.postMessage({body: 'token 过期'});
-    return
-  }
   if (data.code !== 0) {
     Toast.info(data.msg, 3);
     return;
   }
-  return data.data;
+  console.log()
+  return data;
 }
 
 function handleReqError(err) {
@@ -107,7 +104,6 @@ export function   getJson(url, data) {
 }
 
 export function postJson(url, data) {
-  console.log(url)
   return handleRequest(post(url, data));
 }
 
