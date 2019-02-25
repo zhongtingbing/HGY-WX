@@ -1,9 +1,8 @@
 import React from 'react';
-import { List, InputItem, Button} from 'antd-mobile'
+import { List, InputItem} from 'antd-mobile'
 import Main from '../../layouts/main.jsx';
 import  './SaleChanceEditView.less';
 import PickerListItem from '../../components/PickerListItem'
-const Item = List.Item
 const prefixCls = 'sale-chance-edit-view'
 
 const pickerData = [
@@ -20,11 +19,12 @@ const pickerData = [
 
  export default function SaleChanceEditView(props) {
   const {
-    nextStep
+    nextStep,
+    onSubmit
   } = props
 
     return (
-    <Main title={props.title} rightContent={'保存'} location={props.location}>
+    <Main title={props.title} rightContent={<div onClick={onSubmit}>保存</div>} location={props.location}>
       <div className={prefixCls}>
         <div className="title">基本信息:</div>
         <List>

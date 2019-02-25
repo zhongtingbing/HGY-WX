@@ -38,13 +38,24 @@ componentDidMount(){
      return querySaleChanceService(param)
   }
 
-  toEdit = () => {}
+  toFollowRecord = () => {
+    this.props.goTo('/sale-chance-follow-record')
+  }
+
+  toEdit = () => {
+     this.props.goTo('/sale-chance-edit', {type: 'edit'})
+  }
 
   toDetail = () => {}
   onAdd = () => {
     this.props.goTo('/sale-chance-edit')
   }
-
+  toShop = (record) => {
+    this.props.goTo('/shop', record)
+  }
+  toCreateContract = (record) => {
+    this.props.goTo('/create-contract', record)
+  }
   render() {
   return (
     <SaleChanceView
@@ -57,6 +68,9 @@ componentDidMount(){
       querySaleChance={this.querySaleChance}
       onAdd={this.onAdd}
       title="销售机会管理"
+      toFollowRecord={this.toFollowRecord}
+      toShop={this.toShop}
+      toCreateContract={this.toCreateContract}
     />
   )
 }
@@ -73,15 +87,11 @@ function mapStateToProps() {
 function propsDispatchToMap(dispatch) {
   window._dispatch = dispatch
   return {
-    go(){
-      dispatch({
-        type: 'main/query',
-        payload: {id: 22},
-      })
-    },
-    goTo(path) {
-      console
-      dispatch(routerRedux.push(path))
+    goTo(pathname, state) {
+      dispatch(routerRedux.push({
+        pathname,
+        state,
+      }))
     }
   };
 }

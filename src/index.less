@@ -124,10 +124,41 @@ body {
   width: 90px !important;
 }
 
+.input-require {
+  .am-input-label {
+    &:after{
+      display: inline-block;
+      margin-right: 4px;
+      content: "*";
+      font-family: SimSun;
+      line-height: 1;
+      font-size: 14px;
+      color: #f5222d;
+    }
+  }
+}
+
+
 input::-webkit-input-placeholder {
   font-size: 12px;
 }
 .am-list-item .am-input-control input {
   font-size: 14px !important;
-  color: @primary-color !important;
+  //color: @primary-color !important;
+}
+.radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  border: 1px solid @primary-color;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: @primary-color;
+  }
 }

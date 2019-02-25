@@ -1,0 +1,20 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: shop-home-view;
+
+.@{prefixCls} {
+  padding-top:10px;
+  background-color: #fff;
+  &-filter {
+    display: flex;
+    align-items: center;
+    >div {
+      flex: 1;
+    }
+    >span {
+      margin-right: 12px;
+    }
+    padding-bottom: 10px;
+  }
+}

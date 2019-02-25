@@ -45,5 +45,25 @@ export default {
         totalSize: 20
       })
     },1000)
-  }
+  },
+
+  'POST /queryGoodsListService' (req,res){
+    let list = [];
+    for(let i = 0; i < 20; i++ ){
+      list.push({
+        name: '人脸识别急',
+        brand: '中控',
+        version: 'A209',
+        price: 4000,
+        id: i,
+      })
+    }
+    setTimeout(()=>{
+      res.json({
+        code:0,
+        list: list,
+        totalSize: 20
+      })
+    },100)
+  },
 };

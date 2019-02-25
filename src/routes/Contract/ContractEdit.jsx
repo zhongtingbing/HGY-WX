@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomerView from './CustomerView'
+import ContractEditView from './ContractEditView'
 import { routerRedux } from 'dva/router'
 import {
   connect
@@ -7,11 +7,11 @@ import {
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class Customer extends React.Component{
+class ContractEdit extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      files: []
+      modalVisible: false
     }
   }
 
@@ -24,12 +24,8 @@ componentDidMount(){
      })
     }
 
-  onSearch = (value) => {
-     console.log(value)
-  }
 
   onChange = (value) => {
-  console.log(value)
     this.setState({
       ...value
     })
@@ -43,15 +39,38 @@ componentDidMount(){
     this.props.goTo()
   }
 
+  onModalVisibleChange = () => {
+  this.setState({
+    modalVisible: !this.state.modalVisible
+  })
+  }
+  toWX = () => {
+    this.setState({
+      modalVisible: false
+    })
+  }
+  toQQ = () => {
+    this.setState({
+      modalVisible: false
+    })
+  }
+  toEmail = () => {
+    this.setState({
+      modalVisible: false
+    })
+  }
+
   render() {
   return (
-    <CustomerView
+    <ContractEditView
       {...this.props}
       {...this.state}
       onChange={this.onChange}
-      querySaleChance={this.querySaleChance}
-      onSubmit={this.onSubmit}
-      title="新增销售机会"
+      onModalVisibleChange={this.onModalVisibleChange}
+      toWX={this.toWX}
+      toQQ={this.toQQ}
+      toEmail={this.toEmail}
+      title="新建合同"
     />
   )
 }
@@ -70,10 +89,13 @@ function propsDispatchToMap(dispatch) {
         payload: {id: 22},
       })
     },
-    goTo(path) {
-      dispatch(routerRedux.pushState(path))
-    }
+    goTo(pathname, state) {
+      dispatch(routerRedux.push({
+        pathname,
+        state,
+      }))
+    },
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(Customer);
+export default connect(mapStateToProps ,propsDispatchToMap)(ContractEdit);

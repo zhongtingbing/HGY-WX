@@ -19,3 +19,8 @@ export function testService() {
 export function querySaleChanceService(param) {
   return postJson('querySaleChanceService', {...param})
 }
+
+export function queryGoodsListService(param) {
+  return postJson('queryGoodsListService', {...param})
+}
+

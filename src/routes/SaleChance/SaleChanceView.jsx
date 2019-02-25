@@ -90,7 +90,10 @@ const statusList = [
     querySaleChance,
     toEdit,
     toDetail,
-    onAdd
+    onAdd,
+    toFollowRecord,
+    toShop,
+    toCreateContract
   } = props
 
    const findLabel = (arr, value) => {
@@ -178,9 +181,9 @@ const statusList = [
                  <div onClick={toEdit} className="sale-card-body-edit">编辑</div>
                </div>
                <div className="btns">
-                 <div>新增跟进记录</div>
-                 <div>创建报价单</div>
-                 <div>创建合同</div>
+                 <div onClick={toFollowRecord}>新增跟进记录</div>
+                 <div onClick={() => toShop(rowData)}>创建报价单</div>
+                 <div onClick={() => toCreateContract(rowData)}>创建合同</div>
                </div>
              </div>
             )

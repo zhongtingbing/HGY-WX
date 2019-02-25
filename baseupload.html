@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <style>
+    td {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <td>选择图片：</td>
+    <td><input type="file" id="file1" /></td>
+  </tr>
+  <tr>
+    <td>原图预览：</td>
+    <td id="ytyl"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="button" value="压缩" id="btnYaSuo" /></td>
+  </tr>
+  <tr>
+    <td>压缩预览：</td>
+    <td id="ysyl"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input type="button" value="上传" id="btnUpload" /></td>
+  </tr>
+</table>
+
+<canvas id="myCanvas" style="display:none">
+  Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+<script>
+
+  file1.onchange = function () {
+    if (file1.files.length < 1 || !/image\/\w+/.test(file1.files[0].type)) {
+      //判断格式正则：/image\/png/，/image\/jpeg/，/image\/gif/
+      alert("请确保文件为图像类型");
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(file1.files[0]);
+    reader.onload = function (e) {
+      var result = e.target.result;
+      if (result && result.length > 0) {
+        ytyl.innerHTML = '<img src="' + result + '" id="img1" />';
+      }
+    };
+  };
+
+  btnYaSuo.onclick = function () {
+    var imgobj = document.getElementById("img1");
+    var canvas = document.getElementById("myCanvas");
+    canvas.width = imgobj.width;
+    canvas.height = imgobj.height;
+    var context = canvas.getContext("2d");
+    context.drawImage(imgobj, 0, 0, canvas.width, canvas.height);
+    //取值：image/jpeg、image/png（默认值）
+    var dataUrl = canvas.toDataURL("image/jpeg", 0.9);
+    ysyl.innerHTML = '<img src="' + dataUrl + '" id="img2" />';
+  };
+
+  btnUpload.onclick = function () {
+    //var imgobj = document.getElementById("img1"); //未压缩的图像
+    var imgobj = document.getElementById("img2");
+    if (!imgobj) {
+      return;
+    }
+
+    console.log(imgobj.getAttribute("src"))
+    //做为普通的字符串POST到服务端
+    var data = { "FileData": imgobj.getAttribute("src") };
+    //$.post("Handler1.ashx", data, function (res) { }, "json");
+  };
+
+</script>
+
+</body>
+</html>

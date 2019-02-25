@@ -1,0 +1,93 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: quotation-view-122;
+
+.@{prefixCls} {
+  .goods-title {
+    padding:0 12px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .goods-desc {
+    padding: 12px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 110px;
+    justify-content: space-between;
+    .setOnePxBySide(bottom);
+    .top {
+      >span {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      >div {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .bottom {
+      display: flex;
+      >input {
+        flex: 1;
+        .setOnePxAll()
+      }
+    }
+  }
+ &-gather {
+   padding: 6px 12px;
+   font-size: 11px;
+   margin-bottom: 50px;
+   .line-1 {
+     .lg {
+       font-size: 16px;
+     }
+   }
+   .line-2{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+   }
+   .line-3 {
+     >span {
+      margin-right: 20px;
+     }
+   }
+ }
+  &-btns {
+    display: flex;
+    height: 50px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    >div {
+      width: 25%;
+      .setOnePxBySide(right);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      .setTapActive()
+    }
+  }
+  &-modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    >div {
+      height: 50px;
+      width: 100px;
+      .setOnePxAll();
+      .setTapActive();
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

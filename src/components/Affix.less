@@ -1,0 +1,43 @@
+@import '../theme/theme.less';
+@import '../theme/mixin.less';
+
+@prefixCls: affix0kjh;
+
+.@{prefixCls} {
+  position: fixed;
+  background-color: #77a5f1;
+  bottom: 30px;
+  right: 15px;
+  z-index: 9;
+  border-radius: 40px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: @font-size-15;
+  box-shadow: 0px 2px 4px #919191;
+  .transition();
+  &:active {
+    background-color: darken(@primary-color, 10%);
+    color: rgba(225, 225, 225, .3)
+  }
+  &-content {
+    width: 45px;
+    line-height: 1.2;
+    text-align: center;
+    font-size: 13px;
+  }
+  .mb-icon {
+    color: #ffffff;
+    font-size: 16px;
+    &:active {
+      color: rgba(225, 225, 225, .3)
+    }
+  }
+  img{
+    width: 20px;
+    height: 20px;
+  }
+}

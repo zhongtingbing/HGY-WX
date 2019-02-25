@@ -1,5 +1,5 @@
 import React from 'react';
-import SaleChanceEditView from './SaleChanceEditView'
+import AddFollowRecordView from './AddFollowRecordView'
 import { routerRedux } from 'dva/router'
 import {
   connect
@@ -7,11 +7,11 @@ import {
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class SaleChanceEdit extends React.Component{
+class AddFollowRecord extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      ...props.location.state
+      files: []
     }
   }
 
@@ -24,13 +24,10 @@ componentDidMount(){
      })
     }
 
-  onSearch = (value) => {
-     console.log(value)
-  }
-
-  onChange = (o) => {
+  onChange = (value) => {
+  console.log(value)
     this.setState({
-      ...o
+      ...value
     })
   }
 
@@ -38,24 +35,19 @@ componentDidMount(){
      return querySaleChanceService(param)
   }
 
-  nextStep = () => {
-    this.props.goTo('/sale-chance-customer')
-  }
-
   onSubmit = () => {
-
+    this.props.goTo()
   }
 
   render() {
   return (
-    <SaleChanceEditView
+    <AddFollowRecordView
       {...this.props}
       {...this.state}
       onChange={this.onChange}
-      onSubmit={this.onSubmit}
       querySaleChance={this.querySaleChance}
-      nextStep={this.nextStep}
-      title={this.state.type ==='edit' ? "编辑销售机会" : "新增销售机会"}
+      onSubmit={this.onSubmit}
+      title="新增跟进记录"
     />
   )
 }
@@ -74,10 +66,10 @@ function propsDispatchToMap(dispatch) {
         payload: {id: 22},
       })
     },
-    goTo(path, data) {
-      dispatch(routerRedux.push(path, {state: data}))
+    goTo(path) {
+      dispatch(routerRedux.pushState(path))
     }
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(SaleChanceEdit);
+export default connect(mapStateToProps ,propsDispatchToMap)(AddFollowRecord);

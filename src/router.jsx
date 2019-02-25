@@ -43,7 +43,43 @@ function RouterConfig({
     component: () => import('./routes/SaleChance/Customer')
   });
 
+  const SaleChanceFollowRecord = Dynamic({
+    app,
+    component: () => import('./routes/SaleChance/AddFollowRecord')
+  });
 
+  const ShopHome = Dynamic({
+    app,
+    models: () => [
+      import('./models/shop')
+    ],
+    component: () => import('./routes/Shop/Home')
+  });
+
+
+  const ShopList = Dynamic({
+    app,
+    models: () => [
+      import('./models/shop')
+    ],
+    component: () => import('./routes/Shop/ShopList')
+  });
+  const Quotation = Dynamic({
+    app,
+    models: () => [
+      import('./models/shop')
+    ],
+    component: () => import('./routes/Shop/Quotation')
+  });
+
+  const CreateContract = Dynamic({
+    app,
+    component: () => import('./routes/Contract/CreateContract')
+  });
+  const ContractEdit = Dynamic({
+    app,
+    component: () => import('./routes/Contract/ContractEdit')
+  });
   return (
     <Router history={history}>
       <Switch>
@@ -55,6 +91,12 @@ function RouterConfig({
         <Route exact path="/sale-chance" component={SaleChance}/>
         <Route exact path="/sale-chance-edit" component={SaleChanceEdit}/>
         <Route exact path="/sale-chance-customer" component={SaleChanceCustomer}/>
+        <Route exact path="/sale-chance-follow-record" component={SaleChanceFollowRecord}/>
+        <Route exact path="/shop" component={ShopHome}/>
+        <Route exact path="/shop-list" component={ShopList}/>
+        <Route exact path="/quotation" component={Quotation}/>
+        <Route exact path="/create-contract" component={CreateContract}/>
+        <Route exact path="/create-edit" component={ContractEdit}/>
       </Switch>
     </Router>
   );

@@ -1,0 +1,127 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: goods-card;
+
+.@{prefixCls} {
+  padding: 12px;
+  .setOnePxBySide(bottom);
+  display: flex;
+  align-items: center;
+  >img {
+    height: 100px;
+    width: 120px;
+  }
+  .right {
+    margin-left: 20px;
+    line-height: 20px;
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .price {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    .btn {
+      background-color: @primary-color;
+      .setTapActive( @primary-color);
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .count-edit {
+      display: flex;
+      width: 80px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 18px;
+      .plus, .down {
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        background-color: gainsboro;
+        line-height: 20px;
+        text-align: center;
+        .setTapActive()
+      }
+    }
+  }
+}
+
+.goods-card-1{
+  display: flex;
+  align-items: center;
+  .setOnePxBySide(bottom);
+  &-left {
+   margin-left: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    border: 1px solid @primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 5px;
+      background-color: @primary-color;
+  }
+  }
+  &-right {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .top {
+      display: flex;
+      align-items: center;
+      >img {
+        height: 100px;
+        width: 120px;
+      }
+      .right {
+        margin-left: 20px;
+        line-height: 20px;
+        .name {
+          font-size: 16px;
+          font-weight: 600;
+        }
+        .price {
+          font-weight: 600;
+          margin-right: 10px;
+        }
+        .btn {
+          background-color: @primary-color;
+          .setTapActive( @primary-color);
+          color: #fff;
+          text-align: center;
+          border-radius: 5px;
+        }
+        .count-edit {
+          display: flex;
+          width: 80px;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 18px;
+          .plus, .down {
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            background-color: gainsboro;
+            line-height: 20px;
+            text-align: center;
+            .setTapActive()
+          }
+        }
+      }
+    }
+    .bottom {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+    }
+  }
+}

@@ -23,20 +23,21 @@ export default class PickerListItem extends React.PureComponent {
       extra,
       title,
       style,
+      require,
       ...others
     } = this.props
 
     const cls = classNames({
       [prefixCls]: true,
-      [className]: className
+      [className]: className,
+      ['input-require']: require
     })
-
     return (
       <Picker
         data={data}
         cols={1}
-        value={value?[value]:[]}
-        onChange={this.onChange}
+        value={value ? [value] : []}
+        onChange={(v) => {onChange(v[0])}}
         extra={extra}
         title={title}
       >
@@ -44,7 +45,7 @@ export default class PickerListItem extends React.PureComponent {
           <InputItem
             className={cls}
             editable={false}
-            value={value}
+            value={data ? data.filter(item => item.value === value)[0].label : ''}
             extra={<Icon size="sm" type="right"/>}
           >
             {children}
@@ -54,3 +55,4 @@ export default class PickerListItem extends React.PureComponent {
     )
   }
 }
+

@@ -1,0 +1,50 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: contract-edit-view;
+
+.@{prefixCls} {
+  background-color: #fff;
+  .quotation-card {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    .setOnePxBySide(bottom);
+    padding: 0 12px;
+  }
+  &-btns {
+    display: flex;
+    height: 50px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    >div {
+      width: 33.33%;
+      .setOnePxBySide(right);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .setOnePxBySide(top);
+      text-align: center;
+      .setTapActive()
+    }
+  }
+  &-modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    >div {
+      height: 50px;
+      width: 100px;
+      .setOnePxAll();
+      .setTapActive();
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
