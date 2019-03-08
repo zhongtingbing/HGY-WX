@@ -45,7 +45,7 @@ export default class PickerListItem extends React.PureComponent {
           <InputItem
             className={cls}
             editable={false}
-            value={data ? data.filter(item => item.value === value)[0].label : ''}
+            value={ data.filter(item => item.value === value)[0] ? data.filter(item => item.value === value)[0].label : ''}
             extra={<Icon size="sm" type="right"/>}
           >
             {children}
@@ -56,3 +56,6 @@ export default class PickerListItem extends React.PureComponent {
   }
 }
 
+PickerListItem.defaultProps = {
+  data:[],
+}

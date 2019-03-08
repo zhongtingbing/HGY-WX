@@ -17,6 +17,7 @@
     "flex.css": "^1.1.7",
     "html2canvas": "^1.0.0-alpha.12",
     "http": "0.0.0",
+    "install": "^0.12.2",
     "jspdf": "^1.5.3",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
@@ -25,10 +26,11 @@
     "prop-types": "^15.6.1",
     "qs": "^6.5.1",
     "query-string": "^5.1.0",
-    "react": "^16.2.0",
+    "react": "^16.3.0",
     "react-amap": "^1.2.7",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.3.0",
     "react-loading": "^2.0.3",
+    "react-zmage": "^0.6.8",
     "store2": "^2.5.4"
   },
   "devDependencies": {

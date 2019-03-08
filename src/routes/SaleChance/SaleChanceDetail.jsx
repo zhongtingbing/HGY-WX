@@ -1,5 +1,5 @@
 import React from 'react';
-import SaleChanceEditView from './SaleChanceEditView'
+import SaleChanceDetailView from './SaleChanceDetailView'
 import { routerRedux } from 'dva/router'
 import {
   connect
@@ -7,7 +7,7 @@ import {
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class SaleChanceEdit extends React.Component{
+class SaleChanceDetail extends React.Component{
   constructor(props){
     super(props)
     this.state={
@@ -15,9 +15,9 @@ class SaleChanceEdit extends React.Component{
     }
   }
 
-componentDidMount(){
-    this.getData()
-}
+  componentDidMount(){
+      this.getData()
+  }
 
    getData = () => {
      testService().then(res=>{
@@ -38,30 +38,35 @@ componentDidMount(){
      return querySaleChanceService(param)
   }
 
-  nextStep = () => {
-    this.props.goTo('/sale-chance-customer')
+  toEdit = () => {
+    this.props.goTo('/sale-chance-edit', {type: 'edit'})
   }
 
-  onSubmit = () => {
-
+  onAdd = () => {
+    this.props.goTo('/sale-chance-edit')
   }
 
+  save = () => {
+
+  }
 
 
   render() {
   return (
-    <SaleChanceEditView
+    <SaleChanceDetailView
       {...this.props}
       {...this.state}
+      toEdit={this.toEdit}
       onChange={this.onChange}
-      onSubmit={this.onSubmit}
       querySaleChance={this.querySaleChance}
-      nextStep={this.nextStep}
-      title={this.state.type ==='edit' ? "编辑销售机会" : "新增销售机会"}
+      onAdd={this.onAdd}
+      save={this.save}
+      title="销售机会详情"
     />
   )
 }
 }
+
 
 function mapStateToProps() {
   return {};
@@ -70,16 +75,13 @@ function mapStateToProps() {
 function propsDispatchToMap(dispatch) {
   window._dispatch = dispatch
   return {
-    go(){
-      dispatch({
-        type: 'main/query',
-        payload: {id: 22},
-      })
-    },
-    goTo(path, data) {
-      dispatch(routerRedux.push(path, {state: data}))
+    goTo(pathname, state) {
+      dispatch(routerRedux.push({
+        pathname,
+        state,
+      }))
     }
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(SaleChanceEdit);
+export default connect(mapStateToProps ,propsDispatchToMap)(SaleChanceDetail);

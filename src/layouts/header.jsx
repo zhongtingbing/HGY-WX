@@ -8,9 +8,7 @@ import {
 import './header.less';
 
 function Header({
-  location,
   title,
-  onRightClick,
   rightContent,
   showLeft = true,
 

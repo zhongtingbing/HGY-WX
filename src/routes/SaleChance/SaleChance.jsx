@@ -46,7 +46,9 @@ componentDidMount(){
      this.props.goTo('/sale-chance-edit', {type: 'edit'})
   }
 
-  toDetail = () => {}
+  toDetail = (record) => {
+    this.props.goTo('/sale-chance-detail', record)
+  }
   onAdd = () => {
     this.props.goTo('/sale-chance-edit')
   }
@@ -56,6 +58,11 @@ componentDidMount(){
   toCreateContract = (record) => {
     this.props.goTo('/create-contract', record)
   }
+
+  toAddCounterpart = (record) => {
+    this.props.goTo('/add-counterpart', record)
+  }
+
   render() {
   return (
     <SaleChanceView
@@ -71,6 +78,7 @@ componentDidMount(){
       toFollowRecord={this.toFollowRecord}
       toShop={this.toShop}
       toCreateContract={this.toCreateContract}
+      toAddCounterpart={this.toAddCounterpart}
     />
   )
 }

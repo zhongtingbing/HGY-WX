@@ -1,0 +1,25 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: add-counterpart-view;
+
+.@{prefixCls} {
+  .title {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+  }
+  .img-area {
+    margin-top: 10px;
+    .desc {
+      height: 20px;
+      line-height: 20px;
+      padding: 0 10px;
+    }
+    .has-img {
+      .am-image-picker-upload-btn {
+        display: none;
+      }
+    }
+  }
+}

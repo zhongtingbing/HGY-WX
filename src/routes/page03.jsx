@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd-mobile'
+import Zmage from 'react-zmage'
+import TIMG from '../assets/image/icon_pm2.5.png'
 import {
   connect
 } from 'dva';
@@ -91,6 +93,7 @@ function Page03(props) {
         {/*<Button className='btn' onClick={clickHandle} size="small">哈哈</Button>*/}
         {/*<Button className='btn' onClick={props.go} size="small">click me</Button>*/}
         <Button className='btn' onClick={toPdf} size="small">生成PDF</Button>
+        <Zmage src={TIMG}/>
       </div>
     </Main>
   );

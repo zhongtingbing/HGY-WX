@@ -19,7 +19,6 @@ function Main({
   return (
     <div className={cls}>
       <Header title={title} showLeft={showLeft} rightContent = {rightContent} location={location} />
-      {/*<Footer location={location} childrens={children} />*/}
       <div className="main-body">
         {
           loading ?

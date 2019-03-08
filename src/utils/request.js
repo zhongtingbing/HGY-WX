@@ -73,11 +73,10 @@ function throwSrvError(data) {
 }
 
 function checkCode(data) {
-  if (data.code !== 0) {
-    Toast.info(data.msg, 3);
-    return;
-  }
-  console.log()
+  // if (data.code !== 0) {
+  //   Toast.info(data.msg, 3);
+  //   return;
+  // }
   return data;
 }
 

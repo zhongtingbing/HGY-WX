@@ -28,7 +28,7 @@ componentDidMount(){
     this.props.goTo('/create-edit')
   }
   toUpload = () => {
-
+    this.props.goTo('upload-contract-file')
   }
 
   toUploadWithoutProof = () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './component.less'
 class BasicGoodsCard extends React.Component{
   render() {

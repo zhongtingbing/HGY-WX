@@ -80,6 +80,25 @@ function RouterConfig({
     app,
     component: () => import('./routes/Contract/ContractEdit')
   });
+  const UploadContract = Dynamic({
+    app,
+    component: () => import('./routes/UploadContract/Customer')
+  });
+
+  const UploadContractFile = Dynamic({
+    app,
+    component: () => import('./routes/Contract/UploadContract')
+  });
+
+  const AddCounterpart = Dynamic({
+    app,
+    component: () => import('./routes/AddCounterpart/AddCounterpart')
+  });
+  const SaleChanceDetail = Dynamic({
+    app,
+    component: () => import('./routes/SaleChance/SaleChanceDetail')
+  });
+
   return (
     <Router history={history}>
       <Switch>
@@ -92,11 +111,15 @@ function RouterConfig({
         <Route exact path="/sale-chance-edit" component={SaleChanceEdit}/>
         <Route exact path="/sale-chance-customer" component={SaleChanceCustomer}/>
         <Route exact path="/sale-chance-follow-record" component={SaleChanceFollowRecord}/>
+        <Route exact path="/sale-chance-detail" component={SaleChanceDetail}/>
         <Route exact path="/shop" component={ShopHome}/>
         <Route exact path="/shop-list" component={ShopList}/>
         <Route exact path="/quotation" component={Quotation}/>
         <Route exact path="/create-contract" component={CreateContract}/>
+        <Route exact path="/upload-contract" component={UploadContract}/>
         <Route exact path="/create-edit" component={ContractEdit}/>
+        <Route exact path="/upload-contract-file" component={UploadContractFile}/>
+        <Route exact path="/add-counterpart" component={AddCounterpart}/>
       </Switch>
     </Router>
   );

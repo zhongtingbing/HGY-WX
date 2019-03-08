@@ -1,0 +1,57 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: upload-contract-view;
+
+.@{prefixCls} {
+  padding-top: 10px;
+  background-color: #ffffff;
+  position: relative;
+
+  .am-image-picker-list {
+    padding: 0 !important;
+  }
+
+  .file-desc {
+    position: absolute;
+     top: 110px;
+     left: 50%;
+     transform: translateX(-50%);
+    font-size: 18px;
+  }
+
+  .am-image-picker-item-content {
+    display: none;
+  }
+  .am-image-picker {
+    width: 220px;
+    height: 140px;
+    margin: 0 auto;
+    overflow: hidden;
+    .am-flexbox-item {
+      height: 140px;
+      width: 220px;
+    }
+  }
+
+  .am-flexbox {
+    >div:nth-child(n + 2){
+      display: none !important;
+    }
+  }
+
+  .has-img {
+    .setOnePxAll();
+    .am-image-picker-upload-btn {
+      display: none !important;
+    }
+  }
+  .am-button {
+    margin-top: 30px;
+  }
+  .desc {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+

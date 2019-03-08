@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, InputItem } from 'antd-mobile'
 import Main from '../../layouts/main.jsx';
+import PickerDataItem from '../../components/PickerDataItem'
 import  './AddFollowRecordView.less';
 import PickerListItem from '../../components/PickerListItem'
 const prefixCls = 'sale-chance-follow-record-view'
@@ -9,16 +10,20 @@ const prefixCls = 'sale-chance-follow-record-view'
   const {
     files,
     onChange,
-    onSubmit
+    date,
+    onSubmit,
   } = props
 
     return (
     <Main title={props.title} rightContent={<div onClick={onSubmit}>保存</div>} location={props.location}>
       <div className={prefixCls}>
         <List>
-          <PickerListItem>
+          <PickerDataItem
+            onChange={(v) => onChange({date: v})}
+            value={date}
+          >
             跟进时间:
-          </PickerListItem>
+          </PickerDataItem>
           <PickerListItem>
             对接人:
           </PickerListItem>

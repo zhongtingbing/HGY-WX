@@ -25,7 +25,6 @@ componentDidMount(){
     }
 
   onChange = (value) => {
-  console.log(value)
     this.setState({
       ...value
     })
@@ -67,7 +66,7 @@ function propsDispatchToMap(dispatch) {
       })
     },
     goTo(path) {
-      dispatch(routerRedux.pushState(path))
+      dispatch(routerRedux.push(path))
     }
   };
 }

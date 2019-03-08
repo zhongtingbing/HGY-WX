@@ -93,7 +93,8 @@ const statusList = [
     onAdd,
     toFollowRecord,
     toShop,
-    toCreateContract
+    toCreateContract,
+    toAddCounterpart
   } = props
 
    const findLabel = (arr, value) => {
@@ -149,7 +150,7 @@ const statusList = [
 
             return (
              <div className="sale-card">
-               <div onClick={toDetail} className="sale-card-body">
+               <div onClick={() => {toDetail(rowData)}} className="sale-card-body">
                  <div>
                    <span>创建时间：</span>
                    <span>{'2019-01-01'}</span>
@@ -182,6 +183,7 @@ const statusList = [
                </div>
                <div className="btns">
                  <div onClick={toFollowRecord}>新增跟进记录</div>
+                 <div onClick={toAddCounterpart}>新增对接人</div>
                  <div onClick={() => toShop(rowData)}>创建报价单</div>
                  <div onClick={() => toCreateContract(rowData)}>创建合同</div>
                </div>

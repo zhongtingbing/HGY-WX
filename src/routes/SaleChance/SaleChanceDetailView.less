@@ -1,0 +1,40 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: sale-chance-detail-view;
+
+.@{prefixCls} {
+  padding-top:10px;
+  &-desc {
+    background-color: #ffffff;
+    padding: 12px;
+    width: 100%;
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .left {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      .right {
+        color: @primary-color;
+        font-size: 18px;
+      }
+    }
+    .middle {
+      margin-top: 5px;
+      >div {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .bjd-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+
+  }
+
+}

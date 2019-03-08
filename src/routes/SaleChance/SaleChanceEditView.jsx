@@ -51,19 +51,25 @@ const pickerData = [
           <PickerListItem
             data={pickerData}
             // onChange={onChange}
-            value="re"
+            // value="re"
           >
             客户类型:
           </PickerListItem>
           <PickerListItem
-            value="re"
+            data={pickerData}
+            // value="re"
           >
             负责业务:
           </PickerListItem>
-          <PickerListItem>
+          <PickerListItem
+            data={pickerData}
+          >
+
             客户等级:
           </PickerListItem>
-          <PickerListItem>
+          <PickerListItem
+            data={pickerData}
+          >
             机会来源:
           </PickerListItem>
         </List>
