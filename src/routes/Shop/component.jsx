@@ -1,6 +1,16 @@
 import React from 'react';
 import './component.less'
+import { routerRedux } from 'dva/router'
+import { Toast } from 'antd-mobile'
 class BasicGoodsCard extends React.Component{
+
+  toGoodsDetail = (rowData) => {
+    _dispatch(routerRedux.push({
+      pathname: '/goods-detail',
+      state: rowData,
+    }))
+  }
+
   render() {
     const {
       imgUrl,
@@ -15,7 +25,7 @@ class BasicGoodsCard extends React.Component{
     } = rowData
   return (
     <div className="goods-card">
-      <img src={imgUrl}/>
+      <img onClick={() => {this.toGoodsDetail(rowData)}} src={imgUrl}/>
       <div className="right">
         <div className="name">{name}</div>
         <div>
@@ -43,6 +53,7 @@ BasicGoodsCard.defaultProps = {
 
 
 class BasicGoodsCard1 extends React.Component{
+
   render() {
     const {
       imgUrl,
@@ -50,7 +61,7 @@ class BasicGoodsCard1 extends React.Component{
       onDiscountChange,
       onDown,
       onPlus,
-      onCheck
+      onCheck,
     } = this.props
     const {
       name,
@@ -58,9 +69,9 @@ class BasicGoodsCard1 extends React.Component{
       price,
       brand,
       count,
-      checked
+      checked,
+      discount,
     } = rowData
-    console.log(checked)
     return (
       <div className="goods-card-1">
         <div onClick={() => {onCheck(rowData)}} className="goods-card-1-left">
@@ -90,7 +101,7 @@ class BasicGoodsCard1 extends React.Component{
           </div>
           <div className="bottom">
             <span>优惠金额：</span>
-            <input onChange={(e)=> {onDiscountChange(rowData, e.target.value)}} type="number"/>
+            <input value={discount} onChange={(e)=> {if(+ e.target.value > 1000){return};onDiscountChange(rowData, e.target.value)}}  type="number"/>
           </div>
         </div>
       </div>

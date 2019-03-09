@@ -99,6 +99,16 @@ function RouterConfig({
     component: () => import('./routes/SaleChance/SaleChanceDetail')
   });
 
+  const ContractDetail = Dynamic({
+    app,
+    component: () => import('./routes/Contract/ContractDetail')
+  });
+
+  const GoodsDetail = Dynamic({
+    app,
+    component: () => import('./routes/Shop/GoodsDetail')
+  });
+
   return (
     <Router history={history}>
       <Switch>
@@ -114,9 +124,11 @@ function RouterConfig({
         <Route exact path="/sale-chance-detail" component={SaleChanceDetail}/>
         <Route exact path="/shop" component={ShopHome}/>
         <Route exact path="/shop-list" component={ShopList}/>
+        <Route exact path="/goods-detail" component={GoodsDetail}/>
         <Route exact path="/quotation" component={Quotation}/>
         <Route exact path="/create-contract" component={CreateContract}/>
         <Route exact path="/upload-contract" component={UploadContract}/>
+        <Route exact path="/contract-detail" component={ContractDetail}/>
         <Route exact path="/create-edit" component={ContractEdit}/>
         <Route exact path="/upload-contract-file" component={UploadContractFile}/>
         <Route exact path="/add-counterpart" component={AddCounterpart}/>

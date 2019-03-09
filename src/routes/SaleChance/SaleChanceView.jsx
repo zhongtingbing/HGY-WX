@@ -179,7 +179,7 @@ const statusList = [
                    <span>更近状态：</span>
                    <span>{'跟进中'}</span>
                  </div>
-                 <div onClick={toEdit} className="sale-card-body-edit">编辑</div>
+                 <div onClick={(e) => {e.stopPropagation();toEdit(rowData)}} className="sale-card-body-edit">编辑</div>
                </div>
                <div className="btns">
                  <div onClick={toFollowRecord}>新增跟进记录</div>

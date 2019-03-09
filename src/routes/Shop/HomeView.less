@@ -18,3 +18,68 @@
     padding-bottom: 10px;
   }
 }
+.my-drawer {
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar {
+  width: 300px;
+  background-color: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar .am-list {
+  width: 300px;
+  padding: 0;
+}
+.filter-2222 {
+  padding:  10px;
+  .item-wrap {
+    >span {
+      font-size: 16px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      >div {
+        width: 40%;
+        padding: 0 10px;
+        margin: 5px;
+        background-color: #ffffff;
+        color:  #108ee9;
+        font-size: 12px;
+        height: 26px;
+        line-height: 26px;
+        text-align: center;
+        .setOnePxAll( #108ee9)
+      }
+      .se {
+        background-color: #108ee9;
+        color: #ffffff;
+      }
+    }
+  }
+  .btns {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    >div {
+      flex: 1;
+      text-align: center;
+      height: 36px;
+      line-height: 36px;
+      .setOnePxBySide();
+    }
+    .left {
+      background-color: gainsboro;
+      .setTapActive()
+    }
+    .right {
+      background-color: #108ee9;
+      color: #ffffff;
+      .setTapActive(#108ee9)
+    }
+  }
+}

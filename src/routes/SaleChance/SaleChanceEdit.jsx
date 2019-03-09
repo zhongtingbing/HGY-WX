@@ -46,8 +46,6 @@ componentDidMount(){
 
   }
 
-
-
   render() {
   return (
     <SaleChanceEditView

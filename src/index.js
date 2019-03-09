@@ -1,11 +1,27 @@
 import 'babel-polyfill';
 import dva from 'dva';
 import  { postJson } from './utils/request';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 import './index.less';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
 // 1. Initialize
 const app = dva({
+  onReducer(reducer) {
+    const persistConfig = {
+      key: 'root',
+      storage,
+      stateReconciler: autoMergeLevel2
+    }
+    return persistReducer(persistConfig, reducer)
+  },
   onError(err, dispatch) {
     if (err.resp) {
       console.error(err.resp.msg);
@@ -40,6 +56,10 @@ app.router(require('./router.jsx'));
 // init()
 setTimeout(() => {window._dispatch = app._store.dispatch},100)
  app.start('#root');
+
+window.onload = () => {
+  persistStore(app._store)
+}
 //   wx.config({
 //   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 //   appId: 'wxf434ecf615ba0594', // 必填，公众号的唯一标识

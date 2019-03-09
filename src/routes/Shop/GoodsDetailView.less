@@ -1,0 +1,34 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: goods-detail-view;
+
+.@{prefixCls} {
+  padding:10px 0;
+  background-color: #fff;
+  .img {
+    height: 150px;
+    text-align: center;
+    margin: 0 auto;
+    >img {
+      height: 100% ;
+    }
+  }
+  .main {
+    padding: 12px;
+    .title {
+      font-size: 20px;
+      height: 40px;
+      line-height: 40px;
+    }
+   .price {
+     font-size: 22px;
+     font-weight: 600;
+     color: #FF6699;
+   }
+  }
+  .am-button {
+    margin: 20px;
+  }
+
+}

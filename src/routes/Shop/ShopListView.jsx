@@ -22,10 +22,9 @@ const prefixCls = 'shop-list-view'
    let totalCount = 0;
    let totalDiscount = 0;
    goodList.forEach(item => {
-     if(item.count && item.checked)totalCount = totalCount + item.price*item.count;
-     console.log(item)
+     if(item.count && item.checked) totalCount = totalCount + item.price * item.count;
      if(item.discount && item.checked) {
-       totalDiscount = totalDiscount + parseFloat(item.discount)*parseFloat(item.count)
+       totalDiscount = totalDiscount + parseFloat(item.discount) * parseFloat(item.count)
      }
    })
     return (

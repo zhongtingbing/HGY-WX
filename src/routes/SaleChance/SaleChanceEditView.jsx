@@ -31,26 +31,33 @@ const pickerData = [
           <InputItem
             defaultValue={100}
             placeholder="请输入销售名称"
+            className="input-require"
             // onChange={(v)=>{onChange()}}
           >销售机会名称:</InputItem>
           <InputItem
             placeholder="请输入销售名称"
             onChange={(v) => { console.log('onChange', v); }}
-          >所属公司:</InputItem>
+            className="input-require"
+          >所属公司:
+          </InputItem>
           <InputItem
             placeholder="请输入所属公司"
-            clear
-          >客户姓名:</InputItem>
+            className="input-require"
+          >客户姓名:
+          </InputItem>
           <InputItem
             placeholder="请输入客户姓名"
+            className="input-require"
             type="number"
           >客户电话：</InputItem>
           <InputItem
-            placeholder="请输入客户电话"
-          >机会情况说明：</InputItem>
+            placeholder="请输入说明"
+            className="input-require"
+          >机会情况说明：
+          </InputItem>
           <PickerListItem
             data={pickerData}
-            // onChange={onChange}
+            onChange={(value) => {console.log(value)}}
             // value="re"
           >
             客户类型:

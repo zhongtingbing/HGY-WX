@@ -22,7 +22,6 @@ export default class PickerListItem extends React.PureComponent {
       placeholder,
       extra,
       title,
-      style,
       require,
       ...others
     } = this.props
@@ -58,4 +57,5 @@ export default class PickerListItem extends React.PureComponent {
 
 PickerListItem.defaultProps = {
   data:[],
+  onChange: () => {}
 }

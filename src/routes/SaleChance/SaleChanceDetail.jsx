@@ -1,6 +1,7 @@
 import React from 'react';
 import SaleChanceDetailView from './SaleChanceDetailView'
 import { routerRedux } from 'dva/router'
+import {Modal} from 'antd-mobile'
 import {
   connect
 } from 'dva';
@@ -50,6 +51,16 @@ class SaleChanceDetail extends React.Component{
 
   }
 
+  onNewQuote = () => {
+    Modal.alert('是否基于前一份报价单直接创建','', [
+      {'text': '否', onPress: () => {
+        this.props.goTo('/sale-chance-edit', {from: '/shop', newFlag: false})
+      }},
+      {'text': '是', onPress: () => {
+        this.props.goTo('/sale-chance-edit', {from: '/sale-chance-detail', newFlag: true})
+      }}
+    ])
+  }
 
   render() {
   return (
@@ -61,6 +72,7 @@ class SaleChanceDetail extends React.Component{
       querySaleChance={this.querySaleChance}
       onAdd={this.onAdd}
       save={this.save}
+      onNewQuote={this.onNewQuote}
       title="销售机会详情"
     />
   )

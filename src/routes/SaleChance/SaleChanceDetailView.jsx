@@ -1,7 +1,7 @@
 import React from 'react';
 import { Icon, Accordion, List, Button } from 'antd-mobile'
 import CollapseWrap from '../../components/CollapseWrap'
-import { GJJLCard, DJRCard, BJDCard } from '../../components/CommonCards'
+import { GJJLCard, DJRCard, BJDCard, HTCard, DDCard, XMKTSQCard } from '../../components/CommonCards'
 import Zmage from 'react-zmage'
 import TIMG from '../../assets/image/icon_pm2.5.png'
 import Main from '../../layouts/main.jsx';
@@ -13,17 +13,19 @@ const prefixCls = 'sale-chance-detail-view'
   const {
     onAdd,
     save,
-    onChange
+    onChange,
+    onNewQuote,
+    toEdit
+
 
   } = props
-
     return (
     <Main title={props.title} rightContent={<div onClick={save}>保存</div>} location={props.location}>
       <div className={prefixCls}>
         <div className={`${prefixCls}-desc`}>
           <div className="top">
             <span className="left">销售机会名称</span>
-            <span className="right">编辑</span>
+            <span onClick={toEdit} className="right">编辑</span>
           </div>
           <div className="middle">
             <div>
@@ -110,7 +112,27 @@ const prefixCls = 'sale-chance-detail-view'
             <BJDCard/>
           </div>
 
-          <Button style={{margin: '10px'}} size="small"  type="primary">新建报价单</Button>
+          <Button onClick={onNewQuote} style={{margin: '10px'}} size="small"  type="primary">新建报价单</Button>
+        </CollapseWrap>
+        <CollapseWrap
+          title="合同"
+          num={2}
+        >
+          <HTCard/>
+          <HTCard/>
+        </CollapseWrap>
+        <CollapseWrap
+          title="订单"
+          num={2}
+        >
+          <DDCard/>
+          <DDCard/>
+        </CollapseWrap>
+        <CollapseWrap
+          title="项目开通申请"
+          num={2}
+        >
+          <XMKTSQCard/>
         </CollapseWrap>
       </div>
     </Main>

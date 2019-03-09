@@ -11,7 +11,12 @@ import {
 import { testService } from '../../services/query';
 
 class Home extends React.Component{
-
+  constructor() {
+    super()
+    this.state = {
+      openFilter: false
+    }
+  }
    getData = () => {
      // testService().then(res=>{
      // })
@@ -37,13 +42,29 @@ class Home extends React.Component{
   toShopList = () => {
      this.props.goTo('shop-list')
   }
+
+  onFilter = () => {
+    this.setState({
+      openFilter: !this.state.openFilter
+    })
+  }
+
+  onOk = () => {
+    this.setState({
+      openFilter: false
+    })
+  }
+
   render() {
   return (
     <HomeView
       {...this.props}
+      {...this.state}
       toTop={this.toTop}
       onAdd={this.onAdd}
       toShopList={this.toShopList}
+      onFilter={this.onFilter}
+      onOk={this.onOk}
       title="方案报价"
     />
   )
