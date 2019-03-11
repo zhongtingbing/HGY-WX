@@ -211,11 +211,48 @@ class XMKTSQCard extends React.PureComponent {
   }
 }
 
+class XSJHCard extends React.PureComponent {
+  // toDdDetail = (state) => {
+  //   _dispatch(routerRedux.push({
+  //     pathname:'/contract-detail',
+  //     state,
+  //   }))
+  // }
+  render() {
+    const {
+      className,
+    } = this.props
+
+    const cls = classNames({
+      'xsjh-card': true,
+      [className]: className,
+    })
+
+    return (
+      <div onClick={()=>{}} className={cls}>
+        <div>
+          <span> 商机名称：</span>
+          <span>{'理想之城'}</span>
+        </div>
+        <div>
+          <span>客户姓名：</span>
+          <span>{'2019-01-01'}</span>
+        </div>
+        <div>
+          <span>商机说明：</span>
+          <span>{'l-23131'}</span>
+        </div>
+      </div>
+    )
+  }
+}
+
 export default {
   GJJLCard,
   DJRCard,
   BJDCard,
   HTCard,
   DDCard,
-  XMKTSQCard
+  XMKTSQCard,
+  XSJHCard
 }

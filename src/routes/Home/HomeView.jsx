@@ -19,12 +19,12 @@ const prefixCls = 'home-view'
               </Item>
               <Item
                 arrow="horizontal"
-                onClick={() => {}}
+                onClick={() => {props.goTo('/customer')}}
               >客户管理
               </Item>
               <Item
                 arrow="horizontal"
-                onClick={() => {}}
+                onClick={() => {props.goTo('/contract')}}
               >
                 <div>
                   合同管理

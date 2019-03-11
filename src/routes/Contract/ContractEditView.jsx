@@ -102,7 +102,6 @@ const prefixCls = 'contract-edit-view'
             <div onClick={toEmail}>发送至邮箱</div>
           </div>
         </Modal>
-
       </div>
     </Main>
     );

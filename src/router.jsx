@@ -72,6 +72,11 @@ function RouterConfig({
     component: () => import('./routes/Shop/Quotation')
   });
 
+  const Contract = Dynamic({
+    app,
+    component: () => import('./routes/Contract/Contract')
+  });
+
   const CreateContract = Dynamic({
     app,
     component: () => import('./routes/Contract/CreateContract')
@@ -85,6 +90,10 @@ function RouterConfig({
     component: () => import('./routes/UploadContract/Customer')
   });
 
+  const EditContractDetail = Dynamic({
+    app,
+    component: () => import('./routes/Contract/EditContractDetail')
+  });
   const UploadContractFile = Dynamic({
     app,
     component: () => import('./routes/Contract/UploadContract')
@@ -109,6 +118,27 @@ function RouterConfig({
     component: () => import('./routes/Shop/GoodsDetail')
   });
 
+  const Customer = Dynamic({
+    app,
+    component: () => import('./routes/Customer/Customer')
+  });
+
+  const CustomerEdit = Dynamic({
+    app,
+    component: () => import('./routes/Customer/CustomerEdit')
+  });
+  const AddCustomerVisitRecord = Dynamic({
+    app,
+    component: () => import('./routes/Customer/AddVisitRecord')
+  });
+  const CustomerDetail = Dynamic({
+    app,
+    component: () => import('./routes/Customer/CustomerDetail')
+  });
+
+
+
+
   return (
     <Router history={history}>
       <Switch>
@@ -126,12 +156,18 @@ function RouterConfig({
         <Route exact path="/shop-list" component={ShopList}/>
         <Route exact path="/goods-detail" component={GoodsDetail}/>
         <Route exact path="/quotation" component={Quotation}/>
+        <Route exact path="/contract" component={Contract}/>
         <Route exact path="/create-contract" component={CreateContract}/>
         <Route exact path="/upload-contract" component={UploadContract}/>
         <Route exact path="/contract-detail" component={ContractDetail}/>
         <Route exact path="/create-edit" component={ContractEdit}/>
+        <Route exact path="/edit-contract-detail" component={EditContractDetail}/>
         <Route exact path="/upload-contract-file" component={UploadContractFile}/>
         <Route exact path="/add-counterpart" component={AddCounterpart}/>
+        <Route exact path="/customer" component={Customer}/>
+        <Route exact path="/customer-edit" component={CustomerEdit}/>
+        <Route exact path="/customer-add-visit-record" component={AddCustomerVisitRecord}/>
+        <Route exact path="/customer-detail" component={CustomerDetail}/>
       </Switch>
     </Router>
   );

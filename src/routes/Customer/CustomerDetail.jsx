@@ -1,22 +1,24 @@
 import React from 'react';
-import SaleChanceView from './SaleChanceView'
+import CustomerDetailView from './CustomerDetailView'
 import { routerRedux } from 'dva/router'
+import {Modal} from 'antd-mobile'
 import {
   connect
 } from 'dva';
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class SaleChance extends React.Component{
+class CustomerDetail extends React.Component{
   constructor(props){
     super(props)
     this.state={
+      ...props.location.state
     }
   }
 
-componentDidMount(){
-    this.getData()
-}
+  componentDidMount(){
+      this.getData()
+  }
 
    getData = () => {
      testService().then(res=>{
@@ -37,55 +39,45 @@ componentDidMount(){
      return querySaleChanceService(param)
   }
 
-  toFollowRecord = () => {
-    this.props.goTo('/sale-chance-follow-record')
-  }
-
   toEdit = () => {
-     this.props.goTo('/sale-chance-edit', {type: 'edit'})
+    this.props.goTo('/customer-edit', {...this.props.location.state, type: 'edit'})
   }
 
-  toDetail = (record) => {
-    this.props.goTo('/sale-chance-detail', record)
-  }
   onAdd = () => {
     this.props.goTo('/sale-chance-edit')
   }
-  toShop = (record) => {
-    this.props.goTo('/shop', record)
-  }
-  toCreateContract = (record) => {
-    this.props.goTo('/create-contract', record)
+
+  save = () => {
   }
 
-  toAddCounterpart = (record) => {
-    this.props.goTo('/add-counterpart', record)
+  onNewQuote = () => {
+    Modal.alert('是否基于前一份报价单直接创建','', [
+      {'text': '否', onPress: () => {
+        this.props.goTo('/sale-chance-edit', {from: '/shop', newFlag: false})
+      }},
+      {'text': '是', onPress: () => {
+        this.props.goTo('/sale-chance-edit', {from: '/sale-chance-detail', newFlag: true})
+      }}
+    ])
   }
 
   render() {
   return (
-    <SaleChanceView
+    <CustomerDetailView
       {...this.props}
       {...this.state}
       toEdit={this.toEdit}
-      toDetail={this.toDetail}
-      onSearch={this.onSearch}
       onChange={this.onChange}
       querySaleChance={this.querySaleChance}
       onAdd={this.onAdd}
-      title="销售机会管理"
-      toFollowRecord={this.toFollowRecord}
-      toShop={this.toShop}
-      toCreateContract={this.toCreateContract}
-      toAddCounterpart={this.toAddCounterpart}
+      save={this.save}
+      onNewQuote={this.onNewQuote}
+      title="客户管理详情"
     />
   )
 }
 }
 
-SaleChance.propTypes = {
-  // location: PropTypes.object.isRequired
-};
 
 function mapStateToProps() {
   return {};
@@ -103,4 +95,4 @@ function propsDispatchToMap(dispatch) {
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(SaleChance);
+export default connect(mapStateToProps ,propsDispatchToMap)(CustomerDetail);

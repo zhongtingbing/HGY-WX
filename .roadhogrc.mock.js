@@ -28,7 +28,7 @@ export default {
           initFlag: Math.round(Math.random())
         }
       })
-    },1000)
+    },100)
   },
   'POST /querySaleChanceService' (req,res){
     let list = [];
@@ -44,7 +44,7 @@ export default {
         list: list,
         totalSize: 20
       })
-    },1000)
+    },100)
   },
 
   'POST /queryGoodsListService' (req,res){

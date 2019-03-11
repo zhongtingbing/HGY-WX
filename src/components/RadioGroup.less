@@ -1,0 +1,26 @@
+@import '../theme/theme.less';
+@import '../theme/mixin.less';
+
+@prefixCls: radio-group-uu;
+
+.@{prefixCls} {
+  margin-left: 12px;
+  height: 44px;
+  .setOnePxBySide(bottom);
+  display: flex;
+  align-items: center;
+  .am-radio-wrapper {
+    margin-left: 30px;
+    .am-radio {
+      .setOnePxAll(@primary-color, 20px);
+      margin-right: 4px;
+      height: 20px;
+      width: 20px;
+      .am-radio-inner {
+        top: 2px
+
+      }
+
+    }
+  }
+}

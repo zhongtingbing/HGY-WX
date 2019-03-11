@@ -1,5 +1,5 @@
 import React from 'react';
-import ContractDetailView from './ContractDetailView'
+import AddVisitRecordView from './AddVisitRecordView'
 import { routerRedux } from 'dva/router'
 import {
   connect
@@ -7,11 +7,10 @@ import {
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class ContractDetail extends React.Component{
+class AddVisitRecord extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      ...props.location.state
     }
   }
 
@@ -24,7 +23,6 @@ componentDidMount(){
      })
     }
 
-
   onChange = (value) => {
     this.setState({
       ...value
@@ -35,19 +33,19 @@ componentDidMount(){
      return querySaleChanceService(param)
   }
 
-
-  toEdit = () => {
-    this.props.goTo('edit-contract-detail', this.props.location.state)
+  onSubmit = () => {
+    this.props.goTo()
   }
 
   render() {
   return (
-    <ContractDetailView
+    <AddVisitRecordView
       {...this.props}
       {...this.state}
       onChange={this.onChange}
-      toEdit={this.toEdit}
-      title="合同详情"
+      querySaleChance={this.querySaleChance}
+      onSubmit={this.onSubmit}
+      title="新增拜访记录"
     />
   )
 }
@@ -58,15 +56,17 @@ function mapStateToProps() {
 }
 
 function propsDispatchToMap(dispatch) {
-  window._dispatch = dispatch
   return {
-    goTo(pathname, state) {
-      dispatch(routerRedux.push({
-        pathname,
-        state,
-      }))
+    go(){
+      dispatch({
+        type: 'main/query',
+        payload: {id: 22},
+      })
     },
+    goTo(path) {
+      dispatch(routerRedux.push(path))
+    }
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(ContractDetail);
+export default connect(mapStateToProps ,propsDispatchToMap)(AddVisitRecord);

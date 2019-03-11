@@ -1,17 +1,17 @@
 import React from 'react';
-import ContractDetailView from './ContractDetailView'
+import EditContractDetailView from './EditContractDetailView'
 import { routerRedux } from 'dva/router'
 import {
   connect
 } from 'dva';
 
-import { testService, querySaleChanceService } from '../../services/query';
+import { testService } from '../../services/query';
 
-class ContractDetail extends React.Component{
+class EditContractDetail extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      ...props.location.state
+      files: []
     }
   }
 
@@ -24,30 +24,33 @@ componentDidMount(){
      })
     }
 
+  toNew = () => {
+    this.props.goTo('/create-edit')
+  }
+  toUpload = () => {
+    this.props.goTo('upload-contract-file')
+  }
 
-  onChange = (value) => {
+  toUploadWithoutProof = () => {
+
+  }
+
+  onChange = (o) => {
     this.setState({
-      ...value
+      ...o
     })
-  }
-
-  querySaleChance= (param) => {
-     return querySaleChanceService(param)
-  }
-
-
-  toEdit = () => {
-    this.props.goTo('edit-contract-detail', this.props.location.state)
   }
 
   render() {
   return (
-    <ContractDetailView
+    <EditContractDetailView
       {...this.props}
       {...this.state}
+      toNew={this.toNew}
+      toUpload={this.toUpload}
+      toUploadWithoutProof={this.toUploadWithoutProof}
       onChange={this.onChange}
-      toEdit={this.toEdit}
-      title="合同详情"
+      title="编辑合同"
     />
   )
 }
@@ -69,4 +72,4 @@ function propsDispatchToMap(dispatch) {
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(ContractDetail);
+export default connect(mapStateToProps ,propsDispatchToMap)(EditContractDetail);

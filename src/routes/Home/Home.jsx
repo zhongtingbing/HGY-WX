@@ -24,10 +24,6 @@ class Home extends React.Component{
 }
 }
 
-Home.propTypes = {
-  location: PropTypes.object.isRequired
-};
-
 function mapStateToProps() {
   return {};
 }
