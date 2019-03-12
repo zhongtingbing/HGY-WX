@@ -15,7 +15,6 @@ export default class PickerDataItem extends React.PureComponent {
       value,
       onChange,
       className,
-      placeholder,
       extra,
       title,
       style,
@@ -32,8 +31,8 @@ export default class PickerDataItem extends React.PureComponent {
     return (
       <div className={cls}>
         <DatePicker
-          mode="date"
-          title="Select Date"
+          mode= {mode}
+          title={title}
           extra="Optional"
           value={value || new Date()}
           onChange={v =>{onChange(v)}}
@@ -46,5 +45,7 @@ export default class PickerDataItem extends React.PureComponent {
 }
 
 PickerDataItem.defaultProps = {
-  mode: 'date'
+  mode: 'date',
+  title: '请选择时间',
+  onChange: () => {}
 }

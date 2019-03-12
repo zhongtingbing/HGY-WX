@@ -1,0 +1,25 @@
+@import '../../theme/theme.less';
+@import '../../theme/mixin.less';
+
+@prefixCls: order-payment-view;
+
+.@{prefixCls} {
+  .title {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+  }
+  .img-area {
+    margin-top: 20px;
+    .desc {
+      height: 30px;
+      line-height: 30px;
+      padding: 0 15px;
+    }
+    .has-img {
+      .am-image-picker-upload-btn {
+        display: none;
+      }
+    }
+  }
+}

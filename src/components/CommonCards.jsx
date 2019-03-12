@@ -247,6 +247,53 @@ class XSJHCard extends React.PureComponent {
   }
 }
 
+
+class HKJLCard extends React.PureComponent {
+  // toDdDetail = (state) => {
+  //   _dispatch(routerRedux.push({
+  //     pathname:'/contract-detail',
+  //     state,
+  //   }))
+  // }
+  render() {
+    const {
+      className,
+    } = this.props
+
+    const cls = classNames({
+      'hkjl-card': true,
+      [className]: className,
+    })
+
+    return (
+      <div onClick={()=>{}} className={cls}>
+        <div>
+          <span> 回款时间：</span>
+          <span>{'理想之城'}</span>
+        </div>
+        <div>
+          <span>预付款：</span>
+          <span>{'2019-01-01'}</span>
+        </div>
+        <div>
+          <span>账户名：</span>
+          <span>{'l-23131'}</span>
+        </div>
+        <div>
+          <span>支付金额：</span>
+          <span>{'l-23131'}</span>
+        </div>
+        <div>
+          <span>剩余金额：</span>
+          <span>{'l-23131'}</span>
+        </div>
+        <Zmage src={TIMG}/>
+      </div>
+    )
+  }
+}
+
+HKJLCard
 export default {
   GJJLCard,
   DJRCard,
@@ -254,5 +301,6 @@ export default {
   HTCard,
   DDCard,
   XMKTSQCard,
-  XSJHCard
+  XSJHCard,
+  HKJLCard
 }

@@ -136,6 +136,26 @@ function RouterConfig({
     component: () => import('./routes/Customer/CustomerDetail')
   });
 
+  const Order = Dynamic({
+    app,
+    component: () => import('./routes/Order/Order')
+  });
+
+  const OrderEdit = Dynamic({
+    app,
+    component: () => import('./routes/Order/OrderEdit')
+  });
+
+  const OrderDetail = Dynamic({
+    app,
+    component: () => import('./routes/Order/OrderDetail')
+  });
+
+  const OrderPayment = Dynamic({
+    app,
+    component: () => import('./routes/Order/Payment')
+  });
+
 
 
 
@@ -168,6 +188,10 @@ function RouterConfig({
         <Route exact path="/customer-edit" component={CustomerEdit}/>
         <Route exact path="/customer-add-visit-record" component={AddCustomerVisitRecord}/>
         <Route exact path="/customer-detail" component={CustomerDetail}/>
+        <Route exact path="/order" component={Order}/>
+        <Route exact path="/order-edit" component={OrderEdit}/>
+        <Route exact path="/order-detail" component={OrderDetail}/>
+        <Route exact path="/order-payment" component={OrderPayment}/>
       </Switch>
     </Router>
   );

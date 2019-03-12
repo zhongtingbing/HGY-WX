@@ -33,7 +33,7 @@ const prefixCls = 'home-view'
               </Item>
               <Item
                 arrow="horizontal"
-                onClick={() => {}}
+                onClick={() => {props.goTo('/order')}}
               >订单管理
               </Item>
               <Item
