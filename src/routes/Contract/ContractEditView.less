@@ -5,12 +5,26 @@
 
 .@{prefixCls} {
   background-color: #fff;
+  padding-bottom: 50px;
   .quotation-card {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 100px;
     .setOnePxBySide(bottom);
     padding: 0 12px;
+    .right {
+      margin-left: 40px;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      &-desc {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
   }
   &-btns {
     display: flex;

@@ -1,5 +1,5 @@
 import React from 'react';
-import UploadContractView from './UploadContractView'
+import ApplicationView from './ApplicationView'
 import { routerRedux } from 'dva/router'
 import {
   connect
@@ -7,12 +7,11 @@ import {
 
 import { testService, querySaleChanceService } from '../../services/query';
 
-class UploadContract extends React.Component{
+class Application extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      ...props.location.state,
-      files: [],
+      files: []
     }
   }
 
@@ -25,6 +24,9 @@ componentDidMount(){
      })
     }
 
+  onSearch = (value) => {
+     console.log(value)
+  }
 
   onChange = (value) => {
     this.setState({
@@ -32,28 +34,26 @@ componentDidMount(){
     })
   }
 
+  querySaleChance= (param) => {
+     return querySaleChanceService(param)
+  }
+
   onSubmit = () => {
     this.props.goTo()
   }
 
-  onCancel = () => {
-    _dispatch(routerRedux.goBack())
-  }
-
   render() {
   return (
-    <UploadContractView
-        {...this.props}
+    <ApplicationView
+      {...this.props}
       {...this.state}
       onChange={this.onChange}
-      onCancel={this.onCancel}
+      querySaleChance={this.querySaleChance}
+      onSubmit={this.onSubmit}
+      title="好工e项目开通申请表"
     />
   )
 }
-}
-
-UploadContract.defaultPorps={
-  title: "上传自定义合同"
 }
 
 function mapStateToProps() {
@@ -61,15 +61,11 @@ function mapStateToProps() {
 }
 
 function propsDispatchToMap(dispatch) {
-  window._dispatch = dispatch
   return {
-    goTo(pathname, state) {
-      dispatch(routerRedux.push({
-        pathname,
-        state,
-      }))
-    },
+    goTo(path) {
+      dispatch(routerRedux.push(path))
+    }
   };
 }
 
-export default connect(mapStateToProps ,propsDispatchToMap)(UploadContract);
+export default connect(mapStateToProps ,propsDispatchToMap)(Application);

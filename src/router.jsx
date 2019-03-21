@@ -156,7 +156,10 @@ function RouterConfig({
     component: () => import('./routes/Order/Payment')
   });
 
-
+  const Application = Dynamic({
+    app,
+    component: () => import('./routes/Application/Application')
+  });
 
 
   return (
@@ -192,6 +195,7 @@ function RouterConfig({
         <Route exact path="/order-edit" component={OrderEdit}/>
         <Route exact path="/order-detail" component={OrderDetail}/>
         <Route exact path="/order-payment" component={OrderPayment}/>
+        <Route exact path="/application" component={Application}/>
       </Switch>
     </Router>
   );

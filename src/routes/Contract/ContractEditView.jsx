@@ -2,6 +2,8 @@ import React from 'react';
 import { List, InputItem, Modal } from 'antd-mobile'
 import PickerListItem from '../../components/PickerListItem'
 import Main from '../../layouts/main.jsx';
+import Zmage from 'react-zmage'
+import TIMG from '../../assets/image/icon_pm2.5.png'
 import  './ContractEditView.less';
 const prefixCls = 'contract-edit-view'
 
@@ -29,6 +31,11 @@ const prefixCls = 'contract-edit-view'
                    <div className={index === checked ? "inner" : ''}></div>
                  </div>
                  <div className="right">
+                   <Zmage src={TIMG}/>
+                   <div className="right-desc">
+                     <span>{`报价单${index+1}`}</span>
+                     <span>2018.12.14 12：10</span>
+                   </div>
                  </div>
                </div>
              )

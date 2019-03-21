@@ -90,9 +90,8 @@ const statusList = [
     querySaleChance,
     toEdit,
     toDetail,
-    onAdd,
-    toVisitRecord,
-    toAddCounterpart,
+    toUploadCheckedContract,
+    toEditApplicationTable,
     toCreateGoodList
   } = props
 
@@ -177,9 +176,9 @@ const statusList = [
                  <div onClick={(e) => {e.stopPropagation();toEdit(rowData)}} className="sale-card-body-edit">编辑</div>
                </div>
                <div className="btns">
-                 <div onClick={() => {toVisitRecord(rowData)}}>上传以合同签章</div>
+                 <div onClick={() => {toUploadCheckedContract(rowData)}}>上传已签章合同</div>
                  <div onClick={() => {toCreateGoodList(rowData)}}>创建报价单</div>
-                 <div onClick={toAddCounterpart}>上传项目开通申请表</div>
+                 <div onClick={() => {toEditApplicationTable(rowData)}}>填写项目开通申请表</div>
                </div>
              </div>
             )

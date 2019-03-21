@@ -4,12 +4,33 @@
 @prefixCls: upload-contract-view;
 
 .@{prefixCls} {
-  padding-top: 10px;
+  padding: 10px 0;
   background-color: #ffffff;
   position: relative;
 
   .am-image-picker-list {
     padding: 0 !important;
+  }
+
+  .quotation-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    .setOnePxBySide(bottom);
+    padding: 0 12px;
+    .right {
+      margin-left: 40px;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      &-desc {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
   }
 
   .file-desc {
@@ -53,5 +74,9 @@
     margin-top: 20px;
     text-align: center;
   }
+  .btn {
+   margin: 0 10px;
+  }
 }
+
 

@@ -37,8 +37,8 @@ componentDidMount(){
     })
   }
 
-  toVisitRecord =(record) => {
-    this.props.goTo('/customer-add-visit-record', record)
+  toUploadCheckedContract =(record) => {
+    this.props.goTo('/upload-contract-file', {...record, title: '上传已签章合同'})
   }
 
   toAddCounterpart = (record) => {
@@ -61,20 +61,24 @@ componentDidMount(){
     this.props.goTo('/shop', {...record})
   }
 
+  toEditApplicationTable = (record) => {
+    this.props.goTo('/application', {...record})
+  }
+
   render() {
   return (
     <ContractView
       {...this.props}
       {...this.state}
       title="合同管理"
-      toVisitRecord={this.toVisitRecord}
+      toUploadCheckedContract={this.toUploadCheckedContract}
       toAddCounterpart={this.toAddCounterpart}
       querySaleChance={this.querySaleChance}
       toEdit={this.toEdit}
-      onAdd={this.onAdd}
       toDetail={this.toDetail}
       toCreateGoodList={this.toCreateGoodList}
       onChange={this.onChange}
+      toEditApplicationTable={this.toEditApplicationTable}
     />
   )
 }
