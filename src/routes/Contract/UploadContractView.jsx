@@ -4,6 +4,7 @@ import Zmage from 'react-zmage'
 import TIMG from '../../assets/image/icon_pm2.5.png'
 import PickerListItem from '../../components/PickerListItem'
 import Main from '../../layouts/main.jsx';
+import FileUpload from '../../components/FileUpload'
 import  './UploadContractView.less';
 const prefixCls = 'upload-contract-view'
 
@@ -13,7 +14,8 @@ const prefixCls = 'upload-contract-view'
     onCancel,
     files,
     checked,
-    title
+    title,
+    onSubmit
   } = props
 
     return (
@@ -41,7 +43,7 @@ const prefixCls = 'upload-contract-view'
       <List>
         <InputItem
           value={"万科房地产公司"}
-          disabled={true}
+          className="input-require"
         >
           合同名称：
         </InputItem>
@@ -66,37 +68,37 @@ const prefixCls = 'upload-contract-view'
           合同类型:
         </PickerListItem>
         <InputItem
+          placeholder="请输入甲方"
           // value={""}
         >
-          甲方
+          甲方:
         </InputItem>
         <InputItem
           // value={""}
+          placeholder="请输入地址"
         >
           地址：
         </InputItem>
         <InputItem
+          placeholder="请输入联系人"
           // value={""}
         >
           联系人：
         </InputItem>
         <InputItem
+          placeholder="请输入联系电话"
           type="number"
           // value={"19283827423"}
         >
           联系电话：
         </InputItem>
       </List>
-        <ImagePicker//直接向后台传输base64字符串即可，当上传其他类型文件时，可以重写background-url，让他指定为一个其他图片
-         className={ files.length === 1 ? 'has-img' : ''}
-         files={files}
-         length={1}
-         onChange={(files) => onChange({files})}
-         accept="*"
-        />
-        {files.length === 1 && <div className="file-desc">文件已上传页面</div>}
-        <div className="desc">支持word、PDF等格式</div>
-       <Button className="btn" type="primary">创建同时创建订单</Button>
+      <FileUpload
+        files={files}
+        onChange={onChange}
+      />
+        <div className="file-desc">支持word、PDF等格式</div>
+        <Button className="btn" onClick={onSubmit} type="primary">创建同时创建订单</Button>
     </Main>
     );
   }

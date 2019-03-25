@@ -41,18 +41,19 @@ componentDidMount(){
   }
 
   render() {
-  return (
-    <UploadContractView
+    return (
+      <UploadContractView
         {...this.props}
-      {...this.state}
-      onChange={this.onChange}
-      onCancel={this.onCancel}
-    />
-  )
-}
+        {...this.state}
+        onChange={this.onChange}
+        onCancel={this.onCancel}
+        onSubmit={this.onSubmit}
+      />
+    )
+  }
 }
 
-UploadContract.defaultPorps={
+UploadContract.defaultProps={
   title: "上传自定义合同"
 }
 

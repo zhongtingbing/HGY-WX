@@ -32,7 +32,7 @@ componentDidMount(){
   }
 
   toUploadWithoutProof = () => {
-
+    this.props.goTo('upload-contract-file', {title: '无合同凭证上传', type: 'withOutProof'})
   }
   render() {
   return (
@@ -55,12 +55,6 @@ function mapStateToProps() {
 function propsDispatchToMap(dispatch) {
   window._dispatch = dispatch
   return {
-    go(){
-      dispatch({
-        type: 'main/query',
-        payload: {id: 22},
-      })
-    },
     goTo(pathname, state) {
       dispatch(routerRedux.push({
         pathname,

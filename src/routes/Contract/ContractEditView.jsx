@@ -45,7 +45,7 @@ const prefixCls = 'contract-edit-view'
         <List>
           <InputItem
             value={"万科房地产公司"}
-            disabled={true}
+            className="input-require"
           >
             合同名称：
           </InputItem>
@@ -70,22 +70,26 @@ const prefixCls = 'contract-edit-view'
             合同类型:
           </PickerListItem>
           <InputItem
+            placeholder="请输入甲方"
             // value={""}
           >
             甲方
           </InputItem>
           <InputItem
+            placeholder="请输入地址"
             // value={""}
           >
             地址：
           </InputItem>
           <InputItem
+            placeholder="请输入联系人"
             // value={""}
           >
             联系人：
           </InputItem>
           <InputItem
             type="number"
+            placeholder="请输入联系电话"
             // value={"19283827423"}
           >
             联系电话：
